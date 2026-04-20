@@ -75,7 +75,9 @@ Após aprovação:
 1. Salvar em `.md` no caminho correto do repositório
 2. Rodar `validate_lesson.py`
 3. Fazer commit local
-4. Push opcional conforme remoto disponível
+4. Fazer push para `origin main`
+
+Regra operacional do Toni: ao finalizar uma aula, não deixar commit pendente. Aula concluída = commit + push automáticos.
 
 Scripts:
 - `/home/devuser/.openclaw/workspace/skills/coimbraclaw-prof/scripts/validate_lesson.py`
