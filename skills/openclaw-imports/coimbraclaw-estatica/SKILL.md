@@ -192,7 +192,30 @@ Mesmo nas aulas estáticas, aplicar as cinco dimensões:
 
 ---
 
-## 5. Publicação
+## 6. Características técnicas do design system
+
+### 6.1 Responsividade e impressão
+
+- **Breakpoint mobile:** 720px — abaixo disso o layout se adapta
+- **Impressão otimizada:** `@media print` remove gradientes, oculta toolbar, força backgrounds brancos e textos escuros para economizar tinta
+- **Botão "Salvar PDF":** chama `window.print()` via `onclick` inline no template
+
+### 6.2 Sistema de temas
+
+- **Controle:** `html[data-theme="dark|light"]` + localStorage `apostila-theme`
+- **JavaScript:** `apostila.js` gerencia alternância automática via `#theme-toggle`
+- **CSS:** 28+ regras específicas para tema claro usando `[data-theme="light"]`
+- **Padrão:** dark theme por default
+
+### 6.3 Tokens visuais
+
+- **Variáveis CSS:** 24 custom properties (`--shell-primary`, `--font-body`, `--content-gap`, etc.)
+- **Fontes:** Geist (corpo) + Geist Mono (código) carregadas do Google Fonts
+- **Transições:** sutis em hover states, sem animações pesadas
+
+---
+
+## 7. Publicação
 
 Caminho final:
 ```
@@ -210,7 +233,7 @@ git push origin main
 
 ---
 
-## 6. Resposta final esperada
+## 8. Resposta final esperada
 
 ```
 Arquivo: aula-XX-titulo-slug.html
@@ -222,7 +245,7 @@ Push: ok / pendente
 
 ---
 
-## 7. Regras absolutas
+## 9. Regras absolutas
 
 - NUNCA usar esta skill para aulas normais do ProfessorDash em Markdown
 - NUNCA embutir CSS ou JS inline — sempre referenciar os arquivos do design system
