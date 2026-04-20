@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-20T04:15:01.957457+00:00",
+  "generated_at_utc": "2026-04-20T04:20:02.001649+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 99998,
-      "sha256": "a518160dbee25264468e5c53e074d28d1b24a67fc1147d14331b353c515d3a32"
+      "sha256": "313dea2d9534df5b91b3c5cb6f5efc2f9d574553397808584ae6d9515d91fc00"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1097,8 +1097,8 @@
     },
     {
       "path": "skills/github/hermes-github-backups/SKILL.md",
-      "bytes": 2570,
-      "sha256": "592196a7c0ac976b7c3b67ab619da801a14dec815952227410571df5f3334ef5"
+      "bytes": 3228,
+      "sha256": "1176414476b067cb31a60c3c5446c963586126cd73df46923ec67b54a9e5d755"
     },
     {
       "path": "skills/gmail-send-with-attachment/SKILL.md",
@@ -1677,8 +1677,8 @@
     },
     {
       "path": "skills/openclaw-imports/coimbraclaw-estatica/SKILL.md",
-      "bytes": 5722,
-      "sha256": "4bead5d8a3ebdfae002bfe81672292c9004ece32e8e429aae67c329804caf1e7"
+      "bytes": 7949,
+      "sha256": "8017689cf3953b142831d24def467c735cc86a847d0abfa4e27f1cf186c2de0b"
     },
     {
       "path": "skills/openclaw-imports/coimbraclaw-prof/SKILL.md",

@@ -42,6 +42,21 @@ Exclui:
 - `/root/.hermes/scripts/export-hermes-config-backup.py`
 - `/root/.hermes/scripts/hermes-config-backup.sh`
 
+## Achado operacional importante
+
+`/root/.hermes` não é um repositório git.
+
+Consequência prática:
+- qualquer instrução do tipo `cd /root/.hermes && git add ... && git commit ... && git push ...` vai falhar
+- o caminho correto para versionar skills e config sanitizada é o espelho git em `/root/hermes-config-backup`
+
+Fluxo correto para mudanças em skills:
+1. editar o arquivo real em `/root/.hermes/skills/...`
+2. rodar `/root/.hermes/scripts/hermes-config-backup.sh`
+3. verificar o commit/push em `/root/hermes-config-backup`
+
+Use esse fluxo especialmente quando algum prompt assumir incorretamente que `/root/.hermes` é versionado diretamente.
+
 ## Achados operacionais importantes
 
 - O auto-push do vault principal pode parecer configurado, mas estar quebrado se o script ainda apontar para um path antigo como `/root/Documents/Obsidian Vault`.

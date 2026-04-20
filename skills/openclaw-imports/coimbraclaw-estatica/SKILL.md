@@ -74,21 +74,59 @@ Usar sempre caminhos relativos — nunca absolutos.
 
 ### 3.3 Preencher os blocos [EDIT]
 
-O template usa comentários `<!-- [EDIT] -->` para marcar os pontos de edição:
+O template usa comentários `<!-- [EDIT] -->` para marcar os pontos de edição.
+Preencher pelo menos estes pontos obrigatórios:
 
-- `<!-- [EDIT] disciplina -->` → nome da disciplina
-- `<!-- [EDIT] tema curto -->` → tema da aula (ex: "Aula 01 · Engenharia de Software")
-- `<!-- [EDIT] Título da <span class="accent">apostila</span> -->` → título com destaque
-- `<!-- [EDIT] Parágrafo de abertura -->` → introdução da aula
-- `<!-- [EDIT] -->` nos meta-cards → disciplina, ano letivo, duração, entrega
-- Seções, callouts e fechamento conforme conteúdo
+- topbar / marca:
+  - `<!-- [EDIT] disciplina -->` dentro de `.brand-text small`
+- hero:
+  - `<!-- [EDIT] tema curto -->` dentro de `.eyebrow`
+  - `<!-- [EDIT] Título da <span class="accent">apostila</span> -->` dentro de `.hero-title`
+  - `<!-- [EDIT] Parágrafo de abertura: o que o aluno vai aprender e em que contexto. -->` dentro de `.hero-lead`
+- meta-grid:
+  - `<!-- [EDIT] -->` em `Disciplina`
+  - `<!-- [EDIT] -->` em `Ano letivo`
+  - `<!-- [EDIT] 45 min -->` em `Duração estimada`
+  - `<!-- [EDIT] 1 atividade prática -->` em `Entrega`
+- sumário:
+  - `<!-- [EDIT] Título da seção -->`
+  - demais itens `<!-- [EDIT] -->`
+- seção modelo:
+  - `<!-- [EDIT] Título -->` no `h2`
+  - `<!-- [EDIT] parágrafo de abertura. -->`
+  - `<!-- [EDIT] -->` no callout de exemplo
+- fechamento:
+  - `<!-- [EDIT] -->` no checklist final
 
-### 3.4 Blocos disponíveis no template
+### 3.4 Estrutura-base real do template
 
-Copiar e reutilizar dentro de `<section class="section">`:
+Estes blocos já existem no `apostila-template.html` e devem ser preservados ao duplicar:
+
+- `html[data-theme]` → controla tema dark/light via JS
+- `.apostila-shell` → corpo da página
+- `.topbar > .topbar-inner` → barra superior fixa
+- `.brand`, `.brand-mark`, `.brand-text` → identidade do material
+- `.toolbar` → ações do topo
+  - `.pill.pill-ghost` → link para `#sumario`
+  - `.btn.btn-secondary#theme-toggle` + `#theme-label` → alternância de tema
+  - `.btn.btn-primary` → botão `Salvar PDF`
+  - `.ic` → classe dos SVGs de ícone usados nos botões
+- `main.shell` → container principal
+- `.hero`, `.hero-gradient`, `.hero-inner`, `.eyebrow`, `.eyebrow-line`, `.hero-title`, `.hero-lead` → capa da apostila
+- `.meta-grid` com `.meta-card` → metadados da aula
+- `nav.sumario#sumario` com `.sumario-title`, `.sumario-list`, `.sumario-num` → navegação interna
+- `.section` → bloco principal de conteúdo
+- `.section-head`, `.section-index` → cabeçalho da seção
+- `.section.section-close` → bloco de fechamento
+- `.footer-note` + `.mono` → assinatura textual dentro do fechamento
+- `footer.page-foot > .page-foot-inner` + `.dotsep` + `#year` → rodapé final da página
+
+### 3.5 Blocos reutilizáveis documentados
+
+Copiar e reutilizar dentro de `<section class="section">` quando fizer sentido:
 
 ```html
-<!-- Callout variants: c-primary, c-secondary, c-tertiary, c-warning, c-error -->
+<!-- Callout variants suportadas pelo CSS: c-primary, c-secondary, c-tertiary, c-warning, c-error -->
 <aside class="callout c-primary">
   <div class="callout-mark" aria-hidden="true">✓</div>
   <div class="callout-body">
@@ -122,7 +160,7 @@ Copiar e reutilizar dentro de `<section class="section">`:
   <p>Fala guiada.</p>
 </aside>
 
-<!-- Checklist de fechamento -->
+<!-- Checklist -->
 <ul class="checklist">
   <li>Item aprendido</li>
 </ul>
@@ -132,6 +170,13 @@ Copiar e reutilizar dentro de `<section class="section">`:
   <li>tag-1</li><li>tag-2</li>
 </ul>
 ```
+
+### 3.6 Regras de integridade com JS e navegação
+
+- Não remover `id="theme-toggle"`, `id="theme-label"` ou `id="year"`, porque `apostila.js` depende deles.
+- Manter `id="sumario"` e os links `href="#sec-X"` sincronizados com os `id` reais das seções.
+- Ao duplicar ou criar novas seções, repetir o padrão `section.section` + `header.section-head` + `span.section-index`.
+- Se o título principal usar destaque visual, manter `<span class="accent">...</span>` dentro de `.hero-title`.
 
 ---
 
