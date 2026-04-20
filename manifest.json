@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-20T03:10:01.965907+00:00",
+  "generated_at_utc": "2026-04-20T03:15:01.704271+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 100220,
-      "sha256": "1729256e91167b52c98597c3bb1e9869b61e92658238b9705e675f61475f5403"
+      "sha256": "01ac5444d1288a96c337bf65794f0a3a441fe17aa77b033e2b2d64482aa95acf"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1097,8 +1097,8 @@
     },
     {
       "path": "skills/github/hermes-github-backups/SKILL.md",
-      "bytes": 1679,
-      "sha256": "c52e23459106a7340a219a52d64fc1871df86fe2a9ccc819958c9d18aa8a626f"
+      "bytes": 2570,
+      "sha256": "592196a7c0ac976b7c3b67ab619da801a14dec815952227410571df5f3334ef5"
     },
     {
       "path": "skills/gmail-send-with-attachment/SKILL.md",

@@ -42,6 +42,20 @@ Exclui:
 - `/root/.hermes/scripts/export-hermes-config-backup.py`
 - `/root/.hermes/scripts/hermes-config-backup.sh`
 
+## Achados operacionais importantes
+
+- O auto-push do vault principal pode parecer configurado, mas estar quebrado se o script ainda apontar para um path antigo como `/root/Documents/Obsidian Vault`.
+- No ambiente validado, o path correto do vault principal é `/root/hermes-wiki`.
+- O repositório sanitizado de `/root/.hermes` deve ser separado do vault principal para não misturar conhecimento editorial com configuração operacional.
+- Ao criar o repo `hermes-config-backup`, `git clone https://github.com/...` pode falhar com `Repository not found` mesmo após `gh repo create`; no ambiente validado, `gh repo clone elvertoni/hermes-config-backup /root/hermes-config-backup` foi o caminho funcional.
+
+## Cron esperado
+
+```cron
+*/5 * * * * /root/.hermes/scripts/obsidian-auto-push.sh
+*/5 * * * * /root/.hermes/scripts/hermes-config-backup.sh >> /tmp/hermes-config-backup.log 2>&1
+```
+
 ## Fluxo de validação
 
 ### Vault principal
