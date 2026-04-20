@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-20T02:59:28.622535+00:00",
+  "generated_at_utc": "2026-04-20T03:00:01.458856+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -32,8 +32,8 @@
     },
     {
       "path": "manifest.json",
-      "bytes": 100040,
-      "sha256": "035da404d870d1e0dacca24e2605b70fcc82750de83999d7712294b2b1cc3f3a"
+      "bytes": 100041,
+      "sha256": "ee9fb915ecc7cd69871b259b410d82210be375ab052f200739b96fffd767d1a7"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1094,6 +1094,11 @@
       "path": "skills/github/github-repo-management/references/github-api-cheatsheet.md",
       "bytes": 6092,
       "sha256": "a9081d4a108b67b4edd3c92c73d823fd1730e37e23be6f069d9bd67dd3b32486"
+    },
+    {
+      "path": "skills/github/hermes-github-backups/SKILL.md",
+      "bytes": 1679,
+      "sha256": "c52e23459106a7340a219a52d64fc1871df86fe2a9ccc819958c9d18aa8a626f"
     },
     {
       "path": "skills/gmail-send-with-attachment/SKILL.md",
