@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-20T03:45:01.350730+00:00",
+  "generated_at_utc": "2026-04-20T03:49:10.186368+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 100220,
-      "sha256": "28627745efc4a773aa3dbcba8309a376850dbbaa3665cd92300286396abfa5a3"
+      "sha256": "4f0d3976527e6289be8a648de6207e030ac9bfe3e829d69f4a86139a92218cb6"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1676,24 +1676,19 @@
       "sha256": "b1ff5497205b1dc6c8c712fbb117a2a877e705ecf00b3a7a7ee92de493703996"
     },
     {
+      "path": "skills/openclaw-imports/coimbraclaw-estatica/SKILL.md",
+      "bytes": 6680,
+      "sha256": "2a6c54fb5e4df18cbb84ed5cd6be082a801f56d8b078c9551d5ec73cf1eade05"
+    },
+    {
       "path": "skills/openclaw-imports/coimbraclaw-prof/SKILL.md",
-      "bytes": 23666,
-      "sha256": "5e10ff2bdf773984f4a1baa1307723e1dd50898feed741d7c942b4318243df4b"
+      "bytes": 11906,
+      "sha256": "dd8cfc73bbc19e1aafb2dc9134132d39f865678519ec50e033a6f5c624b359a1"
     },
     {
       "path": "skills/openclaw-imports/coimbraclaw-prof/_meta.json",
       "bytes": 271,
       "sha256": "cf14d806045ed522812618f056b73953426e14060d508980d76e7f0d70e326d3"
-    },
-    {
-      "path": "skills/openclaw-imports/coimbraclaw-prof/references/lesson-template.md",
-      "bytes": 3802,
-      "sha256": "ba0bb7fadbb843e403c44cdd8ee40f15b2a56f1e99eab0132284e769592da1ba"
-    },
-    {
-      "path": "skills/openclaw-imports/coimbraclaw-prof/references/repo-layout.md",
-      "bytes": 1016,
-      "sha256": "d14eca55fd0af84fa077813d826054b1c48953dabc0dea6eec01c314165a47cf"
     },
     {
       "path": "skills/openclaw-imports/coimbraclaw-prof/scripts/create_lesson_template.py",
@@ -1719,6 +1714,11 @@
       "path": "skills/openclaw-imports/coimbraclaw-prof/scripts/validate_lesson.py",
       "bytes": 9201,
       "sha256": "9faaf4f50219cc54e58960ad9436b68b08192ee3668c68769f9c89b32d7e40d3"
+    },
+    {
+      "path": "skills/openclaw-imports/coimbraclaw-revisao/SKILL.md",
+      "bytes": 5726,
+      "sha256": "2b534ceee73106e1a2b367527a99b8302d02894c954142e4a56094704b75aa56"
     },
     {
       "path": "skills/openclaw-imports/coimbraclaw-voice/SKILL.md",
@@ -1854,11 +1854,6 @@
       "path": "skills/openclaw-imports/openclaw-auto-dream/references/scoring.md",
       "bytes": 9739,
       "sha256": "e3099fbb2403aa3aa6f916d05fc0a2850a41caa1e2c617f1723d9bc6fff985bd"
-    },
-    {
-      "path": "skills/openclaw-imports/profdash-static-lesson/SKILL.md",
-      "bytes": 3993,
-      "sha256": "d30f8f44944b051b2b46244f98c23cba1ee21f0f3fa13c5e5067ef94fa07b12a"
     },
     {
       "path": "skills/productivity/DESCRIPTION.md",
