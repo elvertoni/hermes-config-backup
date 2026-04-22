@@ -8,16 +8,28 @@ description: Publicar atividades no Google Classroom seguindo o padrão do Toni,
 ## Regras fundamentais (não negociáveis)
 
 ### Fonte dos materiais
-- TODOS os conteúdos de aula (ppt, docx, pdf, vídeos etc) estão na pasta **AULAS_RCO** do Google Drive da conta **coimbrabot.ai@gmail.com**
-- Pasta raiz: `1kX5kZg0IWa8DcHKhTMZ4ssZnmhpJP1tG`
-- URL: https://drive.google.com/drive/u/3/folders/1kX5kZg0IWa8DcHKhTMZ4ssZnmhpJP1tG
-- Estrutura interna: subpastas por disciplina (ex: `IA/`, `Introdução à Computação/`, etc.)
+- TODOS os conteúdos de aula (ppt, docx, pdf, vídeos etc) estão no Google Drive da conta **coimbrabot.ai@gmail.com**
+- A pasta raiz pode variar. IDs antigos documentados (`1kX5kZg0IWa8DcHKhTMZ4ssZnmhpJP1tG`, `1iJaC3_cIpWsxQd8RiWH5m8dEJWSsONGw`) já retornaram 404 — **não hardcode IDs de pasta**
+- Estrutura observada na prática (2026-04-22): pasta `ITE` (ID `1Un7Ca2IaCMWlVmwOpI-BCOk5o_8Eh2lS`) com subpastas `AULA_01` a `AULA_23`, cada uma contendo `.docx`, `.pptx` e arquivos de prática
+- Para localizar: fazer busca genérica no Drive (`name contains 'ITE'`, `name contains 'Atividade'`) ou listar pastas raiz, em vez de assumir IDs fixos
 - Para ler/analizar qualquer material de aula, usar a API do Drive com o token de coimbrabot.ai (google_token.json)
 
 ### Conta do Classroom
 - TODAS as atividades no Classroom são publicadas na conta **Elvertoni.coimbra@escola.pr.gov.br**
 - NUNCA usar a conta coimbrabot.ai para Classroom
 - O token para essa conta fica em google_token_escola.json
+
+### Risco real: revogação do token do coimbrabot.ai
+- O refresh_token do coimbrabot.ai já foi revogado várias vezes (`invalid_grant`). Não assumir que ele está sempre válido
+- Se o refresh falhar com `invalid_grant`, o único caminho é gerar um novo link de autorização OAuth, pedir ao usuário que abra no navegador logado na conta coimbrabot.ai, copie o `code=` da URL de redirect (localhost:8085), e troque aqui pelo token novo
+- Client ID do coimbrabot.ai: `298622568101-7fb6a0dvp1g45bc5t8bc6to87occs047.apps.googleusercontent.com`
+- Redirect URI usada: `http://localhost:8085`
+- Salvar o novo token em `google_token.json` imediatamente
+
+### Fallback quando a Forms API está desabilitada no projeto do bot
+- Se criar Form com o token do coimbrabot.ai retornar `SERVICE_DISABLED` (Forms API não ativada no projeto Google Cloud do bot), **usar o token da conta escola** (`google_token_escola.json`) para criar e configurar o Form
+- A conta escola possui escopo `forms.body` e funciona perfeitamente para criar Forms, batchUpdate, quiz, etc.
+- Isso não impede de usar o coimbrabot.ai para leitura de materiais no Drive — apenas separa: Drive = bot, Forms/Classroom = escola
 
 ### Padrão de publicação
 - título no formato `Atividade NNN - Xº TRI`
@@ -284,6 +296,27 @@ Conduta correta:
 - publicar a atividade mesmo sem `topicId`, se o resto estiver funcional
 - relatar explicitamente que ficou sem tópico por limitação real de OAuth
 - se o Toni quiser o fluxo 100% igual ao manual, reautenticar depois com escopo adequado
+
+### Forms API desabilitada no projeto do bot (2026-04-22)
+
+Ao tentar criar um Form com o token do coimbrabot.ai, a API retornou:
+- `PERMISSION_DENIED` — `SERVICE_DISABLED`
+- Motivo: Google Forms API não estava ativada no projeto Cloud `298622568101`
+
+Solução aplicada: usar o token da conta escolar (`google_token_escola.json`) para toda a criação e edição do Form. Funcionou sem necessidade de ativar APIs no projeto do bot.
+
+Implicação: o workflow padrão agora é:
+1. **Drive/leitura de materiais** → token do coimbrabot.ai
+2. **Criação de Form + Classroom** → token da conta escolar (mais confiável e já tem todos os escopos)
+
+### Estrutura real do Drive para ITE (2026-04-22)
+
+Em vez da pasta `AULAS_RCO` com subpastas por disciplina, o material de ITE estava organizado como:
+- Pasta raiz `ITE` (ID `1Un7Ca2IaCMWlVmwOpI-BCOk5o_8Eh2lS`)
+- Subpastas numeradas: `AULA_01` até `AULA_23`
+- Dentro de cada aula: `AULA_XX_ATIVIDADE_...docx`, `AULA_XX_...pptx`, `AULA_XX_PRÁTICA_...docx`
+
+Conduta correta: não hardcode IDs de pasta. Sempre listar ou buscar pelo nome.
 
 ### Extração de DOCX quando `python-docx` não estiver instalado
 
