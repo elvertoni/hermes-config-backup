@@ -318,6 +318,26 @@ Em vez da pasta `AULAS_RCO` com subpastas por disciplina, o material de ITE esta
 
 Conduta correta: não hardcode IDs de pasta. Sempre listar ou buscar pelo nome.
 
+### Forms API desabilitada no projeto do coimbrabot.ai (confirmado em 2026-04-22)
+
+O projeto Google Cloud vinculado à conta **coimbrabot.ai@gmail.com** (client_id `298622568101-...`) **não tem a Google Forms API ativada**. Sintoma:
+- `POST https://forms.googleapis.com/v1/forms` retorna `403 PERMISSION_DENIED` com `reason: SERVICE_DISABLED`
+
+**Conduta correta:**
+- **Sempre usar o token da conta escolar** (`google_token_escola.json` / `elvertoni.coimbra@escola.pr.gov.br`) para criar/editar formulários via API.
+- O token do coimbrabot.ai continua válido apenas para operações do Drive (ler/baixar materiais de aula).
+
+### Código de autorização OAuth é single-use
+
+O `code` retornado pelo Google na URL de callback (`http://localhost:8085?code=4/0Ab...`) **só pode ser trocado por token uma vez**.
+
+Sintoma de reutilização:
+- `invalid_grant` no endpoint `https://oauth2.googleapis.com/token`
+
+Conduta correta:
+- se o exchange falhar por qualquer razão (erro de script, timeout, etc.), **gerar novo link de autorização** e obter novo `code`.
+- nunca reenviar o mesmo `code` duas vezes.
+
 ### Extração de DOCX quando `python-docx` não estiver instalado
 
 Se o host não tiver o módulo `docx`, não parar por isso.
