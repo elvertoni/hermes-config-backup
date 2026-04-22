@@ -3,15 +3,9 @@ model:
   provider: opencode-go
   api_mode: chat_completions
   base_url: https://opencode.ai/zen/go/v1
-providers:
-  openrouter:
-    api_key: REDACTED
-    extra_headers:
-      HTTP-Referer: https://hermes-agent.nousresearch.com
-      X-Title: Hermes Agent
+providers: {}
 fallback_providers: []
-credential_pool_strategies:
-  openrouter: fill_first
+credential_pool_strategies: {}
 toolsets:
 - hermes-cli
 agent:
@@ -362,5 +356,5 @@ session_reset:
 streaming:
   enabled: false
 fallback_model:
-  provider: openrouter
-  model: anthropic/claude-sonnet-4
+  provider: ''
+  model: ''
