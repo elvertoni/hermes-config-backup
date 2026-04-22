@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-22T00:55:02.152734+00:00",
+  "generated_at_utc": "2026-04-22T01:00:01.397373+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 99998,
-      "sha256": "4debc53ecc79c46d331f5a9a1de91bc7aae31d79f56b11c948aebb5cca5b5cde"
+      "sha256": "4ac7aff2b5dfd012eceddc9fac2385e3ab10e6aa77553f56d3aff6f904f4160f"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
