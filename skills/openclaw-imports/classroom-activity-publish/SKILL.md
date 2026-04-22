@@ -327,6 +327,28 @@ O projeto Google Cloud vinculado à conta **coimbrabot.ai@gmail.com** (client_id
 - **Sempre usar o token da conta escolar** (`google_token_escola.json` / `elvertoni.coimbra@escola.pr.gov.br`) para criar/editar formulários via API.
 - O token do coimbrabot.ai continua válido apenas para operações do Drive (ler/baixar materiais de aula).
 
+### "Limitar a 1 resposta" desativado → botão "Importar notas" some (2026-04-23)
+
+Sintomas observados na prática:
+- O botão **"Importar notas"** não aparece no Classroom, ou aparece mas dá erro ao clicar
+- O Form recebe respostas, mas elas não aparecem vinculadas à atividade
+- Alunos conseguem responder **mais de uma vez**
+- Pessoas **fora da turma** conseguem responder (o Classroom não consegue parear e-mail com matrícula)
+- O número de `submissions` no Classroom não bate com o número de respostas no Form
+
+Diagnóstico rápido via API:
+1. `forms.get()` → confirma `quizSettings.isQuiz: true` e `emailCollectionType: VERIFIED`
+2. `forms.responses.list()` → conta respostas e verifica `respondentEmail` de cada uma
+3. `courses.students.list()` → compara e-mails matriculados com e-mails das respostas
+4. `studentSubmissions.list()` → verifica quantos estão em `TURNED_IN`/`RETURNED`
+
+Se houver respostas de e-mails **não matriculados** ou `submissions TURNED_IN` < `respostas no Form`, a causa é quase certamente a ausência de **"Limitar a 1 resposta"**.
+
+**Conduta correta:**
+- Entrar no Form (UI) → Configurações → marcar "Limitar a 1 resposta"
+- Aguardar 1-2 minutos e recarregar a atividade no Classroom
+- Se persistir: recriar a atividade do zero com Form novo (a API pública não consegue ativar essa flag)
+
 ### Código de autorização OAuth é single-use
 
 O `code` retornado pelo Google na URL de callback (`http://localhost:8085?code=4/0Ab...`) **só pode ser trocado por token uma vez**.
@@ -364,7 +386,40 @@ Conduta correta:
 
 Isso evita poluir a atividade com nomes internos do cache do Hermes.
 
-## Resources
+### Exportar analytics de entregas para Google Sheets (2026-04-23)
+
+Quando o Toni pedir um descritivo de realização de atividades ou atualizar uma planilha de acompanhamento:
+
+**Fluxo consolidado:**
+1. **Listar cursos** do Piekas Noturno (ou outra unidade) via `classroom.courses.list` com `teacherId=me`
+2. **Para cada curso:**
+   - `classroom.courses.students.list` → montar mapa `userId → nome`
+   - `classroom.courses.courseWork.list` → listar atividades
+   - `classroom.courses.courseWork.studentSubmissions.list` → para cada atividade, coletar estado e nota
+3. **Consolidar por aluno:**
+   - total de atividades da disciplina
+   - quantas entregou (`TURNED_IN`/`RETURNED`)
+   - soma das notas atribuídas (`assignedGrade`)
+4. **Escrever na planilha:**
+   - Criar aba por disciplina se não existir (`spreadsheets.batchUpdate` com `addSheet`)
+   - Limpar range (`values:clear`)
+   - Escrever cabeçalho + dados (`values.update` com `RAW`)
+
+**Estrutura da planilha:**
+| Nome | Quantidade de atividade feita | Nota total da disciplina |
+|---|---|---|
+| ALUNO A | 10/12 | 520 |
+| ALUNO B | 3/12 | 150 |
+
+**IDs dos cursos Piekas Noturno (confirmados):**
+| ID | Disciplina |
+|---|---|
+| `842490128694` | Introd A Computacao - 1º Ano C Noite |
+| `842489183984` | Inovacao Tec E Empreend - 2º Ano C Noite |
+| `842489098476` | Programacao No Des De Sistemas - 3º Ano C Noite |
+| `793556557371` | Analise E Projeto De Sistemas - 3º Ano C Noite |
+
+**Pendência típica:** o Classroom conta submissions para alunos arquivados/inativos. O total pode ser maior que o número de alunos visíveis. Filtrar por alunos ativos quando necessário.
 
 - `references/classroom-ui-pattern.md` — fluxo real observado no vídeo de referência
 - `references/gog-fallback.md` — fallback por CLI, comandos úteis e limitações atuais
