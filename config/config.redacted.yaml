@@ -1,7 +1,6 @@
 model:
-  default: gpt-5.4
-  provider: openai-codex
-  base_url: https://chatgpt.com/backend-api/codex
+  default: claude-haiku-4-5-20251001
+  provider: anthropic
   api_mode: chat_completions
 providers:
   openrouter:
@@ -83,6 +82,7 @@ browser:
   command_timeout: 30
   record_sessions: false
   allow_private_urls: false
+  cdp_url: ''
   camofox:
     managed_persistence: false
   cloud_provider: local
@@ -95,6 +95,17 @@ compression:
   threshold: 0.7
   target_ratio: 0.2
   protect_last_n: 20
+bedrock:
+  region: ''
+  discovery:
+    enabled: true
+    provider_filter: []
+    refresh_interval: 3600
+  guardrail:
+    guardrail_identifier: ''
+    guardrail_version: ''
+    stream_processing_mode: async
+    trace: disabled
 smart_model_routing:
   enabled: false
   max_simple_chars: 160
@@ -150,6 +161,12 @@ auxiliary:
     base_url: ''
     api_key: REDACTED
     timeout: 30
+  title_generation:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: REDACTED
+    timeout: 30
 display:
   compact: false
   personality: kawaii
@@ -168,6 +185,8 @@ display:
   platforms: {}
   background_process_notifications: all
   tool_progress: all
+dashboard:
+  theme: default
 privacy:
   redact_pii: false
 tts:
@@ -180,6 +199,11 @@ tts:
   openai:
     model: gpt-4o-mini-tts
     voice: alloy
+  xai:
+    voice_id: eve
+    language: en
+    sample_rate: 24000
+    bit_rate: 128000
   mistral:
     model: voxtral-mini-tts-2603
     voice_id: c69964a6-ab8b-4f8a-9465-ec0925096ec8
@@ -241,10 +265,19 @@ discord:
   allowed_channels: ''
   auto_thread: true
   reactions: true
+  channel_prompts: {}
+  server_actions: ''
 whatsapp: {}
+telegram:
+  channel_prompts: {}
+slack:
+  channel_prompts: {}
+mattermost:
+  channel_prompts: {}
 approvals:
   mode: manual
   timeout: 60
+  cron_mode: deny
 command_allowlist:
 - start gateway outside systemd (use 'systemctl --user restart hermes-gateway')
 - overwrite system file via tee
@@ -266,6 +299,10 @@ security:
     shared_files: []
 cron:
   wrap_response: true
+code_execution:
+  mode: project
+  max_tool_calls: 50
+  timeout: 300
 logging:
   level: INFO
   max_size_mb: 5
@@ -273,9 +310,6 @@ logging:
 network:
   force_ipv4: false
 _config_version: 17
-code_execution:
-  max_tool_calls: 50
-  timeout: 300
 group_sessions_per_user: true
 platform_toolsets:
   cli:
