@@ -1,7 +1,8 @@
 model:
-  default: claude-haiku-4-5-20251001
-  provider: anthropic
+  default: kimi-k2.6
+  provider: opencode-go
   api_mode: chat_completions
+  base_url: https://opencode.ai/zen/go/v1
 providers:
   openrouter:
     api_key: REDACTED
