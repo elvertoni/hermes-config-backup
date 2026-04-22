@@ -1,0 +1,146 @@
+---
+name: notion-export-to-obsidian-vault
+description: Importar exports ZIP do Notion para o vault operacional do Hermes/Obsidian com preservação do bruto em raw/, curadoria seletiva em wiki/ e commit+push final.
+version: 1.0.0
+author: Hermes Agent
+license: MIT
+---
+
+# notion-export-to-obsidian-vault
+
+Use quando o Toni enviar um ou mais exports do Notion em ZIP e quiser migrar para o Obsidian/vault.
+
+## Objetivo
+
+Fazer migração em duas camadas:
+1. preservar o bruto em `raw/`
+2. promover só o que presta para `wiki/`
+
+Sem jogar export cru direto no wiki.
+
+## Contexto do ambiente do Toni
+
+- Vault operacional: `/root/hermes-vault`
+- Vault Git/espelho: `/root/hermes-wiki`
+- Ambos devem receber o bruto importado quando a tarefa envolver preservação operacional + publicação Git
+- Sempre finalizar com commit+push no GitHub quando houver mudança persistente no vault versionado
+
+## Fluxo padrão
+
+### 1. Descompactar tudo
+
+Exports do Notion podem vir com um ZIP externo que contém um ZIP interno `Part-1.zip`.
+
+Procedimento:
+- extrair o ZIP recebido para diretório temporário
+- procurar ZIPs internos extraídos
+- extrair também esses ZIPs internos
+- só depois inventariar o conteúdo real
+
+Nunca assumir que o primeiro ZIP já contém os `.md` finais.
+
+### 2. Inventariar
+
+Levantar pelo menos:
+- total de arquivos
+- quantos `.md`
+- quantos `.csv`
+- quantos anexos (`.pdf`, imagens, `.docx`, etc.)
+- exemplos de caminhos e nomes relevantes
+
+Gerar um inventário em:
+- `outputs/notion-import-AAAA-MM-DD-inventario.md`
+
+## 3. Classificar por destino
+
+Categorias operacionais padrão do Toni:
+- `professor`
+- `dev`
+- `pessoal`
+- `referencias`
+
+Regra prática:
+- `professor` → aula, SEED, Classroom, planejamento, conteúdo didático
+- `dev` → setup, ferramentas, infra, IA, automação, programação, runbooks técnicos
+- `pessoal` → páginas de pessoas e notas pessoais identificáveis
+- `referencias` → links, material solto, utilitários, itens sem encaixe técnico/pedagógico forte
+
+Quando houver dúvida, preferir `referencias` em vez de contaminar `professor` ou `wiki/`.
+
+## 4. Importar bruto para raw/
+
+Salvar o import bruto preservando nomes e subpastas sob um prefixo de lote:
+
+- `raw/professor/notion-import-AAAA-MM-DD/`
+- `raw/dev/notion-import-AAAA-MM-DD/`
+- `raw/pessoal/notion-import-AAAA-MM-DD/`
+- `raw/referencias/notion-import-AAAA-MM-DD/`
+
+Preservar anexos junto com os `.md` relacionados sempre que possível.
+
+## 5. Curadoria seletiva para wiki/
+
+Não promover tudo.
+
+Promover apenas notas com valor durável, por exemplo:
+- runbooks úteis
+- regras operacionais
+- setup técnico reaproveitável
+- referências que afetam o trabalho do Toni
+
+Criar uma página-síntese do lote em:
+- `wiki/HERMES/importacao-de-exports-do-notion-AAAA-MM-DD.md`
+
+Essa página deve conter:
+- resumo do lote
+- contagem por categoria
+- critério de classificação usado
+- conexões para notas promovidas
+- fontes no `raw/` e no inventário
+
+## 6. Atenção a conteúdo desatualizado
+
+Se uma nota técnica importada trouxer orientação que conflita com regras atuais do Toni, não descartar automaticamente.
+
+Faça assim:
+- preserve o bruto em `raw/`
+- na nota curada do `wiki/`, marque explicitamente a parte desatualizada
+- exemplo real: notas recomendando Sonnet como modelo padrão devem ser sinalizadas porque a regra atual do Toni é priorizar Codex via OAuth/OpenAI
+
+## 7. Atualizar índice e log
+
+No vault Git (`/root/hermes-wiki`):
+- atualizar `wiki/index.md`
+- adicionar entrada no topo de `wiki/log.md`
+
+A entrada de log deve registrar:
+- que os ZIPs foram descompactados, incluindo `Part-1.zip` internos se houver
+- que o bruto foi classificado em `raw/`
+- quais páginas de wiki foram criadas
+- se houve conteúdo desatualizado sinalizado
+
+## 8. Commit e push
+
+Ao terminar:
+- `git add` dos arquivos importados e curados
+- `git commit`
+- `git push origin main`
+- verificar que o repositório ficou limpo após o push
+
+## Resultado esperado
+
+Entregar ao Toni:
+- quantos arquivos foram importados
+- distribuição por categoria
+- páginas do wiki criadas
+- caminho do inventário
+- commit SHA
+- status do push
+
+## Pitfalls
+
+- Não esquecer do ZIP interno `Part-1.zip`
+- Não promover export cru em massa para o `wiki/`
+- Não perder anexos relacionados na cópia para `raw/`
+- Não tratar conteúdo antigo como regra vigente sem sinalização
+- Não esquecer commit+push no final

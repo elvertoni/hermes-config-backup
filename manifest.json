@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-22T13:05:01.139618+00:00",
+  "generated_at_utc": "2026-04-22T13:10:01.949138+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 99998,
-      "sha256": "bdd2c701e303cd193f946c56355001eb415845b8f22484c45270d6e1f22fa232"
+      "sha256": "2c80478ac56940a1e783e97cf9aaf7a4afd3466faa92c2c507b0cfe13719acbd"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1639,6 +1639,11 @@
       "path": "skills/note-taking/hermes-memory-vault-sync/SKILL.md",
       "bytes": 5034,
       "sha256": "89dbc8cb92c4964d59a966baacebe2d303edb671bfd9654060d2a28afc0e474b"
+    },
+    {
+      "path": "skills/note-taking/notion-export-to-obsidian-vault/SKILL.md",
+      "bytes": 4414,
+      "sha256": "a832111390e33e94e344742710ff2aa791be938a1680c6790ab643223049ee9c"
     },
     {
       "path": "skills/note-taking/obsidian/SKILL.md",
