@@ -24,7 +24,7 @@ Use [OpenCode](https://opencode.ai) as an autonomous coding worker orchestrated 
 ## Prerequisites
 
 - OpenCode installed: `npm i -g opencode-ai@latest` or `brew install anomalyco/tap/opencode`
-- Auth configured: `opencode auth login` or set provider env vars (OPENROUTER_API_KEY, etc.)
+- Auth configured: `opencode auth login` or set provider env vars (`OPENCODE_GO_API_KEY`, `OPENCODE_ZEN_API_KEY`, etc.)
 - Verify: `opencode auth list` should show at least one provider
 - Git repository for code tasks (recommended)
 - `pty=true` for interactive TUI sessions
@@ -67,7 +67,7 @@ terminal(command="opencode run 'Debug why tests fail in CI' --thinking", workdir
 Force a specific model:
 
 ```
-terminal(command="opencode run 'Refactor auth module' --model openrouter/anthropic/claude-sonnet-4", workdir="~/project")
+terminal(command="opencode run 'Refactor auth module' --model opencode-go/kimi-k2.6", workdir="~/project")
 ```
 
 ## Interactive Sessions (Background)

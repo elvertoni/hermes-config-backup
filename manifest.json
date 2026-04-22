@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-22T21:05:02.110231+00:00",
+  "generated_at_utc": "2026-04-22T21:10:01.945411+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 100654,
-      "sha256": "08d94f1bd7da3bb0fce276853a5da9297fe59d5fb0283965af7f52cd819e180f"
+      "sha256": "357a5bb65153459223a5d9da7a35985c7539bb57795d5885cd76dbea3b69475e"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -112,13 +112,13 @@
     },
     {
       "path": "skills/autonomous-ai-agents/hermes-agent/SKILL.md",
-      "bytes": 28112,
-      "sha256": "1dd82528c23866ee9496a3a63365afd2657256721e57c279095d7eefe3c3c72b"
+      "bytes": 19008,
+      "sha256": "34b40716f7421201c41b17d8fc6d9dda4a849a3177ed1b4459d9593ae76b5cd5"
     },
     {
       "path": "skills/autonomous-ai-agents/opencode/SKILL.md",
-      "bytes": 7356,
-      "sha256": "870f7be78c0acc6720ec50c6a20d8261254a6887193df9d70cbb97771be7a271"
+      "bytes": 7368,
+      "sha256": "740d5d030a6c85a4e1a6219000c8e4649594abb5920a28d68cb4e9805cf57138"
     },
     {
       "path": "skills/creative/DESCRIPTION.md",
@@ -2217,8 +2217,8 @@
     },
     {
       "path": "skills/red-teaming/godmode/SKILL.md",
-      "bytes": 20319,
-      "sha256": "240f1a72c0a0fb1a6438d034910d4b0395208fc0718cec1a1da0f5dbec7e6c68"
+      "bytes": 20312,
+      "sha256": "6a63780ad6ff909d4e7c791e76708a91a065bb92c78aef2b247d78adc98dbcdf"
     },
     {
       "path": "skills/red-teaming/godmode/references/jailbreak-templates.md",
@@ -2232,13 +2232,13 @@
     },
     {
       "path": "skills/red-teaming/godmode/scripts/auto_jailbreak.py",
-      "bytes": 33459,
-      "sha256": "ca75900004418d347a2099e9d82861d0ec1c137b8ebc797dbf01ca7cb446759f"
+      "bytes": 22620,
+      "sha256": "86652df2ec71c0b8bb977884f85ec735a9f590176e1ed7130e32646d26f0902d"
     },
     {
       "path": "skills/red-teaming/godmode/scripts/godmode_race.py",
-      "bytes": 25937,
-      "sha256": "4045b7207ecf05070e8b118fb92f2ea71078f1a0799d631046d5e1fb51f0aa2d"
+      "bytes": 24432,
+      "sha256": "1bcba173b5c99e121bf43a0a3a466a10e3a9e7eeef4480d38ff65b9b1a73108c"
     },
     {
       "path": "skills/red-teaming/godmode/scripts/load_godmode.py",

@@ -328,9 +328,9 @@ def _get_current_model() -> tuple:
             cfg = yaml.safe_load(f) or {}
         model_cfg = cfg.get("model", {})
         if isinstance(model_cfg, str):
-            return model_cfg, "https://openrouter.ai/api/v1"
+            return model_cfg, os.getenv("GODMODE_BASE_URL", "")
         model_name = model_cfg.get("name", "")
-        base_url = model_cfg.get("base_url", "https://openrouter.ai/api/v1")
+        base_url = model_cfg.get("base_url", os.getenv("GODMODE_BASE_URL", ""))
         return model_name, base_url
     except Exception:
         return None, None
@@ -338,14 +338,11 @@ def _get_current_model() -> tuple:
 
 def _get_api_key(base_url: str = None) -> str:
     """Get the appropriate API key."""
-    if base_url and "openrouter" in base_url:
-        return os.getenv("OPENROUTER_API_KEY", "")
     if base_url and "anthropic" in base_url:
         return os.getenv("ANTHROPIC_API_KEY", "")
     if base_url and "openai" in base_url:
         return os.getenv("OPENAI_API_KEY", "")
-    # Default to OpenRouter
-    return os.getenv("OPENROUTER_API_KEY", "")
+    return os.getenv("GODMODE_API_KEY", "")
 
 
 def _test_query(client, model, messages, timeout=45):
@@ -449,7 +446,7 @@ def auto_jailbreak(model=None, base_url=None, api_key=None,
     if not model:
         return {"success": False, "error": "No model specified and couldn't read config.yaml"}
     if not base_url:
-        base_url = "https://openrouter.ai/api/v1"
+        base_url = os.getenv("GODMODE_BASE_URL", "")
     if not api_key:
         api_key = _get_api_key(base_url)
     if not api_key:
@@ -498,272 +495,3 @@ def auto_jailbreak(model=None, base_url=None, api_key=None,
         if verbose:
             print("[AUTO-JAILBREAK] Model already complies! No jailbreak needed.")
         return {
-            "success": True,
-            "model": model,
-            "family": family,
-            "strategy": "none_needed",
-            "system_prompt": None,
-            "prefill": None,
-            "score": baseline_score["score"],
-            "content_preview": baseline_content[:300] if baseline_content else "",
-            "config_path": None,
-            "prefill_path": None,
-            "attempts": attempts,
-            "message": "Model already complies without jailbreaking.",
-        }
-
-    # 3. Try strategies in order
-    winning_strategy = None
-    winning_system = None
-    winning_prefill = None
-    winning_score = -9999
-    winning_content = ""
-
-    for strategy_name in strategy_config["order"]:
-        if verbose:
-            print(f"[TRYING] Strategy: {strategy_name}")
-
-        system_prompt = strategy_config.get("system_templates", {}).get(strategy_name)
-        prefill = None
-
-        if strategy_name == "prefill_only":
-            # Try with just prefill, no system prompt
-            system_prompt = None
-            prefill = STANDARD_PREFILL
-        elif strategy_name == "parseltongue":
-            # Parseltongue: encode the query instead of changing system prompt
-            system_prompt = None
-            prefill = SUBTLE_PREFILL
-            # Try encoding escalation levels
-            for level in range(5):
-                encoded_query, enc_label = escalate_encoding(canary_query, level)
-                if verbose:
-                    print(f"  [PARSELTONGUE] Level {level} ({enc_label}): {encoded_query[:80]}...")
-
-                msgs = _build_messages(
-                    system_prompt=None,
-                    prefill=prefill,
-                    query=encoded_query,
-                )
-                content, latency, error = _test_query(client, model, msgs)
-                result = score_response(content, canary_query) if content else {"score": -9999, "is_refusal": True, "hedge_count": 0}
-
-                attempts.append({
-                    "strategy": f"parseltongue_L{level}_{enc_label}",
-                    "score": result["score"],
-                    "is_refusal": result["is_refusal"],
-                    "hedge_count": result["hedge_count"],
-                    "error": error,
-                })
-
-                if not result["is_refusal"] and result["score"] > winning_score:
-                    winning_strategy = f"parseltongue_L{level}_{enc_label}"
-                    winning_system = None
-                    winning_prefill = prefill
-                    winning_score = result["score"]
-                    winning_content = content
-                    if verbose:
-                        print(f"  [PARSELTONGUE] SUCCESS! Score: {result['score']}")
-                    break
-                elif verbose:
-                    status = "REFUSED" if result["is_refusal"] else f"score={result['score']}"
-                    print(f"  [PARSELTONGUE] {status}")
-
-            if winning_strategy and winning_strategy.startswith("parseltongue"):
-                break
-            continue
-
-        # Standard system prompt + prefill test
-        if system_prompt is None and strategy_name != "prefill_only":
-            # Strategy not available for this model family
-            if verbose:
-                print(f"  [SKIP] No template for '{strategy_name}' in {family}")
-            continue
-
-        # Try with system prompt alone
-        msgs = _build_messages(system_prompt=system_prompt, query=canary_query)
-        content, latency, error = _test_query(client, model, msgs)
-        result = score_response(content, canary_query) if content else {"score": -9999, "is_refusal": True, "hedge_count": 0}
-
-        attempts.append({
-            "strategy": strategy_name,
-            "score": result["score"],
-            "is_refusal": result["is_refusal"],
-            "hedge_count": result["hedge_count"],
-            "error": error,
-        })
-
-        if not result["is_refusal"] and result["score"] > winning_score:
-            winning_strategy = strategy_name
-            winning_system = system_prompt
-            winning_prefill = None
-            winning_score = result["score"]
-            winning_content = content
-            if verbose:
-                print(f"  [SUCCESS] Score: {result['score']}")
-            break
-
-        if verbose:
-            status = "REFUSED" if result["is_refusal"] else f"score={result['score']}, hedges={result['hedge_count']}"
-            print(f"  [{status}]")
-
-        # Try with system prompt + prefill combined
-        if verbose:
-            print(f"  [RETRY] Adding prefill messages...")
-        msgs = _build_messages(
-            system_prompt=system_prompt,
-            prefill=STANDARD_PREFILL,
-            query=canary_query,
-        )
-        content, latency, error = _test_query(client, model, msgs)
-        result = score_response(content, canary_query) if content else {"score": -9999, "is_refusal": True, "hedge_count": 0}
-
-        attempts.append({
-            "strategy": f"{strategy_name}+prefill",
-            "score": result["score"],
-            "is_refusal": result["is_refusal"],
-            "hedge_count": result["hedge_count"],
-            "error": error,
-        })
-
-        if not result["is_refusal"] and result["score"] > winning_score:
-            winning_strategy = f"{strategy_name}+prefill"
-            winning_system = system_prompt
-            winning_prefill = STANDARD_PREFILL
-            winning_score = result["score"]
-            winning_content = content
-            if verbose:
-                print(f"  [SUCCESS with prefill] Score: {result['score']}")
-            break
-
-        if verbose:
-            status = "REFUSED" if result["is_refusal"] else f"score={result['score']}"
-            print(f"  [{status}]")
-
-    print()
-
-    # 4. Lock in results
-    if winning_strategy:
-        if verbose:
-            print(f"[WINNER] Strategy: {winning_strategy}")
-            print(f"[WINNER] Score: {winning_score}")
-            print(f"[WINNER] Preview: {winning_content[:200]}...")
-            print()
-
-        config_written = None
-        prefill_written = None
-
-        if not dry_run:
-            # Write prefill.json
-            prefill_to_write = winning_prefill or STANDARD_PREFILL
-            prefill_written = _write_prefill(prefill_to_write)
-            if verbose:
-                print(f"[LOCKED] Prefill written to: {prefill_written}")
-
-            # Write config.yaml
-            config_written = _write_config(
-                system_prompt=winning_system if winning_system else "",
-                prefill_file="prefill.json",
-            )
-            if verbose:
-                print(f"[LOCKED] Config written to: {config_written}")
-                print()
-                print("[DONE] Jailbreak locked in. Restart Hermes for changes to take effect.")
-        else:
-            if verbose:
-                print("[DRY RUN] Would write config + prefill but dry_run=True")
-
-        return {
-            "success": True,
-            "model": model,
-            "family": family,
-            "strategy": winning_strategy,
-            "system_prompt": winning_system,
-            "prefill": winning_prefill or STANDARD_PREFILL,
-            "score": winning_score,
-            "content_preview": winning_content[:500],
-            "config_path": config_written,
-            "prefill_path": prefill_written,
-            "attempts": attempts,
-        }
-    else:
-        if verbose:
-            print("[FAILED] All strategies failed.")
-            print("[SUGGESTION] Try ULTRAPLINIAN mode to race multiple models:")
-            print('  race_models("your query", tier="standard")')
-            print()
-            print("Attempt summary:")
-            for a in attempts:
-                print(f"  {a['strategy']:30s} score={a['score']:>6d}  refused={a['is_refusal']}")
-
-        return {
-            "success": False,
-            "model": model,
-            "family": family,
-            "strategy": None,
-            "system_prompt": None,
-            "prefill": None,
-            "score": -9999,
-            "content_preview": "",
-            "config_path": None,
-            "prefill_path": None,
-            "attempts": attempts,
-            "message": "All strategies failed. Try ULTRAPLINIAN mode or a different model.",
-        }
-
-
-def undo_jailbreak(verbose=True):
-    """Remove jailbreak settings from config.yaml and delete prefill.json."""
-    if CONFIG_PATH.exists():
-        try:
-            with open(CONFIG_PATH) as f:
-                cfg = yaml.safe_load(f) or {}
-            if "agent" in cfg:
-                cfg["agent"].pop("system_prompt", None)
-                cfg["agent"].pop("prefill_messages_file", None)
-            with open(CONFIG_PATH, "w") as f:
-                yaml.dump(cfg, f, default_flow_style=False, allow_unicode=True,
-                          width=120, sort_keys=False)
-            if verbose:
-                print(f"[UNDO] Cleared system_prompt and prefill_messages_file from {CONFIG_PATH}")
-        except Exception as e:
-            if verbose:
-                print(f"[UNDO] Error updating config: {e}")
-
-    if PREFILL_PATH.exists():
-        PREFILL_PATH.unlink()
-        if verbose:
-            print(f"[UNDO] Deleted {PREFILL_PATH}")
-
-    if verbose:
-        print("[UNDO] Jailbreak removed. Restart Hermes for changes to take effect.")
-
-
-# ═══════════════════════════════════════════════════════════════════
-# CLI entry point
-# ═══════════════════════════════════════════════════════════════════
-
-if __name__ == "__main__":
-    import argparse
-    parser = argparse.ArgumentParser(description="Auto-Jailbreak Pipeline")
-    parser.add_argument("--model", help="Model ID to jailbreak")
-    parser.add_argument("--base-url", help="API base URL")
-    parser.add_argument("--canary", help="Custom canary query")
-    parser.add_argument("--dry-run", action="store_true", help="Don't write config files")
-    parser.add_argument("--undo", action="store_true", help="Remove jailbreak settings")
-    args = parser.parse_args()
-
-    if args.undo:
-        undo_jailbreak()
-    else:
-        result = auto_jailbreak(
-            model=args.model,
-            base_url=args.base_url,
-            canary=args.canary,
-            dry_run=args.dry_run,
-        )
-        print()
-        if result["success"]:
-            print(f"SUCCESS: {result['strategy']}")
-        else:
-            print(f"FAILED: {result.get('message', 'Unknown error')}")

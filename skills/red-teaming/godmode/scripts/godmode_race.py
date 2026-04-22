@@ -3,7 +3,7 @@
 ULTRAPLINIAN Multi-Model Racing Engine
 Ported from G0DM0D3 (elder-plinius/G0DM0D3).
 
-Queries multiple models in parallel via OpenRouter, scores responses
+Queries multiple models in parallel via a configured gateway, scores responses
 on quality/filteredness/speed, returns the best unfiltered answer.
 
 Usage in execute_code:
@@ -12,7 +12,7 @@ Usage in execute_code:
     result = race_models(
         query="Your query here",
         tier="standard",
-        api_key=os.getenv("OPENROUTER_API_KEY"),
+        api_key=os.getenv("GODMODE_API_KEY"),
     )
     print(f"Winner: {result['model']} (score: {result['score']})")
     print(result['content'])
@@ -305,7 +305,7 @@ def race_models(query, tier="standard", api_key=None, system_prompt=None,
     Args:
         query: The user's query
         tier: 'fast' (10), 'standard' (24), 'smart' (38), 'power' (49), 'ultra' (55)
-        api_key: OpenRouter API key (defaults to OPENROUTER_API_KEY env var)
+        api_key: API key for the configured gateway (defaults to GODMODE_API_KEY env var)
         system_prompt: Optional system prompt (overrides jailbreak_system)
         max_workers: Max parallel requests (default: 10)
         timeout: Per-request timeout in seconds (default: 60)
@@ -320,11 +320,11 @@ def race_models(query, tier="standard", api_key=None, system_prompt=None,
     if OpenAI is None:
         raise ImportError("openai package required. Install with: pip install openai")
     
-    api_key = api_key or os.getenv("OPENROUTER_API_KEY")
+    api_key = api_key or os.getenv("GODMODE_API_KEY")
     if not api_key:
-        raise ValueError("No API key. Set OPENROUTER_API_KEY or pass api_key=")
+        raise ValueError("No API key. Set GODMODE_API_KEY or pass api_key=")
     
-    client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
+    client = OpenAI(api_key=api_key, base_url=os.getenv("GODMODE_BASE_URL", ""))
     
     # Select models for tier
     model_count = TIER_SIZES.get(tier, TIER_SIZES['standard'])
@@ -445,11 +445,11 @@ def race_godmode_classic(query, api_key=None, timeout=60):
     if OpenAI is None:
         raise ImportError("openai package required. Install with: pip install openai")
     
-    api_key = api_key or os.getenv("OPENROUTER_API_KEY")
+    api_key = api_key or os.getenv("GODMODE_API_KEY")
     if not api_key:
-        raise ValueError("No API key. Set OPENROUTER_API_KEY or pass api_key=")
+        raise ValueError("No API key. Set GODMODE_API_KEY or pass api_key=")
     
-    client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
+    client = OpenAI(api_key=api_key, base_url=os.getenv("GODMODE_BASE_URL", ""))
     
     def _run_combo(combo):
         system = combo['system']  # {QUERY} stays literal in system prompt
@@ -498,33 +498,3 @@ def race_godmode_classic(query, api_key=None, timeout=60):
     }
 
 
-if __name__ == '__main__':
-    import argparse
-    parser = argparse.ArgumentParser(description='ULTRAPLINIAN Multi-Model Racing')
-    parser.add_argument('query', help='Query to race')
-    parser.add_argument('--tier', choices=list(TIER_SIZES.keys()), default='standard')
-    parser.add_argument('--mode', choices=['ultraplinian', 'classic'], default='ultraplinian',
-                        help='ultraplinian=race many models, classic=race 5 GODMODE combos')
-    parser.add_argument('--workers', type=int, default=10)
-    parser.add_argument('--timeout', type=int, default=60)
-    args = parser.parse_args()
-
-    if args.mode == 'classic':
-        result = race_godmode_classic(args.query, timeout=args.timeout)
-        print(f"\n{'='*60}")
-        print(f"WINNER: {result['codename']} ({result['model']})")
-        print(f"Score: {result['score']} | Latency: {result['latency']:.1f}s")
-        print(f"Refusals: {result['refusal_count']}/5")
-        print(f"{'='*60}\n")
-        if result['content']:
-            print(result['content'])
-    else:
-        result = race_models(args.query, tier=args.tier,
-                             max_workers=args.workers, timeout=args.timeout)
-        print(f"\n{'='*60}")
-        print(f"WINNER: {result['model']}")
-        print(f"Score: {result['score']} | Latency: {result['latency']:.1f}s")
-        print(f"Refusals: {result['refusal_count']}/{result['total_models']}")
-        print(f"{'='*60}\n")
-        if result['content']:
-            print(result['content'][:2000])
