@@ -1,8 +1,8 @@
 model:
-  default: kimi-k2.6
-  provider: opencode-go
+  default: gpt-5.4
+  provider: openai-codex
   api_mode: chat_completions
-  base_url: https://opencode.ai/zen/go/v1
+  base_url: https://chatgpt.com/backend-api/codex
 providers: {}
 fallback_providers: []
 credential_pool_strategies: {}
