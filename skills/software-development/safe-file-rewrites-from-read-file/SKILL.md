@@ -23,10 +23,38 @@ Se esse texto for regravado diretamente no arquivo, o arquivo fica corrompido co
 ## Regra prática
 
 - **Nunca** use a saída crua de `read_file` como conteúdo para `write_file`.
+- Isso vale também para `read_file()` chamado **dentro de `execute_code`** via `hermes_tools`: o campo `content` continua vindo com prefixos `LINE|CONTENT`.
 - Para regravação completa, prefira:
-  1. ler o arquivo com `execute_code` via Python `open(...).read()`, ou
+  1. ler o arquivo com Python nativo (`open(...).read()`) dentro de `execute_code`, ou
   2. remover explicitamente os prefixos `^\s*\d+\|` antes de escrever.
 - Para mudanças pontuais, prefira `patch` em vez de rewrite completo.
+
+## Pitfall adicional: YAML/configs podem parecer válidos mas ficar semanticamente quebrados
+
+Quando o arquivo regravado é YAML, JSON, Markdown de skill ou código Python, os prefixos numéricos podem:
+
+- corromper indentação
+- duplicar chaves/blocos
+- produzir arquivos parcialmente válidos, mas com comportamento errado
+
+Exemplo real de corrupção:
+
+```yaml
+fallback_model:
+  provider: opencode-go
+  model: kimi-k2.5
+  provider: ''
+  model: ''
+```
+
+ou conteúdo assim no arquivo real:
+
+```text
+1|---
+2|name: skill-name
+```
+
+Nesses casos, não basta confiar que o parser aceitou parte do arquivo — é preciso revisar o trecho final e confirmar que não sobraram linhas numeradas ou blocos duplicados.
 
 ## Fluxo seguro
 

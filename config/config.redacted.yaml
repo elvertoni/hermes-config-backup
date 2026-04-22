@@ -354,6 +354,3 @@ session_reset:
   mode: none
 streaming:
   enabled: false
-fallback_model:
-  provider: ''
-  model: ''
