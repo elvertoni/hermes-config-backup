@@ -4,7 +4,6 @@ model:
   api_mode: chat_completions
   base_url: https://chatgpt.com/backend-api/codex
 providers: {}
-fallback_providers: []
 credential_pool_strategies: {}
 toolsets:
 - hermes-cli
