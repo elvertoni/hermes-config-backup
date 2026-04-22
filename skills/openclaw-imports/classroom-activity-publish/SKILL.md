@@ -230,6 +230,43 @@ Fallback se python-docx não instalado: extrair DOCX como ZIP → ler `word/docu
 - Para Drive, o ambiente atual pode ter diferenças entre contas OAuth; não assumir que ambas têm o mesmo acesso
 - Se houver vídeo/referência visual nova do Toni, atualizar a referência desta skill em vez de improvisar na próxima vez
 
+### Falha total do token do Drive (coimbrabot.ai) — caso real de 2026-04-23
+
+Durante uma tentativa de publicação, o token de `google_token.json` (coimbrabot.ai@gmail.com) retornou:
+- `invalid_grant` no refresh (não recuperável)
+- `401 UNAUTHENTICATED` em qualquer chamada ao Drive
+
+Isso significa que o refresh token foi **revogado ou expirou permanentemente**, não apenas que o access token precisava de refresh.
+
+**Conduta correta quando isso acontece:**
+1. Verificar se `google_token_escola.json` consegue acessar o Drive — **não consegue**, pois AULAS_RCO está na conta coimbrabot.ai
+2. Informar o Toni imediatamente que o token do Drive está quebrado
+3. Oferecer duas saídas:
+   - **Reautorizar o OAuth do coimbrabot.ai** (gerar novo auth code e trocar por token)
+   - **Receber o arquivo da atividade direto no Telegram** — extrair do anexo e seguir o fluxo normal de criação do Form + Classroom
+4. Não ficar tentando o mesmo token revogado
+
+### IDs de cursos confirmados (escola — 2026-04-23)
+
+Lista obtida via `classroom.googleapis.com/v1/courses` com escopo de professor:
+
+| ID | Nome | Escola |
+|---|---|---|
+| `842738572792` | Inovacao Tec E Empreend - 2º Ano A Manha | THEODORO DE BONA |
+| `793583873515` | Programacao Front-End - 2º Ano A Manha | THEODORO DE BONA |
+| `842739696988` | Analise E Metodo Para Sistemas - 1º Ano A Manha | THEODORO DE BONA |
+| `842739634878` | Programacao No Des De Sistemas - 3º Ano A Manha | THEODORO DE BONA |
+| `842739184622` | Analise E Projeto De Sistemas - 3º Ano A Manha | THEODORO DE BONA |
+| `842736656239` | Introd A Computacao - 1º Ano A Manha | THEODORO DE BONA |
+| `842489098476` | Programacao No Des De Sistemas - 3º Ano C Noite | PEDRO PIEKAS |
+| `842490128694` | Introd A Computacao - 1º Ano C Noite | PEDRO PIEKAS |
+| `842489183984` | **Inovacao Tec E Empreend - 2º Ano C Noite** | PEDRO PIEKAS |
+| `793556557371` | **Analise E Projeto De Sistemas - 3º Ano C Noite** | PEDRO PIEKAS |
+
+**Favoritos:**
+- **APS NOITE** = `793556557371`
+- **ITE NOITE** = `842489183984`
+
 ### Escopo insuficiente para tópicos (caso real de 2026-04-15)
 
 Foi confirmado um caso em que o token da conta da escola permitia:
