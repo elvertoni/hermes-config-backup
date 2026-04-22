@@ -3,7 +3,15 @@ model:
   provider: opencode-go
   api_mode: chat_completions
   base_url: https://opencode.ai/zen/go/v1
-providers: {}
+providers:
+  opencode-go:
+    name: opencode-go
+    api: https://opencode.ai/zen/go/v1
+    api_mode: chat_completions
+  openai-codex:
+    name: openai-codex
+    api: https://chatgpt.com/backend-api/codex
+    api_mode: codex_responses
 fallback_providers: []
 credential_pool_strategies: {}
 toolsets:
