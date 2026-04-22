@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-22T14:00:01.843604+00:00",
+  "generated_at_utc": "2026-04-22T14:05:02.121324+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -28,12 +28,12 @@
     {
       "path": "config/config.redacted.yaml",
       "bytes": 8737,
-      "sha256": "95b5d6851716b501a7cc51ebbe419a1c6bc6a455d69c02be2bdf618a8c7f4333"
+      "sha256": "530068a0d04db3357d514cefcebe7b863e5740fa5ef6ef6a9b02beaf06d08448"
     },
     {
       "path": "manifest.json",
       "bytes": 100193,
-      "sha256": "2338e50904d58f2de97ce6e3582381a8feb9279eea57b9de06365a7d9b8fc033"
+      "sha256": "2d5dd49f506f937fc29d651512b42eb77cbdba443e8555b57dced7b38af2f2fe"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -54,6 +54,21 @@
       "path": "skills/.bundled_manifest",
       "bytes": 3323,
       "sha256": "7c32d22e6968b6c7a08123f385296d28266e54408c4c53924a5219465d3a405f"
+    },
+    {
+      "path": "skills/.hub/audit.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "skills/.hub/lock.json",
+      "bytes": 32,
+      "sha256": "ad2fdc46f1ed9dfd70454b8263aa9dd255d7c2f6e03ecd18b4b0d605d51acaac"
+    },
+    {
+      "path": "skills/.hub/taps.json",
+      "bytes": 13,
+      "sha256": "236790504ec208f58f1e49e361b2dc5a64cfcc773730f645991b4e4de02d9cbc"
     },
     {
       "path": "skills/apple/DESCRIPTION.md",

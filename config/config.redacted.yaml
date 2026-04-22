@@ -309,7 +309,7 @@ logging:
   backup_count: 3
 network:
   force_ipv4: false
-_config_version: 17
+_config_version: 19
 group_sessions_per_user: true
 platform_toolsets:
   cli:
