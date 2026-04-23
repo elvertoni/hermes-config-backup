@@ -215,18 +215,73 @@ Mesmo nas aulas estáticas, aplicar as cinco dimensões:
 
 ---
 
-## 7. Publicação
+## 7. Padrão de nomenclatura de arquivos (ProfessorDash)
+
+O ProfessorDash sincroniza automaticamente com o GitHub. Para evitar duplicatas e manter o padrão visual limpo, usar **sempre** nomenclatura curta:
+
+```
+aula-NN.ext
+```
+
+**Correto:**
+- `aula-01.html`
+- `aula-02.md`
+- `aula-15.html`
+
+**Incorreto (nunca usar):**
+- `aula-01-criacao-de-tabelas-com-html-e-css.html`
+- `aula-02-formularios-com-html-e-css.md`
+
+O nome da disciplina **não vai no arquivo**. O manifest.json e a estrutura de pastas já identificam a disciplina.
+
+### 7.1 Estrutura de pastas
+
+```
+publicadas/materias/[serie]/[disciplina]/
+  aula-01.html   ← aula interativa (apostila HTML)
+  aula-01.md     ← material didático (Markdown do ProfessorDash)
+  aula-02.html
+  aula-02.md
+```
+
+### 7.2 Manifest.json
+
+Toda aula deve ter entrada no `manifest.json`:
+
+```json
+{
+  "series": "2a-serie",
+  "subject": "programacao-front-end",
+  "lessonNumber": 2,
+  "title": "Formulários com HTML e CSS",
+  "slug": "formularios-com-html-e-css",
+  "path": "publicadas/materias/2a-serie/programacao-front-end/aula-02.md",
+  "status": "published",
+  "publishedAt": "2026-04-23T15:24:00.000000+00:00"
+}
+```
+
+**Atenção:** `lessonNumber` deve ser sequencial. `path` aponta para o arquivo `.md` (material didático). A aula HTML interativa com mesmo número é detectada automaticamente pelo ProfessorDash.
+
+### 7.3 Cuidados com o sync do ProfessorDash
+
+- **Renomear arquivo no GitHub** → o ProfessorDash interpreta como material **novo**, não atualização. Isso cria duplicatas.
+- **Correção:** ao renomear, primeiro apague o material antigo no ProfessorDash, depois sincronize.
+- **Ou:** sincronize do zero (apague todos os materiais da disciplina no ProfessorDash, depois clique "Sincronizar GitHub").
+
+## 8. Publicação
 
 Caminho final:
 ```
-/root/work/ProfToniCoimbra/publicadas/materias/[serie]/[disciplina]/aula-XX-titulo-slug.html
+/root/work/ProfToniCoimbra/publicadas/materias/[serie]/[disciplina]/aula-NN.html
+/root/work/ProfToniCoimbra/publicadas/materias/[serie]/[disciplina]/aula-NN.md
 ```
 
 Após salvar:
 
 ```bash
 cd /root/work/ProfToniCoimbra
-git add publicadas/materias/[serie]/[disciplina]/aula-XX-titulo-slug.html
+git add publicadas/materias/[serie]/[disciplina]/
 git commit -m "aula: [título da aula]"
 git push origin main
 ```
