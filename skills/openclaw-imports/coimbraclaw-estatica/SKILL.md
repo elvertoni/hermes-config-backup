@@ -1,7 +1,7 @@
 ---
 name: coimbraclaw-estatica
 description: Gerar aulas estáticas em HTML para o ProfessorDash no padrão visual apostila. Use quando o Toni pedir aula estática, padrão blueprint, HTML puro, apostila visual ou material imprimível.
-updated: 2026-04-20
+updated: 2026-04-23
 status: ativa
 ---
 
@@ -54,8 +54,10 @@ alinhar estrutura, classes CSS e blocos disponíveis.
 
 ```bash
 cp /root/work/ProfToniCoimbra/_design-system/apostila/apostila-template.html \
-   /root/work/ProfToniCoimbra/publicadas/materias/[serie]/[disciplina]/aula-XX-titulo-slug.html
+   /root/work/ProfToniCoimbra/publicadas/materias/[serie]/[disciplina]/aula-NN.html
 ```
+
+**Regra:** usar sempre `aula-NN.html` (não colocar o título no nome do arquivo). O ProfessorDash sincroniza com o GitHub e nomes longos causam duplicatas no sync.
 
 ### 3.2 Referenciar CSS e JS com caminho relativo correto
 
@@ -288,10 +290,10 @@ git push origin main
 
 ---
 
-## 8. Resposta final esperada
+## 9. Resposta final esperada
 
 ```
-Arquivo: aula-XX-titulo-slug.html
+Arquivo: aula-NN.html
 Caminho: publicadas/materias/[serie]/[disciplina]/
 CSS/JS: referenciados via caminho relativo ../../../../_design-system/apostila/
 Commit: [SHA]
@@ -300,13 +302,14 @@ Push: ok / pendente
 
 ---
 
-## 9. Regras absolutas
+## 10. Regras absolutas
 
 - NUNCA usar esta skill para aulas normais do ProfessorDash em Markdown
 - NUNCA embutir CSS ou JS inline — sempre referenciar os arquivos do design system
 - NUNCA usar caminhos absolutos para CSS/JS — sempre relativos
 - NUNCA inventar casos de mercado — usar apenas casos documentados
 - NUNCA misturar os dois formatos: pedido de apostila → .html; aula normal → .md
+- NUNCA colocar o título da aula no nome do arquivo — usar sempre `aula-NN.ext`
 - SEMPRE ler apostila-template.html antes de gerar conteúdo novo
 - SEMPRE aplicar enriquecimento pedagógico (seção 4)
 - SEMPRE usar Material produzido pelo Prof. Toni Coimbra. no rodapé

@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-23T13:40:01.375753+00:00",
+  "generated_at_utc": "2026-04-23T13:45:02.082248+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -32,8 +32,8 @@
     },
     {
       "path": "manifest.json",
-      "bytes": 100859,
-      "sha256": "95f6398c941f8615d1f690eebb693503c3249e693c52c1933f80e942429a23a2"
+      "bytes": 100860,
+      "sha256": "7e3045e12293c4d1622f800148ac0c4e32d347d0b57f2253a54e59720a41462c"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1697,8 +1697,8 @@
     },
     {
       "path": "skills/openclaw-imports/coimbraclaw-estatica/SKILL.md",
-      "bytes": 10732,
-      "sha256": "d524e477c6f01163c7020dd710271337cfb40ec5a0c9828ab1d6c3ad29d0aee6"
+      "bytes": 10958,
+      "sha256": "b26f142bd7c981c6fad3636088eb248c557ea034ddfa4fa7a2094967f92ebd64"
     },
     {
       "path": "skills/openclaw-imports/coimbraclaw-prof/SKILL.md",
