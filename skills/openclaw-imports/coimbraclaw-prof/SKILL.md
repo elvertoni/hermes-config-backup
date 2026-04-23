@@ -34,7 +34,7 @@ Skill de geração de aulas do ProfessorDash. Cobre planejamento, escrita, enriq
 | 3ª série | Análise e Projeto de Sistemas | `publicadas/materias/3a-serie/analise-e-projeto-de-sistemas/` |
 | Extras | Inteligência Artificial | `publicadas/materias/disciplinas-extras/inteligencia-artificial/` |
 
-Nome de arquivo padrão: `aula-XX-titulo-slug.md`
+Nome de arquivo padrão: `aula-NN.md` (apenas número, sem título no nome do arquivo).
 
 ---
 
