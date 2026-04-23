@@ -137,10 +137,43 @@ Entregar ao Toni:
 - commit SHA
 - status do push
 
+## Limpeza de nomes do Notion (obrigatória)
+
+Exports do Notion vêm com hashes de 32 caracteres hex no final dos nomes:
+- `Github 31466fbdbb9080c5bf65caddbd7bfe19.md` → `Github.md`
+- `Antigravity 2f866fbdbb9080a3a657e41ea89c96a2.md` → `Antigravity.md`
+- Subpastas também: `PYCODEBR 31966fbdbb90808184d8dc7ca16b6a21/` → `PYCODEBR/`
+
+**Regex correto para limpar:**
+```python
+import re
+
+def clean_name(name):
+    """Remove hash do Notion do final do nome"""
+    base, ext = os.path.splitext(name)
+    base = re.sub(r'\s+[a-f0-9]{32}$', '', base)
+    return base + ext
+```
+
+**Aplicar em:**
+1. Nomes de arquivos `.md`
+2. Nomes de diretórios (subpastas do export)
+3. Nomes de anexos quando possível
+
+**NÃO deixar os hashes originais** — o usuário espera nomes limpos e legíveis.
+
+## Verificação antes de entregar
+
+Antes de considerar a tarefa pronta, confirmar:
+- `find raw/ -name '*[a-f0-9]*' | grep -E '[a-f0-9]{32}'` retorna vazio
+- Todos os arquivos têm nomes legíveis sem hash
+- Subpastas também estão limpas
+
 ## Pitfalls
 
 - Não esquecer do ZIP interno `Part-1.zip`
 - Não promover export cru em massa para o `wiki/`
 - Não perder anexos relacionados na cópia para `raw/`
 - Não tratar conteúdo antigo como regra vigente sem sinalização
+- **NÃO preservar hashes do Notion nos nomes de arquivo/pasta**
 - Não esquecer commit+push no final
