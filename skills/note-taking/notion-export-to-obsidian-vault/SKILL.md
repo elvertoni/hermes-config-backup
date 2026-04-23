@@ -144,21 +144,43 @@ Exports do Notion vêm com hashes de 32 caracteres hex no final dos nomes:
 - `Antigravity 2f866fbdbb9080a3a657e41ea89c96a2.md` → `Antigravity.md`
 - Subpastas também: `PYCODEBR 31966fbdbb90808184d8dc7ca16b6a21/` → `PYCODEBR/`
 
-**Regex correto para limpar:**
+**Regex correto para limpar nomes de arquivo:**
 ```python
 import re
+import os
 
 def clean_name(name):
-    """Remove hash do Notion do final do nome"""
+    """Remove hash do Notion do final do nome antes da extensão"""
     base, ext = os.path.splitext(name)
     base = re.sub(r'\s+[a-f0-9]{32}$', '', base)
     return base + ext
+```
+
+**Para limpar caminhos completos (arquivos + diretórios):**
+```python
+def clean_path(rel_path):
+    """Limpa hashes de todas as partes de um caminho relativo"""
+    parts = rel_path.split(os.sep)
+    clean_parts = []
+    for p in parts:
+        if '.' in p:
+            # é arquivo
+            clean_parts.append(clean_name(p))
+        else:
+            # é diretório
+            clean_parts.append(re.sub(r'\s+[a-f0-9]{32}$', '', p))
+    return os.sep.join(clean_parts)
 ```
 
 **Aplicar em:**
 1. Nomes de arquivos `.md`
 2. Nomes de diretórios (subpastas do export)
 3. Nomes de anexos quando possível
+
+**Cuidado com a construção do caminho destino:**
+- O backup do Notion pode ter estrutura: `backup/dev/notion-import-YYYY-MM-DD/Aula X .../arquivo.md`
+- Ao reconstruir em `raw/dev/notion-import-YYYY-MM-DD/`, remover o prefixo `notion-import-YYYY-MM-DD/` do caminho relativo antes de aplicar `clean_path`
+- Verificar com `find` que não há double-nesting (`raw/dev/notion-import-.../notion-import-.../`)
 
 **NÃO deixar os hashes originais** — o usuário espera nomes limpos e legíveis.
 
@@ -168,12 +190,25 @@ Antes de considerar a tarefa pronta, confirmar:
 - `find raw/ -name '*[a-f0-9]*' | grep -E '[a-f0-9]{32}'` retorna vazio
 - Todos os arquivos têm nomes legíveis sem hash
 - Subpastas também estão limpas
+- Não há double-nesting de diretórios
+
+## Curadoria: menos é mais
+
+O usuário prefere **curadoria seletiva e minimalista**. Erros comuns a evitar:
+
+- **NÃO promover tudo que parece técnico** para `wiki/`. Uma nota com apenas um link solto ou uma dica de 2 linhas não precisa de página wiki própria.
+- **LER o conteúdo real** antes de classificar. Um arquivo chamado `Linux AWS.md` pode ser apenas 3 linhas de anotações soltas (vai para `referencias`), não um runbook completo (vai para `dev`).
+- **Preservar em raw/ é suficiente** para a maioria do material. Só promover para `wiki/` quando houver valor duradouro, passo a passo reutilizável ou decisão técnica documentada.
+- **Evitar duplicatas**: o Notion exporta às vezes a mesma página com IDs diferentes (ex: `Toni Coimbra d2d4...md` e `Toni Coimbra d2d6...md`). Manter apenas uma cópia em `raw/`, descartar duplicatas.
+
+Quando em dúvida, pergunte ao usuário: "Posso promover X para wiki/ ou prefere deixar só em raw/?"
 
 ## Pitfalls
 
 - Não esquecer do ZIP interno `Part-1.zip`
-- Não promover export cru em massa para o `wiki/`
+- Não promover export cru em massa para o `wiki/` — ser seletivo
 - Não perder anexos relacionados na cópia para `raw/`
 - Não tratar conteúdo antigo como regra vigente sem sinalização
 - **NÃO preservar hashes do Notion nos nomes de arquivo/pasta**
+- **CUIDADO com path construction** — evitar double-nesting e truncamento acidental de nomes de diretório
 - Não esquecer commit+push no final

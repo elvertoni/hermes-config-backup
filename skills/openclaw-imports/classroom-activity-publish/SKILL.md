@@ -327,6 +327,20 @@ O projeto Google Cloud vinculado à conta **coimbrabot.ai@gmail.com** (client_id
 - **Sempre usar o token da conta escolar** (`google_token_escola.json` / `elvertoni.coimbra@escola.pr.gov.br`) para criar/editar formulários via API.
 - O token do coimbrabot.ai continua válido apenas para operações do Drive (ler/baixar materiais de aula).
 
+### Respostas de e-mails não matriculados aparecendo no Form (2026-04-23)
+
+Sintoma: o Form mostra respostas de um e-mail que **não consta na lista atual de alunos** da turma.
+
+Causa provável: o aluno respondeu enquanto estava matriculado, mas foi **removido da turma** posteriormente. O Google Forms preserva a resposta; o Classroom preserva o `studentSubmission` com `state=TURNED_IN`, mas o `userId` não aparece mais em `courses.students.list`.
+
+Diagnóstico via API:
+1. `forms.responses.list()` → coleta `respondentEmail` de todas as respostas
+2. `courses.students.list()` → monta set de e-mails matriculados
+3. Compare os dois sets. E-mails presentes no Form mas ausentes da turma indicam alunos removidos
+4. `studentSubmissions.list()` → pode mostrar um `userId` com `state=TURNED_IN` cujo e-mail não está na turma
+
+**Isso não impede o funcionamento do formulário.** As respostas de alunos removidos simplesmente não são pareadas com nenhum aluno ativo. Se o botão "Importar notas" não aparece, a causa é outra (geralmente ausência de "Limitar a 1 resposta").
+
 ### "Limitar a 1 resposta" desativado → botão "Importar notas" some (2026-04-23)
 
 Sintomas observados na prática:

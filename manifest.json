@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-23T13:00:02.049473+00:00",
+  "generated_at_utc": "2026-04-23T13:05:02.000776+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 100859,
-      "sha256": "5e4e2c88424c2c0427370d680c9f85420abe7532bea886af47d657c004578e8b"
+      "sha256": "2cf299d6e5bf44e29d078644a299e6df443ef64f07c01dddd54d425526412fcf"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1657,8 +1657,8 @@
     },
     {
       "path": "skills/note-taking/notion-export-to-obsidian-vault/SKILL.md",
-      "bytes": 5509,
-      "sha256": "9af21a5be925eeb7c4a5dca365b75b97ff505e24dca2043ccc96004f7318ca48"
+      "bytes": 7566,
+      "sha256": "f8e2578fae104c8acdd0a68688ae498f5e4c27864d62ea5a97d162995d70de4e"
     },
     {
       "path": "skills/note-taking/obsidian/SKILL.md",
@@ -1677,8 +1677,8 @@
     },
     {
       "path": "skills/openclaw-imports/classroom-activity-publish/SKILL.md",
-      "bytes": 21088,
-      "sha256": "3241bc9d97d14cbe7a60aeaf4e9d05d7c4a6175732705f1dd60db11b5a23abe3"
+      "bytes": 22174,
+      "sha256": "12b8e84405f60895cc09091c8aec12acba3932326c18387bcd044d91cb8c2abc"
     },
     {
       "path": "skills/openclaw-imports/classroom-activity-publish/_meta.json",
