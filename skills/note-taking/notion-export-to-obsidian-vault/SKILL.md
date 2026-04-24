@@ -46,6 +46,12 @@ Observações:
 - IDs de URL do Notion costumam vir com 32 hex sem hífen. Converter para UUID antes da chamada.
 - Esse método funciona bem para conteúdo textual público.
 - Anexos/arquivos privados podem não vir completos sem export autenticado.
+- Ao converter rich text para Markdown, **não ignorar anotações do Notion**. Preservar pelo menos:
+  - `a` → link normal
+  - `lm` → link preview/bookmark (usar `href` + `title` quando houver)
+  - `p` → referência interna para outra página do Notion (converter em link para a URL pública da página quando possível)
+- Se o texto âncora vier como `‣`, `↗` ou vazio, preferir usar o `title` do link preview ou o título da página referenciada; caso contrário o Markdown fica cheio de `‣` solto e perde utilidade.
+- Depois da conversão, revisar o raw gerado procurando `‣` isolado. Isso normalmente indica link interno/externo que o parser deixou escapar.
 
 Depois seguir os mesmos passos de inventário, classificação em `raw/`, curadoria em `wiki/` e commit+push.
 
