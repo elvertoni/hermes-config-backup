@@ -1,5 +1,5 @@
 model:
-  default: codex
+  default: gpt-5.3-codex
   provider: openai-codex
   api_mode: codex_responses
   base_url: https://chatgpt.com/backend-api/codex
