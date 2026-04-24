@@ -27,6 +27,28 @@ Sem jogar export cru direto no wiki.
 
 ## Fluxo padrão
 
+### 0. Quando vierem LINKS públicos (sem ZIP)
+
+Se o Toni enviar links públicos do Notion (em vez de export ZIP), use o fallback por API pública de páginas:
+
+- endpoint: `POST https://www.notion.so/api/v3/loadPageChunk`
+- payload mínimo:
+  - `pageId` (UUID com hífens)
+  - `limit: 100`
+  - `cursor: {"stack": []}`
+  - `chunkNumber: 0`
+  - `verticalColumns: false`
+- repetir chamadas enquanto `cursor.stack` vier preenchido; parar quando voltar vazio
+- extrair blocos de `recordMap.block` e converter para Markdown
+- varrer links internos/subpáginas e repetir o processo para cobrir páginas referenciadas
+
+Observações:
+- IDs de URL do Notion costumam vir com 32 hex sem hífen. Converter para UUID antes da chamada.
+- Esse método funciona bem para conteúdo textual público.
+- Anexos/arquivos privados podem não vir completos sem export autenticado.
+
+Depois seguir os mesmos passos de inventário, classificação em `raw/`, curadoria em `wiki/` e commit+push.
+
 ### 1. Descompactar tudo
 
 Exports do Notion podem vir com um ZIP externo que contém um ZIP interno `Part-1.zip`.
