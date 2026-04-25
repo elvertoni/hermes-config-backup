@@ -143,7 +143,8 @@ Cada tweet extraído tem estes campos:
 - **curl_cffi também falha**: Cloudflare bloqueia `curl_cffi` nos endpoints de API (/i/api/graphql e /1.1/guest/activate.json), mesmo com impersonate=chrome120.
 - **httpx simples FUNCIONA**: usar `httpx.Client` (não `AsyncClient`) com o User-Agent de browser listado acima.
 - **RTs**: tweets começando com "RT @" devem ser filtrados.
-- **Timezone**: `created_at` vem em UTC (`+0000`). Converter para BRT subtraindo 3h se necessário.
+- **Timezone**: `created_at` vem em UTC (`+0000`). Formato: `"%a %b %d %H:%M:%S %z %Y"` (ex: `"Fri Apr 24 16:57:55 +0000 2026"`). Converter para BRT subtraindo 3h se necessário.
+- **Query IDs alternativos**: `UserByScreenName` também funciona com `32pL5BWe9WKeSK1MoPvFQQ` (não `1VOOyvKkiI3FMmKeDNxM9A` que o twscrape usa e está desatualizado).
 
 ## Implementação de referência
 

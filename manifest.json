@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-25T14:45:01.961735+00:00",
+  "generated_at_utc": "2026-04-25T14:50:02.160389+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 109861,
-      "sha256": "08cf0b91e67f65d530bd4bec30d84e619a47fdb216833deed00beb5758116144"
+      "sha256": "a349e78342f905a1229e984c0766a9f59ab48ae46c8480d1b68512f1449d3a63"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1174,6 +1174,11 @@
       "path": "skills/data-science/jupyter-live-kernel/SKILL.md",
       "bytes": 5571,
       "sha256": "89756be379065ac639a0f094421a2700c6035967d3a32c58e40008bca132a545"
+    },
+    {
+      "path": "skills/devops/cloudflare-tunnel-vps/SKILL.md",
+      "bytes": 1830,
+      "sha256": "38918c9cc85be83df5b0aca93c3e504e5aec169109da9885cd4139594ec1f051"
     },
     {
       "path": "skills/devops/webhook-subscriptions/SKILL.md",
@@ -2827,8 +2832,8 @@
     },
     {
       "path": "skills/social-media/x-guest-graphql/SKILL.md",
-      "bytes": 5628,
-      "sha256": "66d89913a9bd3a09e32482d16bac83a8e3ef1d6404cab8b0e11efaaf100365e9"
+      "bytes": 5876,
+      "sha256": "8ecbf5970bac3021a1508e6a46d24904e9200e120824181d2332ad183aba3688"
     },
     {
       "path": "skills/social-media/xitter/SKILL.md",
