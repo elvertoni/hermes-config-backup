@@ -1,8 +1,8 @@
 model:
-  default: gpt-5.3-codex
-  provider: openai-codex
-  api_mode: codex_responses
-  base_url: https://chatgpt.com/backend-api/codex
+  default: deepseek-v4-pro
+  provider: opencode-go
+  api_mode: chat_completions
+  base_url: https://opencode.ai/zen/go/v1
 providers:
   opencode-go:
     name: opencode-go
