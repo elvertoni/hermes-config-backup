@@ -313,14 +313,17 @@ approvals:
   timeout: 60
   cron_mode: deny
 command_allowlist:
+- script execution via heredoc
+- overwrite system file via redirection
+- hermes update (restarts gateway, kills running agents)
+- kill process via pgrep expansion (self-termination)
+- stop/restart system service
+- start gateway outside systemd (use 'systemctl --user restart hermes-gateway')
 - script execution via -e/-c flag
 - delete in root path
-- stop/restart system service
-- script execution via heredoc
 - pipe remote content to shell
-- start gateway outside systemd (use 'systemctl --user restart hermes-gateway')
+- copy/move file into /etc/
 - overwrite system file via tee
-- hermes update (restarts gateway, kills running agents)
 quick_commands: {}
 hooks: {}
 hooks_auto_accept: false
