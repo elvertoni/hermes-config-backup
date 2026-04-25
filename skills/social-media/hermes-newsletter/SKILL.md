@@ -145,14 +145,28 @@ collect.main()
 
 ## Deploy
 
-HTML gerado em `~/.hermes/cron/output/index.html`. Se houver servidor web:
+Arquivos gerados em `~/.hermes/cron/output/`. O site é servido por Python http.server (porta 8082, bind 127.0.0.1) exposto via **Cloudflare Tunnel** no domínio `newsletter.tonicoimbra.com`.
+
 ```bash
-mkdir -p /var/www/hermes/
-cp ~/.hermes/cron/output/index.html /var/www/hermes/
-cp ~/.hermes/cron/output/historico.json /var/www/hermes/
+# O servidor HTTP roda como processo background:
+python3 -m http.server 8082 --bind 127.0.0.1
+
+# Para atualizar o site live, editar diretamente o index.html:
+patch ~/.hermes/cron/output/index.html ...
+# Ou reposicionar os arquivos do output:
+cp ~/.hermes/cron/output/index.html ~/.hermes/cron/output/historico.json /caminho/servido/
 ```
 
-Se não houver `/var/www/hermes/`, o deploy é skipped (arquivos ficam no output dir).
+**NÃO existe `/var/www/hermes/`** — a seção de deploy anterior era hipotética. O deploy real é: arquivos em `cron/output/` → servidos pelo http.server → Cloudflare Tunnel → domínio público.
+
+### Repositórios
+
+| Repo | Local | Propósito |
+|---|---|---|
+| `elvertoni/newsletter` | `~/.hermes/scripts/hermes-newsletter/` | Código fonte (template, render.py, collect.py) |
+| `elvertoni/hermes-config-backup` | `~/.hermes/hermes-config-backup/scripts/hermes-newsletter/` | Backup sanitizado do template |
+
+O template **primário** usado pelo pipeline é o de `~/.hermes/scripts/hermes-newsletter/template.html`. O do config-backup é espelho — manter ambos sincronizados.
 
 ## Perfis monitorados
 

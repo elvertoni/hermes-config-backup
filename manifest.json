@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-25T17:10:01.472608+00:00",
+  "generated_at_utc": "2026-04-25T17:15:01.991506+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -27,13 +27,13 @@
     },
     {
       "path": "config/config.redacted.yaml",
-      "bytes": 9940,
-      "sha256": "be5fa18cecd0d5897f0e20e329d1f96152c20de82da202b6b14099544e875356"
+      "bytes": 9972,
+      "sha256": "3acb5dde7ba024819a3efa6cbe73d8e1797d0da2e3a036f3b440e624005446c3"
     },
     {
       "path": "manifest.json",
       "bytes": 110040,
-      "sha256": "8831bb50584287d949e60c710aa188bc630b4a0af609b4e0c9bf535cb0ccde57"
+      "sha256": "fd77c3b77df90c1a52d478d08e00c8a6440d6802da275ab03e6a0330d283d38b"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -72,8 +72,8 @@
     },
     {
       "path": "scripts/hermes-newsletter/template.html",
-      "bytes": 10478,
-      "sha256": "2e7e92f10016d6629227a3a09515f5b03975553a8aa2c15a4945145a6e35ed3d"
+      "bytes": 10690,
+      "sha256": "c68fdcb7501e9ce0dc743b598ac3f8ccd360a5d6c5cc4eec199f43331052b44d"
     },
     {
       "path": "scripts/hermes-newsletter-collect.py",
@@ -2827,8 +2827,8 @@
     },
     {
       "path": "skills/social-media/hermes-newsletter/SKILL.md",
-      "bytes": 6221,
-      "sha256": "96f8e67ef8d6b01d6c92bf1cb6cb168e9deb62f826977d9acab5180a81b0f567"
+      "bytes": 7136,
+      "sha256": "6a66416d8f8a6ca7a7e777fe3c70e9823995b058715d0d37c97ca08c00ccfd99"
     },
     {
       "path": "skills/social-media/x-guest-graphql/SKILL.md",
