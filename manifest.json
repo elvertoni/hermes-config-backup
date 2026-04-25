@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-25T15:10:01.875266+00:00",
+  "generated_at_utc": "2026-04-25T15:15:01.439044+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 110040,
-      "sha256": "200074e1ffd308874fa0fcdb910b7b5d216614b5d56b599c673561125b3cd46f"
+      "sha256": "d4609d8dd7286a592c6a45b22dc594fdbb436f191aa43e60674ce77c6d489800"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -2832,8 +2832,8 @@
     },
     {
       "path": "skills/social-media/x-guest-graphql/SKILL.md",
-      "bytes": 5876,
-      "sha256": "8ecbf5970bac3021a1508e6a46d24904e9200e120824181d2332ad183aba3688"
+      "bytes": 6687,
+      "sha256": "03c7c7b49aeec98039fe82abece42f733f785183bced7c6d7e96e3160918ecc3"
     },
     {
       "path": "skills/social-media/xitter/SKILL.md",

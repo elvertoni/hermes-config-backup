@@ -118,7 +118,7 @@ Cada tweet extraído tem estes campos:
 ```python
 {
     "id": str,             # legacy.id_str
-    "url": str,            # https://x.com/i/status/{id}
+    "url": str,            # https://x.com/i/web/status/{id}
     "text": str,           # legacy.full_text
     "created_at": str,     # "Fri Apr 24 16:57:55 +0000 2026"
     "retweet_count": int,  # legacy.retweet_count
@@ -144,7 +144,13 @@ Cada tweet extraído tem estes campos:
 - **httpx simples FUNCIONA**: usar `httpx.Client` (não `AsyncClient`) com o User-Agent de browser listado acima.
 - **RTs**: tweets começando com "RT @" devem ser filtrados.
 - **Timezone**: `created_at` vem em UTC (`+0000`). Formato: `"%a %b %d %H:%M:%S %z %Y"` (ex: `"Fri Apr 24 16:57:55 +0000 2026"`). Converter para BRT subtraindo 3h se necessário.
-- **Query IDs alternativos**: `UserByScreenName` também funciona com `32pL5BWe9WKeSK1MoPvFQQ` (não `1VOOyvKkiI3FMmKeDNxM9A` que o twscrape usa e está desatualizado).
+- **Query IDs**: `UserByScreenName` = `32pL5BWe9WKeSK1MoPvFQQ` (NÃO usar `1VOOyvKkiI3FMmKeDNxM9A` — twscrape desatualizado, retorna 404). `UserTweets` = `HeWHY26ItCfUmm1e6ITjeA`. Para encontrar IDs novos: `grep -n "OP_" twscrape/api.py`.
+- **URL de tweet**: usar `https://x.com/i/web/status/{id}` (formato canônico web). Evitar `/i/status/{id}` (redireciona).
+- **Teste prévio**: `curl -s -o /dev/null -w "%{http_code}" -H "User-Agent: ...Chrome/131..." https://x.com` → 200 = OK, 403 = IP bloqueado.
+
+## Cloudflare Tunnel com newsletter
+
+Se o túnel for **remotely-managed** (config no dashboard Cloudflare), o YAML local é ignorado para as regras de ingress. Apenas `tunnel` e `credentials-file` são usados. As rotas devem ser adicionadas via **Zero Trust → Networks → Tunnels → Public Hostname**. O comando `cloudflared tunnel route dns` cria um CNAME que conflita com o dashboard — se já existir, delete o registro DNS antes de adicionar pelo dashboard.
 
 ## Implementação de referência
 
