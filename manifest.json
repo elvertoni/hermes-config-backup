@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-25T13:50:01.967478+00:00",
+  "generated_at_utc": "2026-04-25T13:55:01.319200+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -32,8 +32,8 @@
     },
     {
       "path": "manifest.json",
-      "bytes": 108433,
-      "sha256": "93e7f202c1f552c7f75769a99e94cddaed70c65dd339d376b7a3c508577329b3"
+      "bytes": 108948,
+      "sha256": "f6ac8078dd6fa5650ad7bcef8839d4b90c512b75694b5881eef09abf97718b9b"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -2804,6 +2804,11 @@
       "path": "skills/social-media/DESCRIPTION.md",
       "bytes": 151,
       "sha256": "2ea0d50444337de4809a62dc618d6d9c35bd2ba30f17ec6a138a20f53f9974a7"
+    },
+    {
+      "path": "skills/social-media/hermes-newsletter/SKILL.md",
+      "bytes": 6221,
+      "sha256": "96f8e67ef8d6b01d6c92bf1cb6cb168e9deb62f826977d9acab5180a81b0f567"
     },
     {
       "path": "skills/social-media/xitter/SKILL.md",
