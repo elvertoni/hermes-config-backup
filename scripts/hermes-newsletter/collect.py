@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """
-Hermes Newsletter — Coleta de tweets.
+Hermes Newsletter — Coleta de tweets via twscrape.
 
-Lê a lista de perfis monitorados, busca os tweets das últimas 24h
-via xurl (X API v2) e salva o resultado em JSON.
+Usa twscrape (scraping como usuário comum do X) para buscar tweets
+das últimas 24h dos perfis monitorados. Zero developer account.
+
+Requer setup prévio:
+    python -m twscrape add_accounts accounts.txt login:password:email:email_password
+    python -m twscrape login_all
 
 Uso:
     python collect.py                          # salva em tweets.json
@@ -11,13 +15,14 @@ Uso:
     python collect.py --dry-run                # só imprime, não salva
 """
 
+import asyncio
 import json
 import os
-import subprocess
 import sys
-import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+from twscrape import API
 
 # Configuração
 PROFILES = [
@@ -33,85 +38,55 @@ PROFILES = [
     "berryxia", "leftcurvedev_",
 ]
 
-MAX_TWEETS_PER_USER = 10
-MAX_RESULTS = 5  # API param per request
 OUTPUT_DIR = Path(os.environ.get("HERMES_NEWSLETTER_DIR", Path.home() / ".hermes/cron/output"))
 OUTPUT_FILE = OUTPUT_DIR / "tweets.json"
+MAX_TWEETS_PER_USER = 10
 
-# 24h cutoff in UTC
+# 24h cutoff in UTC (timezone-aware)
 CUTOFF = datetime.now(timezone.utc) - timedelta(hours=24)
 
 
-def run_xurl(*args):
-    """Run xurl command, return parsed JSON or None on failure."""
+def tweet_to_dict(tweet) -> dict:
+    """Convert twscrape Tweet object to a plain dict."""
+    return {
+        "id": tweet.id,
+        "id_str": str(tweet.id),
+        "url": tweet.url,
+        "text": tweet.rawContent if hasattr(tweet, "rawContent") else tweet.text,
+        "created_at": tweet.date.isoformat() if tweet.date else None,
+        "retweet_count": getattr(tweet, "retweetCount", 0),
+        "like_count": getattr(tweet, "likeCount", 0),
+        "reply_count": getattr(tweet, "replyCount", 0),
+        "view_count": getattr(tweet, "viewCount", 0),
+    }
+
+
+async def collect_profile(api: API, handle: str) -> dict:
+    """Collect tweets for a single profile."""
     try:
-        result = subprocess.run(
-            ["xurl", *args],
-            capture_output=True,
-            text=True,
-            timeout=30,
-        )
-        if result.returncode != 0:
-            print(f"  ⚠ xurl failed (exit {result.returncode}): {result.stderr[:200]}", file=sys.stderr)
-            return None
-        return json.loads(result.stdout)
-    except json.JSONDecodeError as e:
-        print(f"  ⚠ JSON parse error: {e}", file=sys.stderr)
-        return None
-    except subprocess.TimeoutExpired:
-        print(f"  ⚠ timeout", file=sys.stderr)
-        return None
+        user = await api.user_by_login(handle)
+        if not user:
+            return {"handle": handle, "error": "user_not_found", "tweets": []}
+
+        tweets = []
+        async for tweet in api.user_tweets(user.id, limit=MAX_TWEETS_PER_USER):
+            if tweet.date and tweet.date.replace(tzinfo=timezone.utc) < CUTOFF:
+                continue  # older than 24h, skip
+            tweets.append(tweet_to_dict(tweet))
+
+        return {
+            "handle": handle,
+            "user_id": str(user.id),
+            "tweets": tweets,
+        }
     except Exception as e:
-        print(f"  ⚠ error: {e}", file=sys.stderr)
-        return None
+        return {"handle": handle, "error": str(e), "tweets": []}
 
 
-def get_user_id(username):
-    """Resolve username to user ID via X API."""
-    data = run_xurl("/2/users/by/username", username)
-    if data and "data" in data:
-        return data["data"]["id"]
-    return None
-
-
-def get_user_tweets(user_id, max_results=MAX_RESULTS):
-    """Fetch recent tweets for a user."""
-    fields = "created_at,public_metrics,entities"
-    data = run_xurl(
-        "/2/users", user_id, "tweets",
-        f"max_results={max_results}",
-        f"tweet.fields={fields}",
-        "exclude=retweets,replies",  # only original posts
-    )
-    if data and "data" in data:
-        return data["data"]
-    # Try with includes if direct key not found
-    if data:
-        print(f"  ⚠ unexpected response shape: {list(data.keys())}", file=sys.stderr)
-        # Try to find tweets in nested structure
-        if "includes" in data and "tweets" in data.get("includes", {}):
-            return data["includes"]["tweets"]
-    return []
-
-
-def filter_recent(tweets):
-    """Keep only tweets from the last 24h."""
-    recent = []
-    for t in tweets:
-        created = t.get("created_at", "")
-        if not created:
-            continue
-        try:
-            dt = datetime.fromisoformat(created.replace("Z", "+00:00"))
-            if dt > CUTOFF:
-                recent.append(t)
-        except (ValueError, TypeError):
-            continue
-    return recent
-
-
-def collect_all(dry_run=False):
+async def collect_all() -> dict:
     """Collect tweets from all monitored profiles."""
+    api = API(pool_size=5)  # parallel profile lookups
+
     output = {
         "coletado_em": datetime.now(timezone.utc).isoformat(),
         "cutoff": CUTOFF.isoformat(),
@@ -122,90 +97,74 @@ def collect_all(dry_run=False):
         "perfis": [],
     }
 
-    for i, username in enumerate(PROFILES, 1):
-        print(f"[{i}/{len(PROFILES)}] @{username} ...", end=" ", flush=True)
-        user_id = get_user_id(username)
+    # Process in batches to control concurrency
+    sem = asyncio.Semaphore(5)  # max 5 concurrent
 
-        if not user_id:
-            print("❌ (user not found)")
+    async def collect_one(i, handle):
+        async with sem:
+            print(f"[{i}/{len(PROFILES)}] @{handle} ...", end=" ", flush=True)
+            result = await collect_profile(api, handle)
+            count = len(result["tweets"])
+            if "error" in result and not result["tweets"]:
+                print(f"❌ ({result['error'][:60]})")
+            elif count:
+                print(f"🟢 {count} tweets")
+            else:
+                print(f"⚪ sem tweets recentes")
+            return result
+
+    tasks = [collect_one(i, h) for i, h in enumerate(PROFILES, 1)]
+    results = await asyncio.gather(*tasks)
+
+    for r in results:
+        if "error" in r and not r["tweets"]:
             output["perfis_com_erro"] += 1
-            output["perfis"].append({
-                "handle": username,
-                "error": "user_not_found",
-                "tweets": [],
-            })
-            time.sleep(0.5)  # rate limit breathing room
-            continue
+        else:
+            output["perfis_com_dados"] += 1
+        output["total_tweets"] += len(r["tweets"])
+        if r["tweets"]:  # only include profiles with data
+            output["perfis"].append(r)
 
-        tweets_raw = get_user_tweets(user_id)
-        tweets_recent = filter_recent(tweets_raw)
-
-        status = "🟢" if tweets_recent else "⚪"
-        print(f"{status} {len(tweets_recent)} tweets recentes")
-
-        output["perfis_com_dados"] += 1
-        output["total_tweets"] += len(tweets_recent)
-        output["perfis"].append({
-            "handle": username,
-            "user_id": user_id,
-            "tweets": tweets_recent,
-        })
-
-        time.sleep(0.3)  # be gentle to the API
-
-    # Remove empty profiles for cleaner output
-    output["perfis"] = [p for p in output["perfis"] if p["tweets"]]
-
-    if dry_run:
-        print(f"\n📊 Dry run — {output['total_tweets']} tweets de {output['perfis_com_dados']} perfis")
-        return output
-
-    # Save to file
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
-
-    print(f"\n✅ Salvo em {OUTPUT_FILE}")
-    print(f"   {output['total_tweets']} tweets de {len(output['perfis'])} perfis com dados")
     return output
 
 
-if __name__ == "__main__":
+def main():
     dry_run = "--dry-run" in sys.argv
 
-    # Parse custom output path
-    output_path = None
+    output_path = OUTPUT_FILE
     for i, arg in enumerate(sys.argv):
         if arg == "--output" and i + 1 < len(sys.argv):
             output_path = Path(sys.argv[i + 1])
-            OUTPUT_FILE = output_path
-            OUTPUT_DIR = output_path.parent
 
-    result = collect_all(dry_run=dry_run)
+    result = asyncio.run(collect_all())
 
-    # Print JSON summary for cron job context injection
-    if not dry_run:
-        # Print compact summary for agent consumption
-        summary = {
-            "coletado_em": result["coletado_em"],
-            "total_tweets": result["total_tweets"],
-            "perfis_ativos": len(result["perfis"]),
-            "perfis": [
-                {
-                    "handle": p["handle"],
-                    "tweet_count": len(p["tweets"]),
-                    "tweets": [
-                        {
-                            "id": t["id"],
-                            "text": t["text"],
-                            "created_at": t.get("created_at", ""),
-                            "metrics": t.get("public_metrics", {}),
-                        }
-                        for t in p["tweets"]
-                    ],
-                }
-                for p in result["perfis"]
-            ],
-        }
-        print("\n--- COLLECTION_SUMMARY_JSON ---")
-        print(json.dumps(summary, ensure_ascii=False))
+    # Print stats
+    print(f"\n📊 {result['total_tweets']} tweets de {result['perfis_com_dados']} perfis "
+          f"({result['perfis_com_erro']} erros)")
+
+    if dry_run:
+        return
+
+    # Save full data
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(result, f, ensure_ascii=False, indent=2)
+    print(f"✅ Salvo em {output_path}")
+
+    # Print compact summary for cron job context injection
+    print("\n--- COLLECTION_SUMMARY_JSON ---")
+    summary = {
+        "coletado_em": result["coletado_em"],
+        "total_tweets": result["total_tweets"],
+        "perfis_ativos": len(result["perfis"]),
+        "tweets": [],
+    }
+    for p in result["perfis"]:
+        for t in p["tweets"]:
+            t["_source_handle"] = p["handle"]
+            summary["tweets"].append(t)
+    print(json.dumps(summary, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()
