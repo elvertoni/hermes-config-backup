@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-25T15:05:02.145236+00:00",
+  "generated_at_utc": "2026-04-25T15:10:01.875266+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 110040,
-      "sha256": "d898e77ec8834b039641e380565ac18c6a882e6609c3738cf87ef6e38fb8b583"
+      "sha256": "200074e1ffd308874fa0fcdb910b7b5d216614b5d56b599c673561125b3cd46f"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -52,13 +52,13 @@
     },
     {
       "path": "scripts/hermes-newsletter/__pycache__/collect.cpython-311.pyc",
-      "bytes": 15172,
-      "sha256": "bac1367f323266750e8242580e6f0b2e5f9a0159d5e024073301549355b6d95f"
+      "bytes": 15137,
+      "sha256": "e84e8e71ec84f76ed9cfe63b0bbca3a8790e14211093e3637d2080411d2daa2d"
     },
     {
       "path": "scripts/hermes-newsletter/collect.py",
-      "bytes": 11103,
-      "sha256": "d6a7c9ef3748d1bd69933aab8d732437a62210e16d4428270c7bbef97b35e712"
+      "bytes": 11104,
+      "sha256": "9fa978613df1a84e22a666503862f9feb32eac761252e12c2490765e09785697"
     },
     {
       "path": "scripts/hermes-newsletter/hermes-newsletter.service",
