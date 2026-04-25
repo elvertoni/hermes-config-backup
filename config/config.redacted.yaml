@@ -20,6 +20,7 @@ agent:
   max_turns: 90
   gateway_timeout: 1800
   restart_drain_timeout: 60
+  api_max_retries: 3
   service_tier: ''
   tool_use_enforcement: auto
   gateway_timeout_warning: 900
@@ -66,6 +67,8 @@ terminal:
   cwd: .
   timeout: 180
   env_passthrough: []
+  shell_init_files: []
+  auto_source_bashrc: true
   docker_image: nikolaik/python-nodejs:python3.11-nodejs20
   docker_forward_env: []
   docker_env: {}
@@ -86,6 +89,8 @@ browser:
   record_sessions: false
   allow_private_urls: false
   cdp_url: ''
+  dialog_policy: must_respond
+  dialog_timeout_s: 300
   camofox:
     managed_persistence: false
   cloud_provider: local
@@ -93,11 +98,17 @@ checkpoints:
   enabled: true
   max_snapshots: 50
 file_read_max_chars: 100000
+tool_output:
+  max_bytes: 50000
+  max_lines: 2000
+  max_line_length: 2000
 compression:
   enabled: true
   threshold: 0.7
   target_ratio: 0.2
   protect_last_n: 20
+prompt_caching:
+  cache_ttl: 5m
 bedrock:
   region: ''
   discovery:
@@ -109,11 +120,6 @@ bedrock:
     guardrail_version: ''
     stream_processing_mode: async
     trace: disabled
-smart_model_routing:
-  enabled: false
-  max_simple_chars: 160
-  max_simple_words: 28
-  cheap_model: {}
 auxiliary:
   vision:
     provider: auto
@@ -121,6 +127,7 @@ auxiliary:
     base_url: ''
     api_key: REDACTED
     timeout: 120
+    extra_body: {}
     download_timeout: 30
   web_extract:
     provider: auto
@@ -128,48 +135,57 @@ auxiliary:
     base_url: ''
     api_key: REDACTED
     timeout: 360
+    extra_body: {}
   compression:
     provider: auto
     model: ''
     base_url: ''
     api_key: REDACTED
     timeout: 120
+    extra_body: {}
   session_search:
     provider: auto
     model: ''
     base_url: ''
     api_key: REDACTED
     timeout: 30
+    extra_body: {}
+    max_concurrency: 3
   skills_hub:
     provider: auto
     model: ''
     base_url: ''
     api_key: REDACTED
     timeout: 30
+    extra_body: {}
   approval:
     provider: auto
     model: ''
     base_url: ''
     api_key: REDACTED
     timeout: 30
+    extra_body: {}
   mcp:
     provider: auto
     model: ''
     base_url: ''
     api_key: REDACTED
     timeout: 30
+    extra_body: {}
   flush_memories:
     provider: auto
     model: ''
     base_url: ''
     api_key: REDACTED
     timeout: 30
+    extra_body: {}
   title_generation:
     provider: auto
     model: ''
     base_url: ''
     api_key: REDACTED
     timeout: 30
+    extra_body: {}
 display:
   compact: false
   personality: kawaii
@@ -178,9 +194,13 @@ display:
   bell_on_complete: false
   show_reasoning: false
   streaming: true
+  final_response_markdown: strip
   inline_diffs: true
   show_cost: false
   skin: default
+  user_message_preview:
+    first_lines: 2
+    last_lines: 2
   interim_assistant_messages: true
   tool_progress_command: false
   tool_progress_overrides: {}
@@ -229,6 +249,7 @@ voice:
   record_key: ctrl+b
   max_recording_seconds: 120
   auto_tts: false
+  beep_enabled: true
   silence_threshold: 200
   silence_duration: 3.0
 human_delay:
@@ -250,8 +271,14 @@ delegation:
   provider: ''
   base_url: ''
   api_key: REDACTED
+  inherit_mcp_toolsets: true
   max_iterations: 50
+  child_timeout_seconds: 600
   reasoning_effort: ''
+  max_concurrent_children: 3
+  max_spawn_depth: 1
+  orchestrator_enabled: true
+  subagent_auto_approve: false
   default_toolsets:
   - terminal
   - file
@@ -259,6 +286,10 @@ delegation:
 prefill_messages_file: ''
 skills:
   external_dirs: []
+  template_vars: true
+  inline_shell: false
+  inline_shell_timeout: 10
+  guard_agent_created: false
   creation_nudge_interval: 15
 honcho: {}
 timezone: ''
@@ -282,16 +313,20 @@ approvals:
   timeout: 60
   cron_mode: deny
 command_allowlist:
-- start gateway outside systemd (use 'systemctl --user restart hermes-gateway')
-- delete in root path
-- script execution via heredoc
-- stop/restart system service
-- hermes update (restarts gateway, kills running agents)
-- overwrite system file via tee
 - script execution via -e/-c flag
+- delete in root path
+- stop/restart system service
+- script execution via heredoc
+- pipe remote content to shell
+- start gateway outside systemd (use 'systemctl --user restart hermes-gateway')
+- overwrite system file via tee
+- hermes update (restarts gateway, kills running agents)
 quick_commands: {}
+hooks: {}
+hooks_auto_accept: false
 personalities: {}
 security:
+  allow_private_urls: false
   redact_secrets: true
   tirith_enabled: true
   tirith_path: tirith
@@ -303,6 +338,7 @@ security:
     shared_files: []
 cron:
   wrap_response: true
+  max_parallel_jobs: null
 code_execution:
   mode: project
   max_tool_calls: 50
@@ -313,7 +349,17 @@ logging:
   backup_count: 3
 network:
   force_ipv4: false
+sessions:
+  auto_prune: false
+  retention_days: 90
+  vacuum_after_prune: true
+  min_interval_hours: 24
 _config_version: 19
+smart_model_routing:
+  enabled: false
+  max_simple_chars: 160
+  max_simple_words: 28
+  cheap_model: {}
 group_sessions_per_user: true
 platform_toolsets:
   cli:
