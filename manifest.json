@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-25T12:00:01.707423+00:00",
+  "generated_at_utc": "2026-04-25T12:05:01.349504+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 100860,
-      "sha256": "8ad7154d87bfb57fe8edcddd55dd7e4907c20b0446eb6954bd12c1d188b28077"
+      "sha256": "9903d525256c25cf747eb116aa7ac10286c96508fccdf581cf977f4d6a071f80"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -52,8 +52,8 @@
     },
     {
       "path": "skills/.bundled_manifest",
-      "bytes": 3323,
-      "sha256": "7c32d22e6968b6c7a08123f385296d28266e54408c4c53924a5219465d3a405f"
+      "bytes": 3452,
+      "sha256": "d7efce6eb6113a66283e810c032cd2fc6607c2509e20a672127621dfea7a9c6e"
     },
     {
       "path": "skills/.hub/audit.log",
@@ -189,6 +189,181 @@
       "path": "skills/creative/ascii-video/references/troubleshooting.md",
       "bytes": 13246,
       "sha256": "eb992b11d051ba1ec8bb47d62cb28c329b69fc8ebc5ba38d4f501a9893ae9ebd"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/PORT_NOTES.md",
+      "bytes": 5721,
+      "sha256": "6af24f784063dad0e8814feb4304072f4202415dffc32a2ea15169b38891534d"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/SKILL.md",
+      "bytes": 14806,
+      "sha256": "f84489ab943ded5b84efd3b3ae63b00b7f44b6e7e78e92a24f9a3f8aae21f055"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/analysis-framework.md",
+      "bytes": 5481,
+      "sha256": "7917f3552fb4f0b8eba8671d63b4970de31c9308dfdc7a9e9872c15bb45cf726"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/art-styles/chalk.md",
+      "bytes": 2790,
+      "sha256": "735f5eea5723d1d6c9e136f95d509661dcfdf4aecf376da1a610380561783c06"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/art-styles/ink-brush.md",
+      "bytes": 2569,
+      "sha256": "cf43c5345bc8c80b4f0f7c2ce4810392a489494af248cd8ff6c21831fb839c9a"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/art-styles/ligne-claire.md",
+      "bytes": 2384,
+      "sha256": "8906cb27124d23c3a31953b54b6c30eff4d35608f99b38fe5d05dbcdf7a62cdc"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/art-styles/manga.md",
+      "bytes": 2608,
+      "sha256": "b2ea678169e7caa473205f2c33ce973d9ad7b2a9249efbc156cb946ef6314cf5"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/art-styles/minimalist.md",
+      "bytes": 3402,
+      "sha256": "d5ff796d5cb517751f58f94af8b58a7fb0485c83acdbea6722d93067932bead6"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/art-styles/realistic.md",
+      "bytes": 2775,
+      "sha256": "6b12457bc3d30eac36aa47862e387a0ef75899422a2298de4fb361d2fbdeba46"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/auto-selection.md",
+      "bytes": 3581,
+      "sha256": "1d5de33377dbb0c97f90d51e8e8c62049b9f68eab7cb1e67fb4e11958d12bf2e"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/base-prompt.md",
+      "bytes": 3140,
+      "sha256": "9cea612602d354d3ebe5e4d0b4619e615e4ca7b94cfe3c4a012c942db2194d37"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/character-template.md",
+      "bytes": 4876,
+      "sha256": "4a1479a239e0c54de327e16fbb2e58aa707652f66152283669aa94382a598210"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/layouts/cinematic.md",
+      "bytes": 450,
+      "sha256": "5ac2a2aa0fc0776851e8af478b37b9fc831047a3bd9f4a83347b7927865cb7e5"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/layouts/dense.md",
+      "bytes": 415,
+      "sha256": "0dde755a4f36cca13fd5937cebbb1daebb00769e6480b799773270b6187361e7"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/layouts/four-panel.md",
+      "bytes": 1388,
+      "sha256": "89819b87e5fe2227003f45e3419a9d5d07430256b1aedad6c6a0bee3e52b68f3"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/layouts/mixed.md",
+      "bytes": 429,
+      "sha256": "bd69b3bfca5b5d5986d0b9885645ba24a8a6a26efbb2760ac7cbf249b13c831e"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/layouts/splash.md",
+      "bytes": 471,
+      "sha256": "eb7c74f8c006ddffbb345737732773b55202be3b3f5f4350f2993323b1e5113e"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/layouts/standard.md",
+      "bytes": 440,
+      "sha256": "4b498faee176acbaf6638129bbd91efaab2bbf6dd972facb47b5362884a7a583"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/layouts/webtoon.md",
+      "bytes": 778,
+      "sha256": "2de64e32988aaa14779806007dfdbe382f0b423e0a0cea041d1a1c816ed382e0"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/ohmsha-guide.md",
+      "bytes": 2978,
+      "sha256": "f4efbcfbb232079762ca09a3830cff2ab1ffe435ec89efa63055ca6e1be645dd"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/partial-workflows.md",
+      "bytes": 3051,
+      "sha256": "2d6f8527082778c72dab8d17b3bd8ca61481fd8594cddc0768228f7b716debc6"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/presets/concept-story.md",
+      "bytes": 5644,
+      "sha256": "00e667ff72abee8dc39ebc5f1579976f6df9444e63dcce80332f38daa18dede5"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/presets/four-panel.md",
+      "bytes": 4660,
+      "sha256": "2d41f004ce8e5d02f22c71c86fc57d02315c069fc7fb4023492c86d92911f6f6"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/presets/ohmsha.md",
+      "bytes": 4484,
+      "sha256": "811ec3e61a4ba9b59be71e19f2ba571b4a4e331ab0d167c7a7a1d1b102f28d54"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/presets/shoujo.md",
+      "bytes": 3273,
+      "sha256": "194353514a875356432514db25c299bbe0aaf01c1e4bfc8a36b98e129533e8bf"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/presets/wuxia.md",
+      "bytes": 2972,
+      "sha256": "8f4df8d695a337afb5f1b84803bbcc3d84ee3131135323311682f237a77a9846"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/storyboard-template.md",
+      "bytes": 3982,
+      "sha256": "917836d5fa0e2c19e52dc827c994e5773a56a2d15e44f89805e05259e8747b34"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/tones/action.md",
+      "bytes": 2269,
+      "sha256": "c62c2f2a64557a20d1d3c29bf60f2cab0f144b5be423fec0d6cddbebf71e7ec4"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/tones/dramatic.md",
+      "bytes": 1913,
+      "sha256": "02fe6d7dd1b7c49e9f1b12f39f25b570b625567bd52a7a5b3ddf4a11e4f745d7"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/tones/energetic.md",
+      "bytes": 2173,
+      "sha256": "f2ab2580fa60f03ac69155d6af712322841875b2c0bbbb84bc5d8f3185210571"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/tones/neutral.md",
+      "bytes": 1356,
+      "sha256": "fc0cd10f068cd5adfba703f903867dd08dbbaf6d1f4eee7a98a107e8e5db68a7"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/tones/romantic.md",
+      "bytes": 2143,
+      "sha256": "7d51adc7c5b2ae681b64d4d7425900afe7ad38f22a0d30d887bc6e7e1d603c94"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/tones/vintage.md",
+      "bytes": 2162,
+      "sha256": "6cc33000124283d91c885059e7e7d933b8e7070a6887e412bd8c32c276372564"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/tones/warm.md",
+      "bytes": 1862,
+      "sha256": "a80705960f18d23f1717c52b51e2a681f300dcce1f827fc1a5890fbb16811d1d"
+    },
+    {
+      "path": "skills/creative/baoyu-comic/references/workflow.md",
+      "bytes": 16205,
+      "sha256": "424bcbb2ddea8b6808ccacc8b21c870389dddf17c54c2153b6884799d069abe4"
     },
     {
       "path": "skills/creative/baoyu-infographic/PORT_NOTES.md",
@@ -434,6 +609,16 @@
       "path": "skills/creative/creative-ideation/references/full-prompt-library.md",
       "bytes": 4215,
       "sha256": "2e193b9868a4d7de2171414650ec5e1c89dd132b93eea25fd06a0e00bd841ea8"
+    },
+    {
+      "path": "skills/creative/design-md/SKILL.md",
+      "bytes": 7119,
+      "sha256": "6aafe265bab8c056494076ec96522a781ffb43ec00fbf9a9600138711edd9d86"
+    },
+    {
+      "path": "skills/creative/design-md/templates/starter.md",
+      "bytes": 2566,
+      "sha256": "587571ab914ebe6c228d786aeb3b531d88b5b53dcffd5295333d609275a0b2d4"
     },
     {
       "path": "skills/creative/excalidraw/SKILL.md",
@@ -1171,6 +1356,11 @@
       "sha256": "6611ce1e8879a9591db66d87548aa608bd9e1c92fe6430463c67517541e0c3b8"
     },
     {
+      "path": "skills/media/spotify/SKILL.md",
+      "bytes": 6551,
+      "sha256": "6461bec17bded75c6498f43d4cca0654ac411a93b702caab281f306b3490a602"
+    },
+    {
       "path": "skills/media/youtube-content/SKILL.md",
       "bytes": 3152,
       "sha256": "121d625bacad7fbf1c877f292f32936c77b23c385adee4b499cb5b8aa305ea8d"
@@ -1307,13 +1497,18 @@
     },
     {
       "path": "skills/mlops/inference/llama-cpp/SKILL.md",
-      "bytes": 12922,
-      "sha256": "d41f5b9764d4cd23115aa18273ba4608eaecd247393bb9ea77b763b2280ab2df"
+      "bytes": 8845,
+      "sha256": "06b21e4aadcf59868b088ea77a3e6a4a78671b9832c9aa437bfda9e31adb5b35"
     },
     {
       "path": "skills/mlops/inference/llama-cpp/references/advanced-usage.md",
       "bytes": 10887,
       "sha256": "ee7ed3b7c06b393b85109d5aa4816cf7d6e6fd2f0a8fdbb90db5eb03ad301f88"
+    },
+    {
+      "path": "skills/mlops/inference/llama-cpp/references/hub-discovery.md",
+      "bytes": 5082,
+      "sha256": "b53ab078551d41089c6af7180ce7bcaec469b05966bd2282804697043168e640"
     },
     {
       "path": "skills/mlops/inference/llama-cpp/references/optimization.md",
@@ -1322,13 +1517,13 @@
     },
     {
       "path": "skills/mlops/inference/llama-cpp/references/quantization.md",
-      "bytes": 4956,
-      "sha256": "c7686a86893d4e0e052cc733b62ea1bc0e5dae8f1b174436cc293a46a486893d"
+      "bytes": 5888,
+      "sha256": "6e3039e2230d75d1d97a3d5712be3b31f6ed3b6feb58cbf313c84e1968f7f51b"
     },
     {
       "path": "skills/mlops/inference/llama-cpp/references/server.md",
-      "bytes": 2259,
-      "sha256": "181a84ae177f305205cc30d05305fc4237aa255f3fff29299362cb1e0cb6db64"
+      "bytes": 2915,
+      "sha256": "bd1dadb7e72f6b98086ea57772263485008990e11309b31c2f84ef2cc7d20321"
     },
     {
       "path": "skills/mlops/inference/llama-cpp/references/troubleshooting.md",
@@ -1442,8 +1637,8 @@
     },
     {
       "path": "skills/mlops/models/segment-anything/SKILL.md",
-      "bytes": 13428,
-      "sha256": "4a3b96b11bd04b2e54730b8fb599f314bfa7f3a262973a3f13aedb1805d1eb03"
+      "bytes": 13488,
+      "sha256": "6cd12ad539a566178b7d7e363b593661580810ff79f940cb94df4e0a9a59dfb8"
     },
     {
       "path": "skills/mlops/models/segment-anything/references/advanced-usage.md",
@@ -1917,13 +2112,13 @@
     },
     {
       "path": "skills/productivity/maps/SKILL.md",
-      "bytes": 6945,
-      "sha256": "1a78b7e04cb41bab95f5381e043aab24b657ebfc6993edbc340a2f0b38af565b"
+      "bytes": 6969,
+      "sha256": "d785cddadfb9015619ff7b9436c6653248be06e3a08b394a90d953deb2febcf9"
     },
     {
       "path": "skills/productivity/maps/scripts/maps_client.py",
-      "bytes": 44937,
-      "sha256": "91e0fe1216ba35f53e216e15d43d0b093688d54c4e3875ab7f185839a5a3be8b"
+      "bytes": 46457,
+      "sha256": "bb0e79fb130c3e49fe9b09b2c9226174c490b03ba46f023c33101f3642798f1c"
     },
     {
       "path": "skills/productivity/nano-pdf/SKILL.md",
@@ -2282,8 +2477,8 @@
     },
     {
       "path": "skills/research/llm-wiki/SKILL.md",
-      "bytes": 16956,
-      "sha256": "dc9470cffc2018678fcb662eab62db8237c3c9855bc72c4abe24e401361cff12"
+      "bytes": 20182,
+      "sha256": "dff541fbcaf113a6ae0025c1fe0974ce0b51788612ff991cb933adeeb8e85b16"
     },
     {
       "path": "skills/research/polymarket/SKILL.md",
@@ -2302,8 +2497,8 @@
     },
     {
       "path": "skills/research/research-paper-writing/SKILL.md",
-      "bytes": 103549,
-      "sha256": "d777958091c92c9545910028e30e1c4990e78d81d2d34a7978104e29ed8f0296"
+      "bytes": 103609,
+      "sha256": "24d3e51d1272ae8c9aa448b02a5223154f3edc77add8e4c3a25aed7a634919d8"
     },
     {
       "path": "skills/research/research-paper-writing/references/autoreason-methodology.md",
@@ -2597,8 +2792,8 @@
     },
     {
       "path": "skills/social-media/xurl/SKILL.md",
-      "bytes": 11582,
-      "sha256": "243f4791a7bab7bedf743838e24f6f8cef1bdfac26787092d0f2613806a6dde7"
+      "bytes": 14143,
+      "sha256": "e78dcac5308c4477aa50f882ce2fc9a72c0e24780b19ca41fc03f4ea3b53df75"
     },
     {
       "path": "skills/software-development/plan/SKILL.md",
