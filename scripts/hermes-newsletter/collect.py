@@ -85,7 +85,7 @@ UA = (
 )
 
 # 24h cutoff in UTC
-CUTOFF = datetime.now(timezone.utc) - timedelta(hours=72)
+CUTOFF = datetime.now(timezone.utc) - timedelta(hours=24)
 
 # ── HTTP Session ─────────────────────────────────────────────────────
 
