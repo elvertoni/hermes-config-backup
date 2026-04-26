@@ -122,8 +122,8 @@ bedrock:
     trace: disabled
 auxiliary:
   vision:
-    provider: auto
-    model: ''
+    provider: opencode-go
+    model: mimo-v2-omni
     base_url: ''
     api_key: REDACTED
     timeout: 120
