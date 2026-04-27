@@ -299,24 +299,8 @@ Exemplos que o professor pode puxar ao vivo.
 
 :::questao Questão que consolida o conceito central da aula.
 a) Alternativa A
-b) Alternativa B
-c) Alternativa C *
-d) Alternativa D
-> Explicação do gabarito.
-:::
-
-:::questao Questão de cenário real aplicado — situação do mercado ou do estágio.
-a) Alternativa A *
-b) Alternativa B
+b) Alternativa B *
 c) Alternativa C
-d) Alternativa D
-> Explicação do gabarito.
-:::
-
-:::questao Sobre as afirmações abaixo, qual NÃO é verdadeira?
-a) Alternativa A
-b) Alternativa B
-c) Alternativa C *
 d) Alternativa D
 > Explicação do gabarito.
 :::
@@ -361,3 +345,21 @@ Especificar o que produzir, como entregar e em qual ferramenta.
 - SEMPRE tratar o código do repositório como fonte de verdade acima de qualquer documentação
 - SEMPRE usar nomes de arquivo no padrão `aula-XX-titulo-slug.md`
 - SEMPRE conferir `validate_lesson.py` antes de prometer publicação automática
+
+## 9. Pitfalls operacionais
+
+### Validador: argumento posicional, não `--input`
+
+O `validate_lesson.py` aceita o caminho como argumento posicional:
+```bash
+python3 /root/work/professordash/coimbraclaw/Skills/coimbraclaw-prof/scripts/validate_lesson.py caminho/para/aula.md
+```
+NÃO usar `--input` (erro comum ao confundir com `publish_lesson.py`).
+
+### Conflito de nomes com aulas existentes
+
+Sempre listar os arquivos no diretório de destino antes de nomear uma nova aula. O ProfessorDash ordena as aulas pelo campo `order` no frontmatter, mas nomes de arquivo duplicados (ex: dois `aula-01-*.md`) causam conflito. Verificar com `search_files` antes de criar.
+
+### Alternativa muito longa quebra o regex
+
+O regex do validador para alternativa correta é `^[a-zA-Z]\)\s*.+ \*$` (flag MULTILINE). Isso significa que o `*` precisa estar na **mesma linha** do marcador da alternativa (ex: `a) Texto *`). Se o texto for longo e quebrar em duas linhas, o `*` cai na linha seguinte e a validação falha. Solução: colocar a alternativa inteira em uma única linha, mesmo que fique longa.

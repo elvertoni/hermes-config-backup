@@ -113,6 +113,20 @@ Para obter o cartão nativo do Google Forms dentro da atividade:
 
 **⚠️ Importante:** A URL encurtada (`forms/d/e/1FAIpQLS.../edit`) NÃO funciona para o auto-upgrade nativo. O Classroom mostra o material como link com título "Page Not Found". Sempre usar o Form ID real obtido via API (`form['formId']` na resposta do `forms.create`).
 
+### Armadilha do Form URL (confirmado em 2026-04-27)
+
+O `responderUri` retornado pela Forms API usa o formato encurtado público:
+`https://docs.google.com/forms/d/e/1FAIpQLSf.../edit`
+
+Esse formato **NÃO** aciona o auto-upgrade do Classroom para Form nativo. O Classroom trata como link comum ("Page Not Found").
+
+**Formato correto para `materials.link.url`:** usar o Form ID diretamente:
+`https://docs.google.com/forms/d/<FORM_ID>/edit`
+
+O Form ID é o valor do campo `formId` na resposta da criação do Form (ex: `1Jzucj_EyKxqNMFZcAJQuQK0dcjYcl0B33OdVH9rMQP8`). Construir a URL manualmente com esse ID, nunca usar o `responderUri`.
+
+**Verificação:** após criar a atividade, buscar via `courses.courseWork.get()` e confirmar que `materials[0].form` existe (não `materials[0].link`). Se aparecer como `link`, deletar o courseWork e recriar com a URL correta.
+
 ### Observação crítica
 
 - `materials.form` é **read-only** na API pública
