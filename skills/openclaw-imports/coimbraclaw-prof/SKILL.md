@@ -80,8 +80,8 @@ Após aprovação:
 Regra operacional do Toni: ao finalizar uma aula, não deixar commit pendente. Aula concluída = commit + push automáticos.
 
 Scripts:
-- `/home/devuser/.openclaw/workspace/skills/coimbraclaw-prof/scripts/validate_lesson.py`
-- `/home/devuser/.openclaw/workspace/skills/coimbraclaw-prof/scripts/publish_lesson.py`
+- `/root/work/professordash/coimbraclaw/Skills/coimbraclaw-prof/scripts/validate_lesson.py`
+- `/root/work/professordash/coimbraclaw/Skills/coimbraclaw-prof/scripts/publish_lesson.py`
 
 Argumentos do `publish_lesson.py`: `--input`, `--series`, `--subject`, `--lesson-number`, `--title`, `--push` (opcional)
 
@@ -347,7 +347,7 @@ Especificar o que produzir, como entregar e em qual ferramenta.
 - NUNCA usar HTML bruto no corpo da aula
 - NUNCA começar a aula com bloco `:::`, lista, tabela ou citação
 - NUNCA omitir `## Questões de fixação`, `## Atividade prática` e `## Fechamento`
-- NUNCA usar menos de 5 nem mais de 6 blocos `:::questao`
+- NUNCA usar menos de 2 nem mais de 2 blocos `:::questao` (o validador exige exatamente 2)
 - NUNCA colocar questão antes de `:::conceito` + explicação + `:::exemplo`
 - NUNCA usar questão para substituir explicação fundacional
 - NUNCA marcar mais de uma alternativa correta por questão
