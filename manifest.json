@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-27T03:30:01.928537+00:00",
+  "generated_at_utc": "2026-04-27T03:35:01.245765+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 110040,
-      "sha256": "5f3ba67b2323db50a8d8f3212966d0910e5bb8a723cd70fda1af11f6b513a31a"
+      "sha256": "1d50177f805ef048aacefab424e6f808e0c2ba808dd95dfc4665fcb37f329170"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -2167,8 +2167,8 @@
     },
     {
       "path": "skills/productivity/notion/SKILL.md",
-      "bytes": 5300,
-      "sha256": "f818b437daa7356f50bd97a322216ec15cd6358c9e30f245c1d94a67226c8115"
+      "bytes": 8096,
+      "sha256": "7a52e63b129b5841ac76dd62da4382b14e1dc8f0597cccf37e0780f4ac4e53a5"
     },
     {
       "path": "skills/productivity/notion/references/block-types.md",

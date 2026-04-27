@@ -161,6 +161,63 @@ Common property formats for database items:
   - Use `data_source_id` when querying (`POST /v1/data_sources/{id}/query`)
 - **Search results:** Databases return as `"object": "data_source"` with their `data_source_id`
 
+## Limitations & Workarounds
+
+- **No sub-page creation:** The API can ONLY create pages inside databases (`parent: {"database_id": "..."}`). You CANNOT create a child page under a regular page. Workaround: add blocks to an existing page with `PATCH /v1/blocks/{page_id}/children`.
+- **No replace-all-blocks endpoint:** To replace all content on a page, first `GET /v1/blocks/{page_id}/children` to list existing blocks, then `DELETE /v1/blocks/{block_id}` each one, then `PATCH /v1/blocks/{page_id}/children` with new content.
+- **Max 100 children per PATCH request.** For large pages (100+ blocks), batch into requests of 90 blocks with 400ms delay between batches to stay under rate limit.
+
+## Replacing Page Content (Full Workflow)
+
+Use `execute_code` (Python) to orchestrate multiple API calls:
+
+```python
+from hermes_tools import terminal
+import json, time
+
+PAGE_ID = "your-page-uuid"
+HEADERS = f'-H "Authorization: Bearer $NOTION_API_KEY" -H "Notion-Version: 2025-09-03" -H "Content-Type: application/json"'
+
+# 1. List and delete existing blocks
+result = terminal(f'curl -s "https://api.notion.com/v1/blocks/{PAGE_ID}/children" {HEADERS}', timeout=30)
+data = json.loads(result["output"])
+for b in data.get("results", []):
+    terminal(f'curl -s -X DELETE "https://api.notion.com/v1/blocks/{b["id"]}" {HEADERS}', timeout=15)
+
+# 2. Build blocks with a factory function
+def block(type_name, content, **kw):
+    b = {"object": "block", "type": type_name}
+    type_map = {
+        "heading_1": "heading_1", "heading_2": "heading_2", "heading_3": "heading_3",
+        "paragraph": "paragraph", "bulleted_list_item": "bulleted_list_item",
+        "code": "code", "divider": "divider", "to_do": "to_do", "callout": "callout"
+    }
+    if type_name in ("heading_1","heading_2","heading_3","paragraph","bulleted_list_item"):
+        b[type_name] = {"rich_text": [{"text": {"content": content}}]}
+    elif type_name == "code":
+        b[type_name] = {"rich_text": [{"text": {"content": content}}], "language": kw.get("language","bash")}
+    elif type_name == "divider":
+        b[type_name] = {}
+    elif type_name == "to_do":
+        b[type_name] = {"rich_text": [{"text": {"content": content}}], "checked": kw.get("checked",False)}
+    elif type_name == "callout":
+        b[type_name] = {"rich_text": [{"text": {"content": content}}], "icon": {"emoji": kw.get("icon","💡")}}
+    return b
+
+blocks = [
+    block("heading_1", "My Page Title"),
+    block("paragraph", "Content here..."),
+    # ... more blocks
+]
+
+# 3. Add in batches of 90
+for i in range(0, len(blocks), 90):
+    batch = blocks[i:i+90]
+    payload = json.dumps({"children": batch})
+    terminal(f'curl -s -X PATCH "https://api.notion.com/v1/blocks/{PAGE_ID}/children" {HEADERS} -d \'{payload}\'', timeout=60)
+    time.sleep(0.4)
+```
+
 ## Notes
 
 - Page/database IDs are UUIDs (with or without dashes)
