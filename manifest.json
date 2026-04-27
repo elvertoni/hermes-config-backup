@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-27T02:30:02.365935+00:00",
+  "generated_at_utc": "2026-04-27T02:35:02.408397+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 110040,
-      "sha256": "5719c2639b06b023f5fda54f893bd627588bdbb75f8179fd70c4c5d5783cbf32"
+      "sha256": "2e1a3296dc8e3f3b8e0c656e248dc9f127609b5c08560b40717368818bb82bed"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1912,8 +1912,8 @@
     },
     {
       "path": "skills/openclaw-imports/classroom-activity-publish/SKILL.md",
-      "bytes": 23918,
-      "sha256": "49740550347fa29e40955f88edfd71a688b45a364e5516acf99c6a41be02c142"
+      "bytes": 24360,
+      "sha256": "02871f3e21d68c968cb1e268010d98e0099c2834980d59e1743a342391ba6d48"
     },
     {
       "path": "skills/openclaw-imports/classroom-activity-publish/_meta.json",
@@ -1937,8 +1937,8 @@
     },
     {
       "path": "skills/openclaw-imports/coimbraclaw-prof/SKILL.md",
-      "bytes": 12058,
-      "sha256": "462867b52c59198ff0af8a0b097149a813212751c9e37f261c9b56a1d4c0c6f4"
+      "bytes": 12286,
+      "sha256": "745363abc36d11e58c3e2be85cdc87b82653254106db0792761e5ed0cd88a43f"
     },
     {
       "path": "skills/openclaw-imports/coimbraclaw-prof/_meta.json",

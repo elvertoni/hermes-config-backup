@@ -160,12 +160,11 @@ O validador `validate_lesson.py` exige:
 
 ### 5.3 Questões
 
-- **5 a 6 blocos** `:::questao` por aula
-- Exatamente **1 alternativa correta** por questão, marcada com ` *` no final da linha
+- **Exatamente 2 blocos** `:::questao` por aula (regra do validador `validate_lesson.py` — não 5-6 como versões anteriores sugeriam)
+- Exatamente **1 alternativa correta** por questão, marcada com ` *` no **final da linha** (o `*` deve estar na mesma linha da alternativa, não em quebra de linha — o regex do validador é `^[a-zA-Z]\)\s*.+ \*$`)
 - Pelo menos **1 questão de cenário real aplicado**
 - Pelo menos **1 questão de erro, problema, falha ou risco**
-- No máximo **2 questões inline** antes de `## Questões de fixação`
-- No máximo **2 questões no formato "NÃO é verdadeira"**
+- Alternativas não podem ter quebra de linha no meio do texto — se o texto for longo, colocar tudo em uma linha só com ` *` no final
 - A primeira questão só pode aparecer após `:::conceito` + explicação + `:::exemplo`
 
 ### 5.4 Frontmatter YAML

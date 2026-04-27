@@ -104,11 +104,14 @@ Usar `gog classroom` + `gog forms` e, quando necessário, chamada REST direta do
 
 Para obter o cartão nativo do Google Forms dentro da atividade:
 1. criar/editar o Form normalmente
-2. usar o **edit URL** do Form (`https://docs.google.com/forms/d/<FORM_ID>/edit`)
-3. criar a atividade no Classroom com:
+2. obter o **Form ID real** (ex: `1Jzucj_EyKxqNMFZcAJQuQK0dcjYcl0B33OdVH9rMQP8`) — não usar o ID encurtado que aparece na URL pública (`forms/d/e/1FAIpQLS...`)
+3. usar o **edit URL com ID real**: `https://docs.google.com/forms/d/<FORM_ID>/edit`
+4. criar a atividade no Classroom com:
    - `workType: ASSIGNMENT`
    - `materials: [{"link": {"url": <FORM_EDIT_URL>, "title": <TITULO>}}]`
-4. o Classroom faz o upgrade automático e retorna `materials.form`
+5. o Classroom faz o upgrade automático e retorna `materials.form`
+
+**⚠️ Importante:** A URL encurtada (`forms/d/e/1FAIpQLS.../edit`) NÃO funciona para o auto-upgrade nativo. O Classroom mostra o material como link com título "Page Not Found". Sempre usar o Form ID real obtido via API (`form['formId']` na resposta do `forms.create`).
 
 ### Observação crítica
 
