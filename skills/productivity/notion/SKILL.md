@@ -218,6 +218,67 @@ for i in range(0, len(blocks), 90):
     time.sleep(0.4)
 ```
 
+## Advanced Patterns
+
+### Making Text Clickable (rich_text with links)
+
+Plain text isn't clickable in Notion. To make URLs clickable, split rich_text into segments and set `text.link`:
+
+```json
+{
+  "rich_text": [
+    {"text": {"content": "Label: ", "link": null}},
+    {"text": {"content": "example.com", "link": {"url": "https://example.com"}}},
+    {"text": {"content": " — description", "link": null}}
+  ]
+}
+```
+
+### Inserting Blocks at Specific Position
+
+Use the `after` parameter to insert blocks after a known block ID:
+
+```bash
+curl -s -X PATCH "https://api.notion.com/v1/blocks/{page_id}/children" \
+  ... \
+  -d '{"children": [...], "after": "{existing_block_id}"}'
+```
+
+### Batch Page Creation Pattern
+
+1. Build all blocks as a Python list of dicts
+2. Delete old blocks first (iterate `DELETE /v1/blocks/{id}`)
+3. Send in batches of ≤90 blocks (API allows 100, leave margin)
+4. Sleep 0.3-0.4s between batches for rate limiting
+
+### Searching & Updating Blocks at Scale
+
+**Finding blocks by text content:**
+
+```bash
+curl -s "https://api.notion.com/v1/blocks/{page_id}/children?page_size=100" ... \
+  | jq '[.results[] | {id, type, text: (.[.type].rich_text[0].plain_text)}]'
+```
+
+**Finding blocks with missing links:**
+
+```bash
+curl -s "https://api.notion.com/v1/blocks/{page_id}/children?page_size=100" ... \
+  | jq -r '
+    .results[] | . as $b | .type as $t |
+    (.[$t].rich_text[]? // empty) | 
+    select(.text.link == null) |
+    select(.plain_text | test("github\\.com|example\\.com")) |
+    "\($b.id) [\($t)] | \(.plain_text[0:80])"
+  '
+```
+
+## Pitfalls
+
+- **Large JSON → parse failures**: The API returns 100+ blocks with nested rich_text. Python's `json.loads` may fail on control characters. **Always use `jq` to filter down to just the fields you need** before parsing in Python. Example: `| jq '[.results[] | {id, type, text: ...}]'`
+- **Pagination**: `has_more` can be `true` even when `next_cursor` is present. Always loop until `has_more: false`.
+- **Accidental deletion**: When using `after` to insert blocks, the new blocks may appear in a second page of results. Don't blindly delete all blocks matching a pattern — verify which page they're on.
+
 ## Notes
 
 - Page/database IDs are UUIDs (with or without dashes)
@@ -226,3 +287,4 @@ for i in range(0, len(blocks), 90):
 - Use `is_inline: true` when creating data sources to embed them in pages
 - Add `-s` flag to curl to suppress progress bars (cleaner output for Hermes)
 - Pipe output through `jq` for readable JSON: `... | jq '.results[0].properties'`
+- Skills directory (shared by Codex/Claude/OpenCode): `~/.agents/skills/` on Linux/WSL
