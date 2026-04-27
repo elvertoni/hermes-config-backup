@@ -278,6 +278,7 @@ curl -s "https://api.notion.com/v1/blocks/{page_id}/children?page_size=100" ... 
 - **Large JSON → parse failures**: The API returns 100+ blocks with nested rich_text. Python's `json.loads` may fail on control characters. **Always use `jq` to filter down to just the fields you need** before parsing in Python. Example: `| jq '[.results[] | {id, type, text: ...}]'`
 - **Pagination**: `has_more` can be `true` even when `next_cursor` is present. Always loop until `has_more: false`.
 - **Accidental deletion**: When using `after` to insert blocks, the new blocks may appear in a second page of results. Don't blindly delete all blocks matching a pattern — verify which page they're on.
+- **Can't archive workspace-level pages**: `PATCH /v1/pages/{id}` with `{"archived": true}` returns `400: Archiving workspace level pages via API not supported`. Only pages inside databases can be archived via API. Standalone pages must be deleted manually by the user in the Notion UI (drag to trash).
 
 ## Notes
 
