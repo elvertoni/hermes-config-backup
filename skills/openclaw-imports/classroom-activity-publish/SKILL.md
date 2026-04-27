@@ -279,6 +279,50 @@ Lista obtida via `classroom.googleapis.com/v1/courses` com escopo de professor:
 - **APS NOITE** = `793556557371`
 - **ITE NOITE** = `842489183984`
 
+### Token OAuth com `expiry` numérico quebra google-auth (2026-04-26)
+
+O `google_token_escola.json` pode ter o campo `expiry` como **inteiro** (Unix timestamp) em vez de string ISO. A função `Credentials.from_authorized_user_info()` espera string e quebra com `AttributeError: 'int' object has no attribute 'rstrip'`.
+
+**Solução:** usar `requests` direto (HTTPS) em vez do `google-api-python-client` quando o token tiver esse formato. Refrescar o token manualmente via `POST https://oauth2.googleapis.com/token` e usar o `access_token` nos headers.
+
+```python
+resp = requests.post('https://oauth2.googleapis.com/token', data={
+    'client_id': info['client_id'],
+    'client_secret': info['client_secret'],
+    'refresh_token': info['refresh_token'],
+    'grant_type': 'refresh_token',
+})
+access = resp.json()['access_token']
+headers = {'Authorization': f'Bearer {access}'}
+```
+
+Isso evita depender da biblioteca google-auth e funciona com qualquer formato de token.
+
+### Forms: gabarito (grading) usa `updateItem`, NÃO `createItem` (2026-04-26)
+
+Para marcar respostas corretas e pontuação em questões já existentes no Form, usar `updateItem` com `updateMask: 'questionItem.question.grading'`. Usar `createItem` retorna **400**.
+
+```python
+# ✅ Correto
+requests_list.append({
+    'updateItem': {
+        'item': {
+            'itemId': item_id,
+            'questionItem': {
+                'question': {
+                    'grading': {
+                        'correctAnswers': {'answers': [{'value': 'Resposta correta'}]},
+                        'pointValue': 1
+                    }
+                }
+            }
+        },
+        'location': {'index': i},
+        'updateMask': 'questionItem.question.grading'
+    }
+})
+```
+
 ### Escopo insuficiente para tópicos (caso real de 2026-04-15)
 
 Foi confirmado um caso em que o token da conta da escola permitia:
