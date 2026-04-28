@@ -108,6 +108,19 @@ echo "
 New content here." >> "$VAULT/Existing Note.md"
 ```
 
+## Auto-commit to GitHub
+
+**After ANY change to the vault** (create, edit, delete note or file in raw/, wiki/, outputs/), commit and push immediately:
+
+```bash
+cd /root/hermes-wiki
+git add -A
+git commit -m "auto: describe what changed concisely"
+git push
+```
+
+Never skip this step. Toni accesses the vault from mobile via GitHub, so the repo must always be in sync.
+
 ## Wikilinks
 
 Obsidian links notes with `[[Note Name]]` syntax. When creating notes, use these to link related content.
