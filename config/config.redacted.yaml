@@ -358,7 +358,7 @@ sessions:
   retention_days: 90
   vacuum_after_prune: true
   min_interval_hours: 24
-_config_version: 19
+_config_version: 22
 smart_model_routing:
   enabled: false
   max_simple_chars: 160
@@ -414,3 +414,5 @@ session_reset:
   mode: both
 streaming:
   enabled: false
+plugins:
+  enabled: []
