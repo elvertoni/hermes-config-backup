@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-28T01:10:02.220984+00:00",
+  "generated_at_utc": "2026-04-28T01:15:01.192536+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -32,8 +32,8 @@
     },
     {
       "path": "manifest.json",
-      "bytes": 110041,
-      "sha256": "bad9eb20b1f9a603125cbe2fa78e8db264885d9d32c0b8bcece8fde573610bb4"
+      "bytes": 110234,
+      "sha256": "1981ddf17175aa4341ea44837e1d511af3bad52015a15a067b2a7bf401e6b4c6"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -84,6 +84,11 @@
       "path": "scripts/obsidian-auto-push.sh",
       "bytes": 654,
       "sha256": "f0c6d988adef3df2313f36c705cb4aa59b8a5b237e6d338ba2210afd64f8699d"
+    },
+    {
+      "path": "scripts/refresh_google_token.py",
+      "bytes": 938,
+      "sha256": "82811fd3a1dc54ca77977a1c2954eb8cd75697018bb143d239144e6675c119be"
     },
     {
       "path": "skills/.bundled_manifest",
