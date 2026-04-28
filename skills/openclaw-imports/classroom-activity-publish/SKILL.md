@@ -315,7 +315,43 @@ headers = {'Authorization': f'Bearer {access}'}
 
 Isso evita depender da biblioteca google-auth e funciona com qualquer formato de token.
 
-### Forms: gabarito (grading) usa `updateItem`, NÃO `createItem` (2026-04-26)
+### Forms: gabarito (grading) — ORDEM DE OPERAÇÕES CRÍTICA (2026-04-29)
+
+**A ordem é fixa e não pode ser invertida:**
+
+1. `forms.create` (só com `title`)
+2. `forms.batchUpdate`: `updateFormInfo` (description)
+3. `forms.batchUpdate`: ativar `quizSettings.isQuiz: true` via `updateMask: "quizSettings"` ← **NÃO use "settings.quizSettings"**
+4. `forms.batchUpdate`: `createItem` para perguntas
+5. `forms.batchUpdate`: `updateItem` com `grading` para cada questão ← **SÓ FUNCIONA após passo 3**
+
+**Erro típico se inverter:** `"grading cannot be set on a form that has no grading settings"` — significa que o modo quiz ainda não está ativo.
+
+**updateMask correto para cada operação:**
+- description → `"description"` (não `"info.description"`)
+- quiz settings → `"quizSettings"` (não `"settings.quizSettings"`)
+- grading → `"questionItem.question.grading"`
+
+**Payload correto para grading (após quiz estar ativo):**
+```python
+requests_list.append({
+    'updateItem': {
+        'item': {
+            'itemId': item_id,   # obtido após createItem
+            'questionItem': {
+                'question': {
+                    'grading': {
+                        'correctAnswers': {'answers': [{'value': 'Resposta correta'}]},
+                        'pointValue': 1
+                    }
+                }
+            }
+        },
+        'location': {'index': i},
+        'updateMask': 'questionItem.question.grading'
+    }
+})
+```
 
 Para marcar respostas corretas e pontuação em questões já existentes no Form, usar `updateItem` com `updateMask: 'questionItem.question.grading'`. Usar `createItem` retorna **400**.
 

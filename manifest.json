@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-28T22:35:01.615881+00:00",
+  "generated_at_utc": "2026-04-28T22:40:02.058975+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 111007,
-      "sha256": "ece9a7e3bdb484f0c6dfb56b9c2836132bccc2f7e7a07861ade05575d0bbfb13"
+      "sha256": "8f0c28c3cdb97d491e499166199828521d2777008e54d137efae1f770a5e94e4"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1927,8 +1927,8 @@
     },
     {
       "path": "skills/openclaw-imports/classroom-activity-publish/SKILL.md",
-      "bytes": 25226,
-      "sha256": "c14780fc12cca6aa49e3429a0ce89aac682d46a05ad4195910d0dea68b2ec633"
+      "bytes": 26607,
+      "sha256": "b3f26720eb9776a0e7df0e7879c46726f3e18e5efa185c7ea092ccf018a64806"
     },
     {
       "path": "skills/openclaw-imports/classroom-activity-publish/_meta.json",
