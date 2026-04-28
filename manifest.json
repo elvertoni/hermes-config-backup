@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-28T13:00:01.472660+00:00",
+  "generated_at_utc": "2026-04-28T13:05:01.853378+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 110614,
-      "sha256": "0d9a18f9c54ab1da650b947d0324d4120e788ca73cabfdf849f6f9ba743f65ea"
+      "sha256": "96cd8b931a2d516946f210a480d8c04e5a044ad2d0d5e58043921e796a2abeb5"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1914,6 +1914,16 @@
       "path": "skills/openclaw-imports/DESCRIPTION.md",
       "bytes": 44,
       "sha256": "3bb3f77f070345ccca1d901170ccbbbfca804bc428e577900922b4cbdb141f62"
+    },
+    {
+      "path": "skills/openclaw-imports/avaliacao-impressa-bona/SKILL.md",
+      "bytes": 5672,
+      "sha256": "613efc6f42a4f37c85bef765a68932b4d41371ff79894b9ec4b0955b086899bf"
+    },
+    {
+      "path": "skills/openclaw-imports/avaliacao-impressa-bona/scripts/generate.py",
+      "bytes": 2141,
+      "sha256": "a1d3da9f27445a30cae7afb48e2ce2f5d1344e49f214a08bc7b1cfc234e393c7"
     },
     {
       "path": "skills/openclaw-imports/classroom-activity-publish/SKILL.md",
