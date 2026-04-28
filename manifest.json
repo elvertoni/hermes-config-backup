@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-28T14:00:01.160734+00:00",
+  "generated_at_utc": "2026-04-28T14:05:01.530866+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 111007,
-      "sha256": "65ddc6a68fb3c328eee7a7999cb7ee68d654ae38f0382a86f372ddded74e9f5d"
+      "sha256": "ba7d48f6bbfb0ef61942f771290f967bc18da1e1e12eba710d7df7efe1142aa1"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -2142,8 +2142,8 @@
     },
     {
       "path": "skills/productivity/google-workspace/SKILL.md",
-      "bytes": 13482,
-      "sha256": "213afc5fbb68c1d9007e735d4b2918d3aba90e261399ba75eb463e2d468c94c6"
+      "bytes": 15593,
+      "sha256": "413066a99ba621593f380d9bbbb47fc76b9bfb4899833c0588ba8de421cc29f1"
     },
     {
       "path": "skills/productivity/google-workspace/references/gmail-search-syntax.md",

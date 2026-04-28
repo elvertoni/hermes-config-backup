@@ -196,6 +196,63 @@ $GAPI docs get DOC_ID
 
 ### Direct gws access (advanced)
 
+### Google Docs: Inserting text at specific positions
+
+The `gws docs +write` command **only appends** to the end of a document — it does NOT support inserting text at specific indices. For insertions in the middle of a document, use the **Google Docs REST API directly** via `curl` or `urllib`.
+
+```python
+import json, urllib.request, urllib.parse
+
+# Refresh token
+with open('/root/.hermes/google_client_secret.json') as f:
+    cs = json.load(f)
+with open('/root/.hermes/google_token.json') as f:   # NOTE: default path, not _escola
+    tok = json.load(f)
+
+req = urllib.request.Request(
+    'https://oauth2.googleapis.com/token',
+    data=urllib.parse.urlencode({
+        'client_id': cs['installed']['client_id'],
+        'client_secret': cs['installed']['client_secret'],
+        'refresh_token': tok['refresh_token'],
+        'grant_type': 'refresh_token'
+    }).encode(),
+    headers={'Content-Type': 'application/x-www-form-urlencoded'}
+)
+resp = urllib.request.urlopen(req)
+access_token = json.loads(resp.read())['access_token']
+
+# Get current doc to find element indices
+req2 = urllib.request.Request(
+    f"https://docs.googleapis.com/v1/documents/{DOC_ID}",
+    headers={'Authorization': f'Bearer {access_token}'}
+)
+doc = json.loads(urllib.request.urlopen(req2).read())
+
+# Build insert requests — MUST sort by index DESCENDING (insert from end to start)
+# so that earlier insertions don't shift the indices of later ones
+alt_sorted = sorted(alt_indices, key=lambda x: x[0], reverse=True)
+requests = []
+for idx, letter in alt_sorted:
+    requests.append({
+        "insertText": {"location": {"index": idx}, "text": f"{letter} "}
+    })
+
+payload = json.dumps({"requests": requests}).encode()
+req_api = urllib.request.Request(
+    f"https://docs.googleapis.com/v1/documents/{DOC_ID}:batchUpdate",
+    data=payload,
+    headers={
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json'
+    },
+    method='POST'
+)
+urllib.request.urlopen(req_api)
+```
+
+**Pitfall:** Always sort insertions by index descending — inserting at a lower index shifts all higher indices.
+
 For operations not covered by the wrapper, use `gws_bridge.py` directly:
 
 ```bash
