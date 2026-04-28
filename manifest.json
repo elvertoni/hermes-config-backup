@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-28T01:15:01.192536+00:00",
+  "generated_at_utc": "2026-04-28T01:20:02.574923+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -32,8 +32,8 @@
     },
     {
       "path": "manifest.json",
-      "bytes": 110234,
-      "sha256": "1981ddf17175aa4341ea44837e1d511af3bad52015a15a067b2a7bf401e6b4c6"
+      "bytes": 110399,
+      "sha256": "cdb534ed1431b80c9c7e3573b611a28cb0404ffef4d024677e35498052bf86d5"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -2122,8 +2122,13 @@
     },
     {
       "path": "skills/productivity/google-oauth-token-censorship/SKILL.md",
-      "bytes": 2109,
-      "sha256": "d42aa24f386e36af7deeb2055844383e9df5b52f412b6103dcbd84a50563de30"
+      "bytes": 6887,
+      "sha256": "bed4c62f6c81693d9f2486c37624e94062ac7b9872c24603f76e95b938dca78c"
+    },
+    {
+      "path": "skills/productivity/google-oauth-token-censorship/scripts/refresh_google_token.py",
+      "bytes": 938,
+      "sha256": "82811fd3a1dc54ca77977a1c2954eb8cd75697018bb143d239144e6675c119be"
     },
     {
       "path": "skills/productivity/google-workspace/SKILL.md",
