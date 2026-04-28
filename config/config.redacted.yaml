@@ -1,5 +1,5 @@
 model:
-  default: glm-5.1
+  default: mimo-v2.5-pro
   provider: opencode-go
   api_mode: chat_completions
   base_url: https://opencode.ai/zen/go/v1
