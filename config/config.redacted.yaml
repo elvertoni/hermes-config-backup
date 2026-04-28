@@ -1,7 +1,7 @@
 model:
-  default: minimax-m2.7
+  default: glm-5.1
   provider: opencode-go
-  api_mode: anthropic_messages
+  api_mode: chat_completions
   base_url: https://opencode.ai/zen/go/v1
 providers:
   opencode-go:
