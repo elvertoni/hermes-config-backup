@@ -332,6 +332,14 @@ Isso evita depender da biblioteca google-auth e funciona com qualquer formato de
 - quiz settings → `"quizSettings"` (não `"settings.quizSettings"`)
 - grading → `"questionItem.question.grading"`
 
+**⚠️ NÃO usar PATCH direto no Forms — sempre batchUpdate:**
+O endpoint `PATCH https://forms.googleapis.com/v1/forms/{id}?updateMask=...` retorna **404** mesmo com formId correto (confirmado em 2026-04-29). Sempre usar `forms.batchUpdate` para qualquer alteração após criação (descrição, quiz, itens, grading). O `forms.create` com `info.title` é a única chamada que funciona como POST direto.
+
+**Atalho: grading direto no createItem (2026-04-29):**
+Se o modo quiz já foi ativado em um `batchUpdate` anterior, `createItem` aceita `grading` diretamente no payload — não precisa criar o item sem grading e depois usar `updateItem` separadamente. Economiza uma rodada de batchUpdate. A sequência é:
+1. batchUpdate #1: `updateFormInfo` (description) + `updateSettings` (quiz + email)
+2. batchUpdate #2: `createItem` com grading em cada item (50pts + correctAnswers)
+
 **Payload correto para grading (após quiz estar ativo):**
 ```python
 requests_list.append({
