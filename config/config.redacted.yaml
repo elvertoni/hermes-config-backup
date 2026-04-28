@@ -1,7 +1,7 @@
 model:
-  default: deepseek-v4-pro
+  default: minimax-m2.7
   provider: opencode-go
-  api_mode: chat_completions
+  api_mode: anthropic_messages
   base_url: https://opencode.ai/zen/go/v1
 providers:
   opencode-go:
@@ -104,7 +104,7 @@ tool_output:
   max_line_length: 2000
 compression:
   enabled: true
-  threshold: 0.7
+  threshold: 0.5
   target_ratio: 0.2
   protect_last_n: 20
 prompt_caching:
@@ -411,6 +411,6 @@ platform_toolsets:
 session_reset:
   at_hour: 4
   idle_minutes: 1440
-  mode: none
+  mode: both
 streaming:
   enabled: false
