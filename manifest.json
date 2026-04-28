@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-28T22:45:01.488566+00:00",
+  "generated_at_utc": "2026-04-28T22:50:01.220169+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 111007,
-      "sha256": "948cd08fde2b5c819b13b6ef90cfb76e1c35f01ec71e178856a1ed385296705f"
+      "sha256": "aa499479c3b8b25cc1c79408257aa761aec6a24b23bd1ba99883a8e3259a2383"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -1349,6 +1349,11 @@
       "path": "skills/gmail-send-with-attachment/SKILL.md",
       "bytes": 4332,
       "sha256": "48d7214c39a800e66fc4ffd23df2ba94eb7ea7245facfb0930968649200148dd"
+    },
+    {
+      "path": "skills/google-workspace/google-forms-quiz/SKILL.md",
+      "bytes": 2360,
+      "sha256": "ae71c67d8567a46268a0053bce0887f7bf96ee2ebf3770bba01cd2a5f4100a21"
     },
     {
       "path": "skills/inference-sh/DESCRIPTION.md",
