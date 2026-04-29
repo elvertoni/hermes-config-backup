@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-29T01:30:01.671172+00:00",
+  "generated_at_utc": "2026-04-29T01:35:01.540084+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 110297,
-      "sha256": "1cbfc7a2b8787ea9166fc435ba79402ce2276a6e8a2b2ce14fca9c5d7cfbd32f"
+      "sha256": "afc477a3ff37d8e1509b25e0eefc6d7e2f67ee42c483097ba3ff42844f0e82e8"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -2519,11 +2519,6 @@
       "path": "skills/research/blogwatcher/SKILL.md",
       "bytes": 5169,
       "sha256": "3249c55dc92e735ceebd14a53fd2f1d8af9929440ed4d71155969226c9732bc3"
-    },
-    {
-      "path": "skills/research/llm-wiki/SKILL.md",
-      "bytes": 20182,
-      "sha256": "dff541fbcaf113a6ae0025c1fe0974ce0b51788612ff991cb933adeeb8e85b16"
     },
     {
       "path": "skills/research/polymarket/SKILL.md",
