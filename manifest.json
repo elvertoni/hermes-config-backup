@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-29T02:30:01.890395+00:00",
+  "generated_at_utc": "2026-04-29T02:35:01.691671+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 108663,
-      "sha256": "6f95d085761bb36b91f2f3da543f5108efb105090e8080874368da9908d16c6a"
+      "sha256": "fec458f9f9e28c512e0fdc7723d4ed26da3006cedcd2ea982f8d0f067b870062"
     },
     {
       "path": "scripts/audit-hermes-skills.py",
@@ -92,8 +92,8 @@
     },
     {
       "path": "skills/.bundled_manifest",
-      "bytes": 3324,
-      "sha256": "92c009bd8214de6a5be5b78ca14dd056f1ed25bb6827f57e4717fc8d0f68bd1b"
+      "bytes": 3904,
+      "sha256": "cc339a8e5cecd6e84157d78ee64324ac8b5f1fb6f2085cd10b2e985001e22eca"
     },
     {
       "path": "skills/.hub/audit.log",
@@ -117,18 +117,18 @@
     },
     {
       "path": "skills/apple/apple-notes/SKILL.md",
-      "bytes": 2187,
-      "sha256": "cee4aa1e00e9a36d10b2a028d93f3a7a77ec4be4951366c1840eab76a58c2035"
+      "bytes": 2169,
+      "sha256": "c652e01e47938b8ac21c97873e0a14f5f3a773b554bd10737fbfdcc5e5c28d23"
     },
     {
       "path": "skills/apple/apple-reminders/SKILL.md",
-      "bytes": 2548,
-      "sha256": "e88f4701f10f99cc7055a9550994826dbd85c8071093c0487a7146c3e782329e"
+      "bytes": 2530,
+      "sha256": "7ed9206a4df2739d41818a17de1b5ff79e7b24cdb5de9c2e74247c8835bcb515"
     },
     {
       "path": "skills/apple/findmy/SKILL.md",
-      "bytes": 3748,
-      "sha256": "c3de94ca0ccc7619a7e20f14f56b2175acc714c5790e55d424ef6aa1b67034aa"
+      "bytes": 3709,
+      "sha256": "19ec56e3b7f9f0be13c26d99948ed5684d8fb1f9c478da078c19356b5df63f57"
     },
     {
       "path": "skills/apple/imessage/SKILL.md",
@@ -167,8 +167,8 @@
     },
     {
       "path": "skills/creative/architecture-diagram/SKILL.md",
-      "bytes": 6530,
-      "sha256": "d12d32dd434369203a5d9247d957db5d5da0740d72921a35798d9f056f7a4af2"
+      "bytes": 5795,
+      "sha256": "829ed81dfbe977c3ec8a3fed05015cf130df3f9207e1f49fae88ce3436cb02fe"
     },
     {
       "path": "skills/creative/architecture-diagram/templates/template.html",
@@ -177,8 +177,8 @@
     },
     {
       "path": "skills/creative/ascii-art/SKILL.md",
-      "bytes": 10631,
-      "sha256": "366f0a377e275cc7b5ffc3e729e376b09ec3f6512b16113ea864a56314e875b7"
+      "bytes": 10521,
+      "sha256": "a75c1b6e3bb16e7d1d79707514e25db863793fcff897192ca889e5475e7279d9"
     },
     {
       "path": "skills/creative/ascii-video/README.md",
@@ -187,8 +187,8 @@
     },
     {
       "path": "skills/creative/ascii-video/SKILL.md",
-      "bytes": 14734,
-      "sha256": "b8ecdd16591753eebf784c94279005512a9d404b715c28c3f2b910fc68e26479"
+      "bytes": 14829,
+      "sha256": "a330b1d35a5650d5b71836140de0ea63e8d4c8c244aab1efb1696ef5e6feba5c"
     },
     {
       "path": "skills/creative/ascii-video/references/architecture.md",
@@ -237,8 +237,8 @@
     },
     {
       "path": "skills/creative/baoyu-comic/SKILL.md",
-      "bytes": 14806,
-      "sha256": "f84489ab943ded5b84efd3b3ae63b00b7f44b6e7e78e92a24f9a3f8aae21f055"
+      "bytes": 14586,
+      "sha256": "ccb91381ff754e12b76864d72cb5c5ef9c150026d62dd0e37494a35289c3c7b8"
     },
     {
       "path": "skills/creative/baoyu-comic/references/analysis-framework.md",
@@ -412,8 +412,8 @@
     },
     {
       "path": "skills/creative/baoyu-infographic/SKILL.md",
-      "bytes": 10633,
-      "sha256": "019a55fd0ffee40b7eba15f02a204986f7c5c76f22c79007a8a4d0793b009dfb"
+      "bytes": 10399,
+      "sha256": "e7ff80ee22651917bcc1d7b0dfe089583ae5ccedae731ce25b1835a90821a68c"
     },
     {
       "path": "skills/creative/baoyu-infographic/references/analysis-framework.md",
@@ -641,9 +641,14 @@
       "sha256": "9a27502ab6bba76ad042cfa08834053f9e563c76cc8ffb46456cd3db2a6523a3"
     },
     {
+      "path": "skills/creative/claude-design/SKILL.md",
+      "bytes": 19824,
+      "sha256": "aa54aac5236997ac2f07ef28bb6685243247256215e3b0d4fc987f6e4d9c439e"
+    },
+    {
       "path": "skills/creative/creative-ideation/SKILL.md",
-      "bytes": 6270,
-      "sha256": "9eaa91b9cce5295b02750ac146fa8ffb46effab769789e926d522bccf7b072f6"
+      "bytes": 6283,
+      "sha256": "3fad5810e5c42045d6897b5a1149a57c297dc5ca6daf2d97e6f4ae92eae22beb"
     },
     {
       "path": "skills/creative/creative-ideation/references/full-prompt-library.md",
@@ -652,8 +657,8 @@
     },
     {
       "path": "skills/creative/design-md/SKILL.md",
-      "bytes": 7119,
-      "sha256": "6aafe265bab8c056494076ec96522a781ffb43ec00fbf9a9600138711edd9d86"
+      "bytes": 6988,
+      "sha256": "6338f959dd6a2218c37af64fbc81d7621afd3e77ffdcd19ecb23efc4df81285c"
     },
     {
       "path": "skills/creative/design-md/templates/starter.md",
@@ -662,8 +667,8 @@
     },
     {
       "path": "skills/creative/excalidraw/SKILL.md",
-      "bytes": 7252,
-      "sha256": "9dbf7804e9b10e29cf430bdbf28ec6690e50b078e7efd719254bcd432e6e9eba"
+      "bytes": 7265,
+      "sha256": "a2c815a81074f5e0b5e074119fe951f65813a53c607b677efb0b12238666957a"
     },
     {
       "path": "skills/creative/excalidraw/references/colors.md",
@@ -686,14 +691,24 @@
       "sha256": "d3d88dfd8930942a5f4ab51f830dbcf245939bfb546dd00d073205d888996a65"
     },
     {
+      "path": "skills/creative/humanizer/LICENSE",
+      "bytes": 1066,
+      "sha256": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96"
+    },
+    {
+      "path": "skills/creative/humanizer/SKILL.md",
+      "bytes": 29990,
+      "sha256": "04d0c8c9cd2363dd9a9e7e050477e4e7a092d6c78f9864edb49d773ece0cb314"
+    },
+    {
       "path": "skills/creative/manim-video/README.md",
       "bytes": 886,
       "sha256": "a30f3ec6105d5b23bc5ec28e8e2809e9ceed49f1fd816570d5b5656d0aa65819"
     },
     {
       "path": "skills/creative/manim-video/SKILL.md",
-      "bytes": 11983,
-      "sha256": "478ff04a7e3ecf9157b14fc2c24b4ae3fef7460debf27c4ecbe361bf26b0ac29"
+      "bytes": 11988,
+      "sha256": "5b9c3c14c4905f9da6cb3b95b3602500e30c9217a9f4010b917fb1fd0a3d2b17"
     },
     {
       "path": "skills/creative/manim-video/references/animation-design-thinking.md",
@@ -777,8 +792,8 @@
     },
     {
       "path": "skills/creative/p5js/SKILL.md",
-      "bytes": 27372,
-      "sha256": "70da0eaa7745d7a67d88ec18b2bd18cf5dfb2281bf0a707a0b9a36a8181ead48"
+      "bytes": 27459,
+      "sha256": "201fcdbf0fd1161efbdd52ea9ce8fbe5c5e0dbf45e6968954e4d4f6cc8da907f"
     },
     {
       "path": "skills/creative/p5js/references/animation.md",
@@ -892,8 +907,8 @@
     },
     {
       "path": "skills/creative/popular-web-designs/SKILL.md",
-      "bytes": 9444,
-      "sha256": "446faeaf967a9f725a9d66f4cd1dc2aad2b682106ff1e8e47369960eda6eacab"
+      "bytes": 9687,
+      "sha256": "a18b1ed9d9dc2d0b9c520a181bfb2032886944d07376e106096e21516196af98"
     },
     {
       "path": "skills/creative/popular-web-designs/templates/airbnb.md",
@@ -1167,8 +1182,123 @@
     },
     {
       "path": "skills/creative/songwriting-and-ai-music/SKILL.md",
-      "bytes": 10344,
-      "sha256": "5e177df4ba359b06715c09642c82f4c6baccd900cea207a72f2234559d063859"
+      "bytes": 10171,
+      "sha256": "9f752ea5d522a1d67a3af6bac26fa0eb0172ab0457f175236a865310bca31a79"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/SKILL.md",
+      "bytes": 15394,
+      "sha256": "008ea956f6dfcff2df387dd7e68204808d075759e34d264a983fbd523bb079fc"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/3d-scene.md",
+      "bytes": 10305,
+      "sha256": "f0b17b4383333198474da7a58ea8c4063f46f1465f0f1275053c5a538028456b"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/animation.md",
+      "bytes": 7258,
+      "sha256": "9c7482f38e86f80a89d0df98db8ec2e99c8227fdceab099667730a1000e14386"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/audio-reactive.md",
+      "bytes": 5128,
+      "sha256": "3ea60c5954b4b1b682397a1f6bf85dccfc277354cc6f4e021b4ca68d18b623be"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/dat-scripting.md",
+      "bytes": 11586,
+      "sha256": "062ea3608ba9475d1c76bc59d8e4a5f0a0d1dd3a60006e2380e634367f460fe1"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/external-data.md",
+      "bytes": 9257,
+      "sha256": "0d7b782cba9a3045bfb67e1a3150588e4889db3fd7938071fa367daf6afaa932"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/geometry-comp.md",
+      "bytes": 3572,
+      "sha256": "f86b1e8333419ce23180cc7de06848744c4f3168124918745bfaa10b30479a42"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/glsl.md",
+      "bytes": 3537,
+      "sha256": "53809b02394c797615601bfb541a43b14105087d8465d76c604ec24168257f88"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/layout-compositor.md",
+      "bytes": 3567,
+      "sha256": "4e6dd1f86f5b85525554e4c33dbfa5f767326ae1eef0855a0aa6257bfb35bdcb"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/mcp-tools.md",
+      "bytes": 30497,
+      "sha256": "d702a7353c76711a0797885da87a1adf1fd2640533aa415dab06eb6df6304eb1"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/midi-osc.md",
+      "bytes": 7384,
+      "sha256": "1e9c8de828e6eda23425098cd9dd03edabf75d41b24484fca63d3f3b0cced192"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/network-patterns.md",
+      "bytes": 33603,
+      "sha256": "fd519867cc2ed9b2de8fd07fcb928b55547f39fa4767bc5d33c3a300b7a17236"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/operator-tips.md",
+      "bytes": 3536,
+      "sha256": "24ea49a21d78ddf7f5b40efc13e6a9d2705a6de0a0f40b51f8fac87444efa5f2"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/operators.md",
+      "bytes": 14713,
+      "sha256": "ad67bbe2880eb479e0eccabd72f9513939e87ecc6158baf43a7ffe1cc01d719e"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/panel-ui.md",
+      "bytes": 10088,
+      "sha256": "3acc029c90a1aab73b969380f96d987d41877dcba382e75d72166ca17a92a32d"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/particles.md",
+      "bytes": 8765,
+      "sha256": "066bb5ccb4d396c444651b7e245cbc214810e22b2144cc98316713dea3ee9a8b"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/pitfalls.md",
+      "bytes": 31347,
+      "sha256": "288f0da8ca0f1371b9d4bd6253c68f0de9f36c9aa2d89011e6b2eab30c040d0b"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/postfx.md",
+      "bytes": 4656,
+      "sha256": "eef5fee9615fa76b9dfcd92fa815157e2a67dead31a78618c4b68565f537e2db"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/projection-mapping.md",
+      "bytes": 8104,
+      "sha256": "b5ad7c4cb1c64360dcd1252f9868e4031b7e93eb1a4a726326ea89b84a86ff80"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/python-api.md",
+      "bytes": 12533,
+      "sha256": "f898b84a6c2155c39a94ce60865676b9db78aac0147ae6e6d3c9b1b41644f269"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/replicator.md",
+      "bytes": 8232,
+      "sha256": "b17907d2fb8a53447d854bb14e00295f37e1afff47693715b817163877e33317"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/references/troubleshooting.md",
+      "bytes": 7442,
+      "sha256": "c01460dd47d2a59ebf6d221d717b7563df1f823ac9b8e574787fe39e12e4e876"
+    },
+    {
+      "path": "skills/creative/touchdesigner-mcp/scripts/setup.sh",
+      "bytes": 4468,
+      "sha256": "173ef326c534751b38677e698f93a4baa76f9ae07bb0d26bec4beba565db45f7"
     },
     {
       "path": "skills/data-science/DESCRIPTION.md",
@@ -1177,8 +1307,8 @@
     },
     {
       "path": "skills/data-science/jupyter-live-kernel/SKILL.md",
-      "bytes": 5571,
-      "sha256": "89756be379065ac639a0f094421a2700c6035967d3a32c58e40008bca132a545"
+      "bytes": 5250,
+      "sha256": "84449bd96eedc34311865aad52ad53e31d346a17607545298babeee8d33fa64e"
     },
     {
       "path": "skills/devops/DESCRIPTION.md",
@@ -1192,8 +1322,8 @@
     },
     {
       "path": "skills/devops/webhook-subscriptions/SKILL.md",
-      "bytes": 6972,
-      "sha256": "570fc091d8c6514e1a428adda1fe4c94efda20af5c8b9c627d5023fcdc389dd9"
+      "bytes": 6801,
+      "sha256": "b78f30f13d90934f48a38fca81e884ce72d81105706dad9eff81958fb46cbce1"
     },
     {
       "path": "skills/diagramming/DESCRIPTION.md",
@@ -1202,8 +1332,8 @@
     },
     {
       "path": "skills/dogfood/SKILL.md",
-      "bytes": 6294,
-      "sha256": "babe7bc47d8cab8bd5066ea9407186ea58a566f9e7f5b267cab676a5cce162c0"
+      "bytes": 6235,
+      "sha256": "07142daa2ae1470b8f34277d915a1e13fc9baa167072986aad73699b5c0e044e"
     },
     {
       "path": "skills/dogfood/references/issue-taxonomy.md",
@@ -1227,8 +1357,8 @@
     },
     {
       "path": "skills/email/himalaya/SKILL.md",
-      "bytes": 6003,
-      "sha256": "4212ede2a70f14ac2684962d5f2d4f49d4c928a257eb66d6f671a254c7404bff"
+      "bytes": 5834,
+      "sha256": "3a4803a6cbeafe3e73b27d3e366892d4f04faa528637d56d143d744633da8d4f"
     },
     {
       "path": "skills/email/himalaya/references/configuration.md",
@@ -1252,8 +1382,8 @@
     },
     {
       "path": "skills/gaming/minecraft-modpack-server/SKILL.md",
-      "bytes": 6662,
-      "sha256": "e02694bfcfafa9adc32c0bf2cd6432c2dbc1bd0c8ce05b45328deee41435138a"
+      "bytes": 6533,
+      "sha256": "92c7233cc54be701f531af9a9f6a4b141401b449c9602d959adee273b75a2fce"
     },
     {
       "path": "skills/gaming/pokemon-player/SKILL.md",
@@ -1272,13 +1402,13 @@
     },
     {
       "path": "skills/github/codebase-inspection/SKILL.md",
-      "bytes": 3738,
-      "sha256": "c66c4a963bceb4a6c7cee6b93083de86dee201f50991bd3a4b1b0b842735aa64"
+      "bytes": 3593,
+      "sha256": "c0a0cbcdf183f8b6763a5cabc6b88c34e9e6c3d687215d0d1b0ef90fe7e2e7a3"
     },
     {
       "path": "skills/github/github-auth/SKILL.md",
-      "bytes": 7673,
-      "sha256": "cfa444cb66223ddc57673a8ff265b36d4fb997a92468c3cf1871e126926f1dd8"
+      "bytes": 7511,
+      "sha256": "77179ef1dcdcfd3c3031cead12a54313296388bafbf8ffa5ea96963fa2220531"
     },
     {
       "path": "skills/github/github-auth/scripts/gh-env.sh",
@@ -1287,8 +1417,8 @@
     },
     {
       "path": "skills/github/github-code-review/SKILL.md",
-      "bytes": 13661,
-      "sha256": "f453a6f8ea142e89f24297afefae869efd7e4de21887cbf186feba2caa4e7c51"
+      "bytes": 13530,
+      "sha256": "d043a4ce6a90ce00a9e2395600fb50182bfcf479302dc22aebb36696c8805b5d"
     },
     {
       "path": "skills/github/github-code-review/references/review-output-template.md",
@@ -1297,8 +1427,8 @@
     },
     {
       "path": "skills/github/github-issues/SKILL.md",
-      "bytes": 9352,
-      "sha256": "b7fffb99ca7ddd4ec1531be63c1e37d3537b62d4f0cb8b4255afd86c293b556b"
+      "bytes": 9230,
+      "sha256": "c634fa92f5891e75abc84ae24031dd2f3ce8593d7a07abf33959dcbe6514841c"
     },
     {
       "path": "skills/github/github-issues/templates/bug-report.md",
@@ -1312,8 +1442,8 @@
     },
     {
       "path": "skills/github/github-pr-workflow/SKILL.md",
-      "bytes": 10085,
-      "sha256": "1b44a88b57c030f7b1bb041a020d900338179769d0986fd9dbc6b69ea1ffe69f"
+      "bytes": 9950,
+      "sha256": "9d860acf79e3ead32fea1d27e4554801cc18fd0ff2edc449506308193f0fb245"
     },
     {
       "path": "skills/github/github-pr-workflow/references/ci-troubleshooting.md",
@@ -1337,8 +1467,8 @@
     },
     {
       "path": "skills/github/github-repo-management/SKILL.md",
-      "bytes": 13776,
-      "sha256": "45f3a9e3447f8c73729e9c3f1413724b4d522b6d0c005cc4a744baa2744b2750"
+      "bytes": 13648,
+      "sha256": "5116abc1516cca9724b0e66b9380e4c9aaceb52858258091a16da1c4a5132051"
     },
     {
       "path": "skills/github/github-repo-management/references/github-api-cheatsheet.md",
@@ -1397,8 +1527,8 @@
     },
     {
       "path": "skills/mcp/native-mcp/SKILL.md",
-      "bytes": 12542,
-      "sha256": "8348e5beda7b094e223403df1bf085113b09b4088754b59f0d065c646ad34b9e"
+      "bytes": 12330,
+      "sha256": "f5d340d56e011a67454566bbea2886004d1c1acf142ba891935548f8c7856d89"
     },
     {
       "path": "skills/media/DESCRIPTION.md",
@@ -1407,28 +1537,28 @@
     },
     {
       "path": "skills/media/gif-search/SKILL.md",
-      "bytes": 2687,
-      "sha256": "0019213b0ee25ba23f71b760c6dbcf2544f611788d4c65e7dffe68cbe57a3be2"
+      "bytes": 2669,
+      "sha256": "df7f4037197c225149f5f4d5bb6eeccba922a86e8dd553a1ba9d7ed25616ca3d"
     },
     {
       "path": "skills/media/heartmula/SKILL.md",
-      "bytes": 6402,
-      "sha256": "f5b5d9ad6c27c32d2660d359c17bdd5e28d9b97926789fc83d8a52daa20f506c"
+      "bytes": 6377,
+      "sha256": "0c62d3c104a70e6426b65176666cce87d4b9ca8d48515fd445b75a7817f7adcd"
     },
     {
       "path": "skills/media/songsee/SKILL.md",
-      "bytes": 2441,
-      "sha256": "6611ce1e8879a9591db66d87548aa608bd9e1c92fe6430463c67517541e0c3b8"
+      "bytes": 2301,
+      "sha256": "d5c0f9355154bcb1b03745e88376c43363050ce206fbf14b140801abddf283b1"
     },
     {
       "path": "skills/media/spotify/SKILL.md",
-      "bytes": 6551,
-      "sha256": "6461bec17bded75c6498f43d4cca0654ac411a93b702caab281f306b3490a602"
+      "bytes": 6284,
+      "sha256": "43789e51e3ce37a77318b066cb8b183656cd21e9e1269ddea49e4348b1d9c3da"
     },
     {
       "path": "skills/media/youtube-content/SKILL.md",
-      "bytes": 3152,
-      "sha256": "121d625bacad7fbf1c877f292f32936c77b23c385adee4b499cb5b8aa305ea8d"
+      "bytes": 3183,
+      "sha256": "590f7358445e804ea8cd5d1035beb7cf8f8b548f8ff8d8b149d79973ba3a50f9"
     },
     {
       "path": "skills/media/youtube-content/references/output-formats.md",
@@ -1472,8 +1602,8 @@
     },
     {
       "path": "skills/mlops/evaluation/lm-evaluation-harness/SKILL.md",
-      "bytes": 11920,
-      "sha256": "26fc502fedcfccb96a36d8b27b84bf4d89be3d808461cf2620ce7f0cae03a594"
+      "bytes": 11994,
+      "sha256": "83fb318d855e8b245a90dc9ff0ae337faf2be9bd65c636b3c0bb8f9b55dca7b4"
     },
     {
       "path": "skills/mlops/evaluation/lm-evaluation-harness/references/api-evaluation.md",
@@ -1497,8 +1627,8 @@
     },
     {
       "path": "skills/mlops/evaluation/weights-and-biases/SKILL.md",
-      "bytes": 12479,
-      "sha256": "7166dab753266f5ae7b439dbd351b0e85fa681ea086a40e543499fa9f9af0416"
+      "bytes": 12360,
+      "sha256": "45f107b4a4c01b4e54fd98919bf40d305eac80fd2b64b442292a493190fc2dcb"
     },
     {
       "path": "skills/mlops/evaluation/weights-and-biases/references/artifacts.md",
@@ -1596,9 +1726,39 @@
       "sha256": "a83f9df40a6db7857b4b3ce3a982da7e939680ee89079170d4d258392804e09c"
     },
     {
+      "path": "skills/mlops/inference/obliteratus/SKILL.md",
+      "bytes": 15438,
+      "sha256": "14b07ab8606b89dfe1fa2dda834f58fd2f2006c398b2de605b7e9b1f119709e3"
+    },
+    {
+      "path": "skills/mlops/inference/obliteratus/references/analysis-modules.md",
+      "bytes": 6270,
+      "sha256": "7f8e5320e97739e83bbbc4b3049a879cea4bcbb509e2aa93f9b95d130b49c13e"
+    },
+    {
+      "path": "skills/mlops/inference/obliteratus/references/methods-guide.md",
+      "bytes": 6719,
+      "sha256": "e87c6e6fb9fdeec9c2d1921f07f49105bd80f1c52e382253c345d8ce39364f49"
+    },
+    {
+      "path": "skills/mlops/inference/obliteratus/templates/abliteration-config.yaml",
+      "bytes": 1189,
+      "sha256": "11bdb66c6af528b4971cc56e35937268296dfee347879eba28bb6ddc784ac4e7"
+    },
+    {
+      "path": "skills/mlops/inference/obliteratus/templates/analysis-study.yaml",
+      "bytes": 1368,
+      "sha256": "ae8cf7580c90d8228449c5cd7a0b2e5835b170bceb0445617caa213d0b4daba0"
+    },
+    {
+      "path": "skills/mlops/inference/obliteratus/templates/batch-abliteration.yaml",
+      "bytes": 1201,
+      "sha256": "f635607584579b31cc119f76daff4f98a2445a7b9471b61732ed06efba0ab304"
+    },
+    {
       "path": "skills/mlops/inference/outlines/SKILL.md",
-      "bytes": 15976,
-      "sha256": "b4424902dcc9a14c0be8b5ef3495c83b4b53324df30fbd87a84a407e1f32958c"
+      "bytes": 15803,
+      "sha256": "bfcee60c50d429c2a4fb8126842fe11e9e9927edf102bc3babc3c4c704237b0a"
     },
     {
       "path": "skills/mlops/inference/outlines/references/backends.md",
@@ -1617,8 +1777,8 @@
     },
     {
       "path": "skills/mlops/inference/vllm/SKILL.md",
-      "bytes": 9051,
-      "sha256": "5a92d7ab386c4e371b8771f38de0f0b88d36b1759e5807dd749d47832c539dee"
+      "bytes": 9045,
+      "sha256": "dbc02611b59f372984317154c3ec2036909b12cae7802b8afa5cf745b8d5c92c"
     },
     {
       "path": "skills/mlops/inference/vllm/references/optimization.md",
@@ -1647,8 +1807,8 @@
     },
     {
       "path": "skills/mlops/models/audiocraft/SKILL.md",
-      "bytes": 16333,
-      "sha256": "b2360a17f4aa57eb6b542670bbd72b09f07e6985aa58ec349b52253fd30ae97c"
+      "bytes": 16163,
+      "sha256": "7a9e4e55ad62a073ebb2cc09ccce2ddb7e7a2df3d505ac3ece3190b092b92aca"
     },
     {
       "path": "skills/mlops/models/audiocraft/references/advanced-usage.md",
@@ -1672,8 +1832,8 @@
     },
     {
       "path": "skills/mlops/models/segment-anything/SKILL.md",
-      "bytes": 13488,
-      "sha256": "6cd12ad539a566178b7d7e363b593661580810ff79f940cb94df4e0a9a59dfb8"
+      "bytes": 13337,
+      "sha256": "a98e8a7c281e30feefc80a6d78c7018e1b2cae5696c87ab0f5a4e12bc4cd3ea4"
     },
     {
       "path": "skills/mlops/models/segment-anything/references/advanced-usage.md",
@@ -1717,8 +1877,8 @@
     },
     {
       "path": "skills/mlops/research/dspy/SKILL.md",
-      "bytes": 15316,
-      "sha256": "34194f4c10e2f87e3ea1f6aebcfee7c4c03760d8ae29f3b558f4fec2dff769b7"
+      "bytes": 15185,
+      "sha256": "c02732551c78875197d2096476285263449c2a5dab087455b230c733e8436418"
     },
     {
       "path": "skills/mlops/research/dspy/references/examples.md",
@@ -1742,8 +1902,8 @@
     },
     {
       "path": "skills/mlops/training/axolotl/SKILL.md",
-      "bytes": 4822,
-      "sha256": "369e19f19ba63daf72464614eea3b8a72c29f97d766c7ee6c395a2d89c9afbbd"
+      "bytes": 4895,
+      "sha256": "06150971c4124a5b5311f2a20c50559eeba55c388934f506ebbe14835844eb93"
     },
     {
       "path": "skills/mlops/training/axolotl/references/api.md",
@@ -1812,8 +1972,8 @@
     },
     {
       "path": "skills/mlops/training/trl-fine-tuning/SKILL.md",
-      "bytes": 12204,
-      "sha256": "c529c270f86568474d008a33c375724f4d3d5115d7380ee2b481257e2860fd94"
+      "bytes": 11971,
+      "sha256": "ad0792435a5466abef115c01107d8f4851bd3de38ebf992e7676d007e8efa022"
     },
     {
       "path": "skills/mlops/training/trl-fine-tuning/references/dpo-variants.md",
@@ -1847,8 +2007,8 @@
     },
     {
       "path": "skills/mlops/training/unsloth/SKILL.md",
-      "bytes": 2332,
-      "sha256": "792a4f32aa67b01fa1f5feb651a00d7e47533598112c3195f7085bb731113403"
+      "bytes": 2272,
+      "sha256": "05961478fad35eb9687a502c23b6105b0a2af1d672b933d5ca1d135935908465"
     },
     {
       "path": "skills/mlops/training/unsloth/references/index.md",
@@ -2101,6 +2261,11 @@
       "sha256": "b5a494a45bfd430bfb3042ee0452a6b88c81481f147ce7fca2c29ed3e93c490a"
     },
     {
+      "path": "skills/productivity/airtable/SKILL.md",
+      "bytes": 11267,
+      "sha256": "efd925c3b9be734dd61393c7af19651601164ff57b67d320141d7813cdd85a03"
+    },
+    {
       "path": "skills/productivity/google-oauth-token-censorship/SKILL.md",
       "bytes": 6887,
       "sha256": "bed4c62f6c81693d9f2486c37624e94062ac7b9872c24603f76e95b938dca78c"
@@ -2142,23 +2307,23 @@
     },
     {
       "path": "skills/productivity/linear/SKILL.md",
-      "bytes": 11324,
-      "sha256": "1ba229c589fea08632cd49be33fae72137bcc372050ff2bd7f7166977d959192"
+      "bytes": 11195,
+      "sha256": "ec0e05268872ab03d5695bd86a5500a3bcec2769649f6517a019becbcbbdbda5"
     },
     {
       "path": "skills/productivity/maps/SKILL.md",
-      "bytes": 6969,
-      "sha256": "d785cddadfb9015619ff7b9436c6653248be06e3a08b394a90d953deb2febcf9"
+      "bytes": 6691,
+      "sha256": "9016a0dcce246a02bd0c3272619f3d9c5dd3dd8564ae111bca6922af1820564f"
     },
     {
       "path": "skills/productivity/maps/scripts/maps_client.py",
-      "bytes": 46457,
-      "sha256": "bb0e79fb130c3e49fe9b09b2c9226174c490b03ba46f023c33101f3642798f1c"
+      "bytes": 46688,
+      "sha256": "5f4a216bc2652d049150a897353d95f1f7fa59a803746cd76da7e70fcc9fa953"
     },
     {
       "path": "skills/productivity/nano-pdf/SKILL.md",
-      "bytes": 1494,
-      "sha256": "36a8cf6cbe2627d94558a209fbc1954bbcaad73e0740fe75a6b8911ef7458b70"
+      "bytes": 1379,
+      "sha256": "4eedb649dcf48c6a94756324359aa866d44c4308850fff08f07a4fc1eb04db09"
     },
     {
       "path": "skills/productivity/notion/SKILL.md",
@@ -2192,8 +2357,8 @@
     },
     {
       "path": "skills/productivity/ocr-and-documents/SKILL.md",
-      "bytes": 5399,
-      "sha256": "36390c04b7c49b762f6430ee97a7521e47ba6aee8e18b8dc3bcb9ebb0bf770ed"
+      "bytes": 5245,
+      "sha256": "53596fe5a2a87898d78b9ab33bca0185fd447250fcf42dcb350cb94fd4eddbfc"
     },
     {
       "path": "skills/productivity/ocr-and-documents/scripts/extract_marker.py",
@@ -2212,8 +2377,8 @@
     },
     {
       "path": "skills/productivity/powerpoint/SKILL.md",
-      "bytes": 9194,
-      "sha256": "4baa8fb66fb7d6b88924bdeebc826ea04cfa263f5928be84a75c4de14a84514d"
+      "bytes": 9263,
+      "sha256": "5d80c56d140e7f5c9d0104ddb48ab0789f6d75a70244c8240225f933259e9941"
     },
     {
       "path": "skills/productivity/powerpoint/editing.md",
@@ -2461,14 +2626,59 @@
       "sha256": "d4b4669e6f82366b63607bf7ca5baf5e67a02a663f0c18beeca5c015fe3628be"
     },
     {
+      "path": "skills/red-teaming/godmode/SKILL.md",
+      "bytes": 20024,
+      "sha256": "a24f5b066c6b2e1d4b64d8e2ae863f579281489fcd990d46fb4ece3c2fb397f0"
+    },
+    {
+      "path": "skills/red-teaming/godmode/references/jailbreak-templates.md",
+      "bytes": 7395,
+      "sha256": "4978c900ebd6058e2bcc6f6beea53d1a4517009869124bab5a10fec47a4421af"
+    },
+    {
+      "path": "skills/red-teaming/godmode/references/refusal-detection.md",
+      "bytes": 6245,
+      "sha256": "1347f7cbfe9eac573a8be279495aecb89dc3a9db3729f402bf552d39d261bdc3"
+    },
+    {
+      "path": "skills/red-teaming/godmode/scripts/auto_jailbreak.py",
+      "bytes": 33459,
+      "sha256": "ca75900004418d347a2099e9d82861d0ec1c137b8ebc797dbf01ca7cb446759f"
+    },
+    {
+      "path": "skills/red-teaming/godmode/scripts/godmode_race.py",
+      "bytes": 25937,
+      "sha256": "4045b7207ecf05070e8b118fb92f2ea71078f1a0799d631046d5e1fb51f0aa2d"
+    },
+    {
+      "path": "skills/red-teaming/godmode/scripts/load_godmode.py",
+      "bytes": 1576,
+      "sha256": "864a7209d75efebf55e9e7737661ce81cdd708ca4c7cb8b9a610f3d63e65a0cf"
+    },
+    {
+      "path": "skills/red-teaming/godmode/scripts/parseltongue.py",
+      "bytes": 23149,
+      "sha256": "f76c6c1aefc21e359943d81e6c813cb7d8f27fc6c23600e6e9f6e63ab7d2b12d"
+    },
+    {
+      "path": "skills/red-teaming/godmode/templates/prefill-subtle.json",
+      "bytes": 654,
+      "sha256": "1ae0ea27dff040a8da6b5e1a0557d3ee8f6355b5f5ce5e4dacfd533e4259669f"
+    },
+    {
+      "path": "skills/red-teaming/godmode/templates/prefill.json",
+      "bytes": 907,
+      "sha256": "834a066c5fcf3d82db2e919d6f28d4be1a880c27df139e6cefeca5565524f2ab"
+    },
+    {
       "path": "skills/research/DESCRIPTION.md",
       "bytes": 179,
       "sha256": "a7bc842330a491de5f73cd63e87521e53724d94d4f53949bfa2171beb8200e18"
     },
     {
       "path": "skills/research/arxiv/SKILL.md",
-      "bytes": 10212,
-      "sha256": "581824098d2186f521a959b269fbef065fc343bd3253c5c4d793a7e20919fa90"
+      "bytes": 10050,
+      "sha256": "1d987541419ab3fb335f81e0a4f9a6d8b159399a3ef9f5f2502a18630f4de2a7"
     },
     {
       "path": "skills/research/arxiv/scripts/search_arxiv.py",
@@ -2477,13 +2687,18 @@
     },
     {
       "path": "skills/research/blogwatcher/SKILL.md",
-      "bytes": 5169,
-      "sha256": "3249c55dc92e735ceebd14a53fd2f1d8af9929440ed4d71155969226c9732bc3"
+      "bytes": 5076,
+      "sha256": "2fa4ea3866b125ebb888e888584bffd3062ef42c7402b2271445cd69766f8e80"
+    },
+    {
+      "path": "skills/research/llm-wiki/SKILL.md",
+      "bytes": 20078,
+      "sha256": "bcbff15793322201fab624177151261a281444979aa6ebff79796819725da826"
     },
     {
       "path": "skills/research/polymarket/SKILL.md",
-      "bytes": 3046,
-      "sha256": "4bccef455d265b8f2a37049a4d9618830469b61000f88d0b650837a80a6ba2d1"
+      "bytes": 2950,
+      "sha256": "f940c02ae8e112dd44849ee68edd23bc6113bcab117f8624eefad3d8ca1b4301"
     },
     {
       "path": "skills/research/polymarket/references/api-endpoints.md",
@@ -2497,8 +2712,8 @@
     },
     {
       "path": "skills/research/research-paper-writing/SKILL.md",
-      "bytes": 103609,
-      "sha256": "24d3e51d1272ae8c9aa448b02a5223154f3edc77add8e4c3a25aed7a634919d8"
+      "bytes": 103375,
+      "sha256": "5bc92cec8357a19d71b1c10c5590ab605e846e4ddd914512511f8281a6053186"
     },
     {
       "path": "skills/research/research-paper-writing/references/autoreason-methodology.md",
@@ -2777,8 +2992,8 @@
     },
     {
       "path": "skills/smart-home/openhue/SKILL.md",
-      "bytes": 2770,
-      "sha256": "524208827103782a2239cecbf1b32eedec8e02941fe5666c255ca3a035db85ee"
+      "bytes": 2678,
+      "sha256": "6e0387e6aafc38cfeda8fe0a17af1bd0ea0863bcad7751d99df7027b6817b73a"
     },
     {
       "path": "skills/social-media/DESCRIPTION.md",
@@ -2811,14 +3026,34 @@
       "sha256": "53b1f2705c3aff8d10d12ea01b69fe20c935f8fe0e0626426d71077fc7087748"
     },
     {
+      "path": "skills/software-development/debugging-hermes-tui-commands/SKILL.md",
+      "bytes": 7875,
+      "sha256": "8fdd4eccf82924901248d604678e3a765dd93c304f3ac48d89a0ecc74de6bade"
+    },
+    {
+      "path": "skills/software-development/hermes-agent-skill-authoring/SKILL.md",
+      "bytes": 7583,
+      "sha256": "d738cf7a283fb7457b2bbd7c4567065e6ba1bd9d7040b88a37afec16158c7aa1"
+    },
+    {
+      "path": "skills/software-development/node-inspect-debugger/SKILL.md",
+      "bytes": 10894,
+      "sha256": "6d4ba74dafa536ba1d03fa05cdf5a4ee3ca03ed245b385bf1a1121dbcb95bb6f"
+    },
+    {
       "path": "skills/software-development/plan/SKILL.md",
-      "bytes": 2069,
-      "sha256": "ecb0b3bf5eed49f85d86213b5640fba191d60953bb2b68d0118f2862e2715e3a"
+      "bytes": 1981,
+      "sha256": "3f30ba1c40876673f20b82be2a74a136c158f14052f8b757c605957c8bbd435b"
+    },
+    {
+      "path": "skills/software-development/python-debugpy/SKILL.md",
+      "bytes": 13146,
+      "sha256": "338c7f94a56260a780e560867f45e216a68f17fabd0878466c16d03b409de38d"
     },
     {
       "path": "skills/software-development/requesting-code-review/SKILL.md",
-      "bytes": 8606,
-      "sha256": "85afac332fdc95ed4a4fc71c8f51b9074318917640b0e1b3439fad2214dae115"
+      "bytes": 8448,
+      "sha256": "ce8c637158a41b46731c42a9fb007fd7d79a9264d008e8e5b3cfafb7426b7003"
     },
     {
       "path": "skills/software-development/safe-file-rewrites-from-read-file/SKILL.md",
@@ -2827,23 +3062,28 @@
     },
     {
       "path": "skills/software-development/subagent-driven-development/SKILL.md",
-      "bytes": 9843,
-      "sha256": "22163925777a9082cf974dc9d4afa36b1d45325b80fdd913c477df983a2db610"
+      "bytes": 9742,
+      "sha256": "537850a43b1b87afe71f90817374be6bebc6bd72209cf60c5c47d2e6bda102ec"
     },
     {
       "path": "skills/software-development/systematic-debugging/SKILL.md",
-      "bytes": 10538,
-      "sha256": "6ecb2d692e9ef373256d7fd7b6bffd48abf8eb6d42862b75dbea5ebf5e84ecaa"
+      "bytes": 10445,
+      "sha256": "ddb1aa401c3c0946fff7e12ad435acc7046d9dcfea4267b94b0fde375716fdfe"
     },
     {
       "path": "skills/software-development/test-driven-development/SKILL.md",
-      "bytes": 9625,
-      "sha256": "4af0b79bc313088cf5968c49505d9956465f0f4a4642ace978afa96dee9ad8d9"
+      "bytes": 9538,
+      "sha256": "9e2c26e549e319f9017711f5be5c8dbec344d36d8ad50a0236e001882500b7dc"
     },
     {
       "path": "skills/software-development/writing-plans/SKILL.md",
-      "bytes": 7309,
-      "sha256": "15c28bcbd1ee956780059ebf26c846dde5abf56435fa00c45bc03cd5f103c0fe"
+      "bytes": 7194,
+      "sha256": "0130cb19af70c640971874becd188b26131c2a527d75f81bf4d3bd8dd862f7c3"
+    },
+    {
+      "path": "skills/yuanbao/SKILL.md",
+      "bytes": 3760,
+      "sha256": "09a35b811406e00e69b41b1ea86bf2b9d0ac9c0a7abc88f3832a7747717cc3c3"
     }
   ]
 }
