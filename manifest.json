@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-29T01:05:01.633609+00:00",
+  "generated_at_utc": "2026-04-29T01:10:01.194721+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 111193,
-      "sha256": "d326c8685f4e78447f546c248a795d33d0381611139d7421b79a0ed236a33657"
+      "sha256": "908ed22d85c76a4a6960d4a551352fafb0dd1f9c30c8cc4063d62013fc3625ec"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -79,11 +79,6 @@
       "path": "scripts/hermes-newsletter-collect.py",
       "bytes": 207,
       "sha256": "ef3737157945b3e9860d2aacb5ffed098d1783a5146953932eb236d20422444c"
-    },
-    {
-      "path": "scripts/obsidian-auto-push.sh",
-      "bytes": 654,
-      "sha256": "f0c6d988adef3df2313f36c705cb4aa59b8a5b237e6d338ba2210afd64f8699d"
     },
     {
       "path": "scripts/refresh_google_token.py",
@@ -1894,26 +1889,6 @@
       "path": "skills/note-taking/DESCRIPTION.md",
       "bytes": 146,
       "sha256": "fb28a609372460b2788d3b7dbc551985d24d4042057971f4d6345144d2d78caa"
-    },
-    {
-      "path": "skills/note-taking/hermes-memory-vault-sync/SKILL.md",
-      "bytes": 5034,
-      "sha256": "89dbc8cb92c4964d59a966baacebe2d303edb671bfd9654060d2a28afc0e474b"
-    },
-    {
-      "path": "skills/note-taking/notion-export-to-obsidian-vault/SKILL.md",
-      "bytes": 9216,
-      "sha256": "53ff2b873b80b218e018f79191bc90a702244668a3257fe2789c75ce904a499a"
-    },
-    {
-      "path": "skills/note-taking/obsidian/SKILL.md",
-      "bytes": 3264,
-      "sha256": "0195ce2feb19e86d3057b2b8e285b3a707c90b03f4d1462c8ae4cf4508203c20"
-    },
-    {
-      "path": "skills/note-taking/obsidian-web-vault/SKILL.md",
-      "bytes": 7191,
-      "sha256": "ffb6bd90cfef68e507bf13a2c8b65da91ed2149009b457715ebf5bc1b6a7d131"
     },
     {
       "path": "skills/openclaw-imports/DESCRIPTION.md",
