@@ -416,3 +416,6 @@ streaming:
   enabled: false
 plugins:
   enabled: []
+onboarding:
+  seen:
+    busy_input_prompt: true
