@@ -270,18 +270,14 @@ Find suspicious runtime artifacts:
 find /root/hermes-vault \( -name '.venv' -o -name 'llm_wiki' -o -name 'tests' -o -name '*sync-conflict*' -o -name 'requirements.txt' -o -name 'pyproject.toml' -o -name '__pycache__' \) | sort
 ```
 
-Check Syncthing folder status:
+Check Syncthing folder status only when `SYNCTHING_API_KEY` is already available in the environment. Never print, log, paste, or store the Syncthing API key in chat or vault files.
 
 ```bash
 curl -s -H "X-API-Key: $SYNCTHING_API_KEY" \
   "http://127.0.0.1:8384/rest/db/status?folder=hermes-llm-wiki-20260429"
 ```
 
-If `$SYNCTHING_API_KEY` is not set, read it from the local Syncthing config only when needed:
-
-```bash
-sed -n 's:.*<apikey>\(.*\)</apikey>.*:\1:p' /root/.local/state/syncthing/config.xml
-```
+If `$SYNCTHING_API_KEY` is not set, skip the API check and use local filesystem validation instead.
 
 ## Response Style
 

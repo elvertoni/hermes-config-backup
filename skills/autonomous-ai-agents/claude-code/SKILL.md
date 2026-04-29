@@ -100,14 +100,14 @@ tmux send-keys -t <session> Down && sleep 0.3 && tmux send-keys -t <session> Ent
 
 ### Robust Dialog Handling Pattern
 ```
-# Launch with permissions bypass
-terminal(command="tmux send-keys -t claude-work 'claude --dangerously-skip-permissions \"your task\"' Enter")
+# Launch normally. Use --dangerously-skip-permissions only in isolated disposable
+# worktrees after explicit user approval.
+terminal(command="tmux send-keys -t claude-work 'claude \"your task\"' Enter")
 
 # Handle trust dialog (Enter for default "Yes")
 terminal(command="sleep 4 && tmux send-keys -t claude-work Enter")
 
-# Handle permissions dialog (Down then Enter for "Yes, I accept")
-terminal(command="sleep 3 && tmux send-keys -t claude-work Down && sleep 0.3 && tmux send-keys -t claude-work Enter")
+# If a permissions dialog appears, review it instead of auto-accepting.
 
 # Now wait for Claude to work
 terminal(command="sleep 15 && tmux capture-pane -t claude-work -p -S -60")

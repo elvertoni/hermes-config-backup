@@ -14,7 +14,7 @@ Google Workspace CLI. Runs through a security wrapper — only whitelisted comma
 - No need to pass `--account` unless overriding
 - Always use `--json` for parseable output
 - Always use `--no-input` to avoid interactive prompts
-- In this workspace, load env first when needed: `set -a && source ~/.openclaw/.env && set +a`
+- In this workspace, load env first when needed: `set -a && source ~/.hermes/.env && set +a`
 - Prefer `gog` over `gws` for Google access here. `gws` is legacy/fallback and may have stale OAuth config.
 
 ## Setup
@@ -99,12 +99,12 @@ Safe flags: `--summary`, `--from`, `--to`, `--description`, `--location`, `--all
 - `gog drive download <fileId>` — download or export a file for local processing
 - `gog drive url <fileId> ...` — print Drive web URLs
 
-When the user asks to read material from Google Drive, use these `gog drive` read commands first. Do not fall back to `gws` unless `gog` is unavailable after loading `~/.openclaw/.env`.
+When the user asks to read material from Google Drive, use these `gog drive` read commands first. Do not fall back to `gws` unless `gog` is unavailable after loading `~/.hermes/.env`.
 
 Traversal pattern:
 
 ```bash
-set -a && source ~/.openclaw/.env && set +a
+set -a && source ~/.hermes/.env && set +a
 gog drive search 'AULAS_RCO' --json --no-input
 gog drive ls --parent <AULAS_RCO_ID> --json --no-input
 gog drive ls --parent <AMS_ID> --json --no-input

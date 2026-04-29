@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-29T02:15:02.127243+00:00",
+  "generated_at_utc": "2026-04-29T02:20:01.146344+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 110300,
-      "sha256": "353227f0a367292d741200b59607e43f2bd9b15c3d4403a430dd8ac96afb2cf8"
+      "sha256": "9d2ea6bffe73c6b5c67b0a4242bfd5afed35dc18893300bd12b54d94838966dc"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -137,13 +137,13 @@
     },
     {
       "path": "skills/autonomous-ai-agents/claude-code/SKILL.md",
-      "bytes": 34370,
-      "sha256": "a848243fc36ae856152700a52d56fa74d917fe5d316d32b19b80c32987a1a606"
+      "bytes": 34318,
+      "sha256": "a1d9f4f677e53b8d39de0cd0306ee7971ca242af5b4b0a3af72c0b340dc498a6"
     },
     {
       "path": "skills/autonomous-ai-agents/codex/SKILL.md",
-      "bytes": 4101,
-      "sha256": "86f8ef0e6bc2072fc2630b5c3ec17809b42caff41810d47f535aaf8c99067168"
+      "bytes": 4134,
+      "sha256": "4d761f0dc118c53104a90a21a69275887377519d25b3a4ea0bd21d2ba8a540bd"
     },
     {
       "path": "skills/autonomous-ai-agents/hermes-agent/SKILL.md",
@@ -857,8 +857,8 @@
     },
     {
       "path": "skills/creative/pixel-art/SKILL.md",
-      "bytes": 7750,
-      "sha256": "2105a6096c9e34b135c9f48797f06f3a2c33997be152ed8c0ad63b077ba2c0ac"
+      "bytes": 7734,
+      "sha256": "7d222574c2e34695969d7461ad272b33dcb56013dd67c169e7cd771e98abc845"
     },
     {
       "path": "skills/creative/pixel-art/references/palettes.md",
@@ -1247,8 +1247,8 @@
     },
     {
       "path": "skills/gaming/pokemon-player/SKILL.md",
-      "bytes": 8818,
-      "sha256": "607afcfb2e5887e8ea11f4cd8056d18eadc9d8eee89bf139313b0ddb1b7417a1"
+      "bytes": 8827,
+      "sha256": "737737b8927e9cff52720a02750be42c52051a13fc079d241ba64049507075aa"
     },
     {
       "path": "skills/gifs/DESCRIPTION.md",
@@ -1337,8 +1337,8 @@
     },
     {
       "path": "skills/github/hermes-github-backups/SKILL.md",
-      "bytes": 3228,
-      "sha256": "1176414476b067cb31a60c3c5446c963586126cd73df46923ec67b54a9e5d755"
+      "bytes": 3237,
+      "sha256": "47c45fad077c960696f565405da40900004bd73cdc79455b7ea8073d4e70708b"
     },
     {
       "path": "skills/gmail-send-with-attachment/SKILL.md",
@@ -1574,36 +1574,6 @@
       "path": "skills/mlops/inference/llama-cpp/references/troubleshooting.md",
       "bytes": 8904,
       "sha256": "a83f9df40a6db7857b4b3ce3a982da7e939680ee89079170d4d258392804e09c"
-    },
-    {
-      "path": "skills/mlops/inference/obliteratus/SKILL.md",
-      "bytes": 15366,
-      "sha256": "16aea9f5f2cdfddc1e63472d98d07b0f5abd9b64d6d26e22e959eac8bcc8c70d"
-    },
-    {
-      "path": "skills/mlops/inference/obliteratus/references/analysis-modules.md",
-      "bytes": 6270,
-      "sha256": "7f8e5320e97739e83bbbc4b3049a879cea4bcbb509e2aa93f9b95d130b49c13e"
-    },
-    {
-      "path": "skills/mlops/inference/obliteratus/references/methods-guide.md",
-      "bytes": 6719,
-      "sha256": "e87c6e6fb9fdeec9c2d1921f07f49105bd80f1c52e382253c345d8ce39364f49"
-    },
-    {
-      "path": "skills/mlops/inference/obliteratus/templates/abliteration-config.yaml",
-      "bytes": 1189,
-      "sha256": "11bdb66c6af528b4971cc56e35937268296dfee347879eba28bb6ddc784ac4e7"
-    },
-    {
-      "path": "skills/mlops/inference/obliteratus/templates/analysis-study.yaml",
-      "bytes": 1368,
-      "sha256": "ae8cf7580c90d8228449c5cd7a0b2e5835b170bceb0445617caa213d0b4daba0"
-    },
-    {
-      "path": "skills/mlops/inference/obliteratus/templates/batch-abliteration.yaml",
-      "bytes": 1201,
-      "sha256": "f635607584579b31cc119f76daff4f98a2445a7b9471b61732ed06efba0ab304"
     },
     {
       "path": "skills/mlops/inference/outlines/SKILL.md",
@@ -1987,8 +1957,8 @@
     },
     {
       "path": "skills/openclaw-imports/gog-restricted/SKILL.md",
-      "bytes": 9805,
-      "sha256": "ca1b83a0609bc39aa437fc6e058509716281dab1c217e50d97d0c7f7aff10771"
+      "bytes": 9799,
+      "sha256": "760a6599a2f3cde23cd7ebecbb2190371e4ec3b712e8bb47312c49c7c10d5328"
     },
     {
       "path": "skills/openclaw-imports/gog-restricted/_meta.json",
@@ -2002,8 +1972,8 @@
     },
     {
       "path": "skills/openclaw-imports/gogcli/SKILL.md",
-      "bytes": 2789,
-      "sha256": "4e850365eb857ebf418d7b59ac1055fa73f81c77c7db6911b6502b6739db0e40"
+      "bytes": 2861,
+      "sha256": "53e8c656ec0d0aef29237575f29fa16ab7680fed66203ee9dc1f16894bc81581"
     },
     {
       "path": "skills/openclaw-imports/gogcli/_meta.json",
@@ -2182,8 +2152,8 @@
     },
     {
       "path": "skills/productivity/obsidian/SKILL.md",
-      "bytes": 8603,
-      "sha256": "c85fb837f1f1c9b4200c765d78a7bd147659fa1849a0b2c6b3624e40dccd93c9"
+      "bytes": 8662,
+      "sha256": "e7ca03b0b20afd87b088db5f5f7d3fe62ef2d8fabf40cecd469a9fefa3a01733"
     },
     {
       "path": "skills/productivity/ocr-and-documents/DESCRIPTION.md",
@@ -2459,51 +2429,6 @@
       "path": "skills/productivity/toni-operational-style/SKILL.md",
       "bytes": 3537,
       "sha256": "d4b4669e6f82366b63607bf7ca5baf5e67a02a663f0c18beeca5c015fe3628be"
-    },
-    {
-      "path": "skills/red-teaming/godmode/SKILL.md",
-      "bytes": 20312,
-      "sha256": "6a63780ad6ff909d4e7c791e76708a91a065bb92c78aef2b247d78adc98dbcdf"
-    },
-    {
-      "path": "skills/red-teaming/godmode/references/jailbreak-templates.md",
-      "bytes": 7395,
-      "sha256": "4978c900ebd6058e2bcc6f6beea53d1a4517009869124bab5a10fec47a4421af"
-    },
-    {
-      "path": "skills/red-teaming/godmode/references/refusal-detection.md",
-      "bytes": 6245,
-      "sha256": "1347f7cbfe9eac573a8be279495aecb89dc3a9db3729f402bf552d39d261bdc3"
-    },
-    {
-      "path": "skills/red-teaming/godmode/scripts/auto_jailbreak.py",
-      "bytes": 22620,
-      "sha256": "86652df2ec71c0b8bb977884f85ec735a9f590176e1ed7130e32646d26f0902d"
-    },
-    {
-      "path": "skills/red-teaming/godmode/scripts/godmode_race.py",
-      "bytes": 24432,
-      "sha256": "1bcba173b5c99e121bf43a0a3a466a10e3a9e7eeef4480d38ff65b9b1a73108c"
-    },
-    {
-      "path": "skills/red-teaming/godmode/scripts/load_godmode.py",
-      "bytes": 1576,
-      "sha256": "864a7209d75efebf55e9e7737661ce81cdd708ca4c7cb8b9a610f3d63e65a0cf"
-    },
-    {
-      "path": "skills/red-teaming/godmode/scripts/parseltongue.py",
-      "bytes": 23149,
-      "sha256": "f76c6c1aefc21e359943d81e6c813cb7d8f27fc6c23600e6e9f6e63ab7d2b12d"
-    },
-    {
-      "path": "skills/red-teaming/godmode/templates/prefill-subtle.json",
-      "bytes": 654,
-      "sha256": "1ae0ea27dff040a8da6b5e1a0557d3ee8f6355b5f5ce5e4dacfd533e4259669f"
-    },
-    {
-      "path": "skills/red-teaming/godmode/templates/prefill.json",
-      "bytes": 907,
-      "sha256": "834a066c5fcf3d82db2e919d6f28d4be1a880c27df139e6cefeca5565524f2ab"
     },
     {
       "path": "skills/research/DESCRIPTION.md",

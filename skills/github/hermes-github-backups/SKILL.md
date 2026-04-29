@@ -1,6 +1,6 @@
 ---
 name: hermes-github-backups
-description: Corrige e valida os backups Git do ecossistema Hermes — vault principal em hermes-wiki e backup sanitizado de skills/scripts/config de /root/.hermes.
+description: Corrige e valida os backups Git do ecossistema Hermes — vault principal em /root/hermes-vault e backup sanitizado de skills/scripts/config de /root/.hermes.
 version: 1.0.0
 author: Hermes Agent
 license: MIT
@@ -13,7 +13,7 @@ Use esta skill quando precisar verificar, corrigir ou restaurar os backups Git d
 ## Objetivo
 
 Garantir dois fluxos distintos:
-1. o vault principal do Obsidian em `/root/hermes-wiki`
+1. o vault principal do Obsidian em `/root/hermes-vault`
 2. um backup sanitizado de `/root/.hermes`
 
 ## Fonte de verdade atual
@@ -60,7 +60,7 @@ Use esse fluxo especialmente quando algum prompt assumir incorretamente que `/ro
 ## Achados operacionais importantes
 
 - O auto-push do vault principal pode parecer configurado, mas estar quebrado se o script ainda apontar para um path antigo como `/root/Documents/Obsidian Vault`.
-- No ambiente validado, o path correto do vault principal é `/root/hermes-wiki`.
+- No ambiente validado, o path correto do vault principal é `/root/hermes-vault`.
 - O repositório sanitizado de `/root/.hermes` deve ser separado do vault principal para não misturar conhecimento editorial com configuração operacional.
 - Ao criar o repo `hermes-config-backup`, `git clone https://github.com/...` pode falhar com `Repository not found` mesmo após `gh repo create`; no ambiente validado, `gh repo clone elvertoni/hermes-config-backup /root/hermes-config-backup` foi o caminho funcional.
 

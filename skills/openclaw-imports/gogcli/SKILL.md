@@ -1,6 +1,10 @@
 ---
 name: gogcli
 description: Google Workspace CLI for Gmail, Calendar, Drive, Sheets, Docs, Slides, Contacts, Tasks, People, Groups, Keep. Use when user asks to interact with Google services.
+version: 1.0.0
+author: Hermes Agent
+license: MIT
+---
 
 # gogcli - Google Workspace CLI
 
@@ -34,10 +38,10 @@ sudo make install
 
 Before using gogcli, set up OAuth credentials:
 
-In this workspace, the runtime env lives in `~/.openclaw/.env`. Before non-interactive use, load it:
+In this workspace, the runtime env usually lives in `~/.hermes/.env`. Before non-interactive use, load it only if needed:
 
 ```bash
-set -a && source ~/.openclaw/.env && set +a
+set -a && source ~/.hermes/.env && set +a
 ```
 
 **Step 1: Get OAuth Client Credentials**

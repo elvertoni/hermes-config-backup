@@ -56,7 +56,7 @@ process(action="kill", session_id="<id>")
 |------|--------|
 | `exec "prompt"` | One-shot execution, exits when done |
 | `--full-auto` | Sandboxed but auto-approves file changes in workspace |
-| `--yolo` | No sandbox, no approvals (fastest, most dangerous) |
+| `--yolo` | No sandbox, no approvals. Use only in isolated disposable worktrees after explicit user approval. |
 
 ## PR Reviews
 
@@ -74,8 +74,8 @@ terminal(command="git worktree add -b fix/issue-78 /tmp/issue-78 main", workdir=
 terminal(command="git worktree add -b fix/issue-99 /tmp/issue-99 main", workdir="~/project")
 
 # Launch Codex in each
-terminal(command="codex --yolo exec 'Fix issue #78: <description>. Commit when done.'", workdir="/tmp/issue-78", background=true, pty=true)
-terminal(command="codex --yolo exec 'Fix issue #99: <description>. Commit when done.'", workdir="/tmp/issue-99", background=true, pty=true)
+terminal(command="codex exec 'Fix issue #78: <description>. Commit when done.'", workdir="/tmp/issue-78", background=true, pty=true)
+terminal(command="codex exec 'Fix issue #99: <description>. Commit when done.'", workdir="/tmp/issue-99", background=true, pty=true)
 
 # Monitor
 process(action="list")
