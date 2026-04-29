@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-29T02:20:01.146344+00:00",
+  "generated_at_utc": "2026-04-29T02:25:01.449430+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -27,13 +27,18 @@
     },
     {
       "path": "config/config.redacted.yaml",
-      "bytes": 10010,
-      "sha256": "e5c65ada6ef33306c02176d86f695ffe5040c69bcc28ac50bf75d25987deb4dc"
+      "bytes": 10011,
+      "sha256": "6048a2fcb49b6aa4d5d39b141f2306df0c9864642f51948a1a1ce9bb2c95b624"
     },
     {
       "path": "manifest.json",
-      "bytes": 110300,
-      "sha256": "9d2ea6bffe73c6b5c67b0a4242bfd5afed35dc18893300bd12b54d94838966dc"
+      "bytes": 107441,
+      "sha256": "1e95fb273f69973076c445adeae54c50d8da6dfda635a1f553e7390563e30bfa"
+    },
+    {
+      "path": "scripts/audit-hermes-skills.py",
+      "bytes": 3932,
+      "sha256": "7f52b0480aa9ddb72271a2608fca29fb2c40e9e20bbf1f8fdabf53a1c1e874ee"
     },
     {
       "path": "scripts/export-hermes-config-backup.py",
@@ -87,8 +92,8 @@
     },
     {
       "path": "skills/.bundled_manifest",
-      "bytes": 3452,
-      "sha256": "d7efce6eb6113a66283e810c032cd2fc6607c2509e20a672127621dfea7a9c6e"
+      "bytes": 3324,
+      "sha256": "92c009bd8214de6a5be5b78ca14dd056f1ed25bb6827f57e4717fc8d0f68bd1b"
     },
     {
       "path": "skills/.hub/audit.log",
@@ -147,8 +152,8 @@
     },
     {
       "path": "skills/autonomous-ai-agents/hermes-agent/SKILL.md",
-      "bytes": 19008,
-      "sha256": "34b40716f7421201c41b17d8fc6d9dda4a849a3177ed1b4459d9593ae76b5cd5"
+      "bytes": 19133,
+      "sha256": "385c1cc17fd586712426edc12db531d09d5cd52df6e10a15bb1ba79e5d9a98ba"
     },
     {
       "path": "skills/autonomous-ai-agents/opencode/SKILL.md",
@@ -1176,6 +1181,11 @@
       "sha256": "89756be379065ac639a0f094421a2700c6035967d3a32c58e40008bca132a545"
     },
     {
+      "path": "skills/devops/DESCRIPTION.md",
+      "bytes": 232,
+      "sha256": "6a1ca16f0cd3572aa0610a9f21c352778d59632ee48bbe08cfc53591ab8a3c9f"
+    },
+    {
       "path": "skills/devops/cloudflare-tunnel-vps/SKILL.md",
       "bytes": 1830,
       "sha256": "38918c9cc85be83df5b0aca93c3e504e5aec169109da9885cd4139594ec1f051"
@@ -1247,8 +1257,8 @@
     },
     {
       "path": "skills/gaming/pokemon-player/SKILL.md",
-      "bytes": 8827,
-      "sha256": "737737b8927e9cff52720a02750be42c52051a13fc079d241ba64049507075aa"
+      "bytes": 8824,
+      "sha256": "f90d622b35d8d6f0171a7fd4914aa93585b18867d7ea6bf0b6bc3f64a888bea7"
     },
     {
       "path": "skills/gifs/DESCRIPTION.md",
@@ -1346,6 +1356,11 @@
       "sha256": "48d7214c39a800e66fc4ffd23df2ba94eb7ea7245facfb0930968649200148dd"
     },
     {
+      "path": "skills/google-workspace/DESCRIPTION.md",
+      "bytes": 250,
+      "sha256": "1adee1c65e43651b0440585a348602de9eeae08619aa792f4e408c6118712f58"
+    },
+    {
       "path": "skills/google-workspace/google-forms-quiz/SKILL.md",
       "bytes": 2360,
       "sha256": "ae71c67d8567a46268a0053bce0887f7bf96ee2ebf3770bba01cd2a5f4100a21"
@@ -1354,6 +1369,11 @@
       "path": "skills/inference-sh/DESCRIPTION.md",
       "bytes": 706,
       "sha256": "ac21c24bb4681d20d6fc3ad3016a14d17310ddfccd7dc638fe16a36a83a466fa"
+    },
+    {
+      "path": "skills/leisure/DESCRIPTION.md",
+      "bytes": 113,
+      "sha256": "25ef62f8bb1c863ece2b5b9e8a3704126605312b5741a071c1b65a5905e1ab94"
     },
     {
       "path": "skills/leisure/find-nearby/SKILL.md",
@@ -1497,8 +1517,8 @@
     },
     {
       "path": "skills/mlops/huggingface-hub/SKILL.md",
-      "bytes": 3750,
-      "sha256": "357327d6fb43d5b9810574c875a8dcf886b504c27a67c387c19ddd6ef06dcf53"
+      "bytes": 3834,
+      "sha256": "df98627241d7cdb7c39703049336247e11dbfa1b745662fa07eda79838d529c1"
     },
     {
       "path": "skills/mlops/inference/DESCRIPTION.md",
@@ -2117,8 +2137,8 @@
     },
     {
       "path": "skills/productivity/google-workspace-multi-account-oauth/SKILL.md",
-      "bytes": 6306,
-      "sha256": "9eae09db84a987d7f3a985be5476ad809b7f1c01fd308cbedcf21f619a6281db"
+      "bytes": 6470,
+      "sha256": "19494230f1b989c03911794af4af75406d35588777fbae9aefd2b39615986f0b"
     },
     {
       "path": "skills/productivity/linear/SKILL.md",
@@ -2152,8 +2172,18 @@
     },
     {
       "path": "skills/productivity/obsidian/SKILL.md",
-      "bytes": 8662,
-      "sha256": "e7ca03b0b20afd87b088db5f5f7d3fe62ef2d8fabf40cecd469a9fefa3a01733"
+      "bytes": 4626,
+      "sha256": "ab2f9ffe200660cff86406e0347c1e60b0f1959e1bb1e9b4088d326a2e0897bc"
+    },
+    {
+      "path": "skills/productivity/obsidian/references/migration-sync.md",
+      "bytes": 1585,
+      "sha256": "9bcbb76a4af5baa381d25ff252377b4f53f6e0a36e835e28424bcdd6e65ed39b"
+    },
+    {
+      "path": "skills/productivity/obsidian/references/vault-contract.md",
+      "bytes": 2229,
+      "sha256": "f891bb5cc21381576ea3e546e387e0ff8e661792db61d3be943ba425ec8b82dd"
     },
     {
       "path": "skills/productivity/ocr-and-documents/DESCRIPTION.md",
@@ -2772,8 +2802,13 @@
     },
     {
       "path": "skills/social-media/xurl/SKILL.md",
-      "bytes": 14143,
-      "sha256": "e78dcac5308c4477aa50f882ce2fc9a72c0e24780b19ca41fc03f4ea3b53df75"
+      "bytes": 14212,
+      "sha256": "62e37b816884c3d13c58c27698129e4c4ce5c349f79d7fbf607d8b5ea5f51cb8"
+    },
+    {
+      "path": "skills/software-development/DESCRIPTION.md",
+      "bytes": 214,
+      "sha256": "53b1f2705c3aff8d10d12ea01b69fe20c935f8fe0e0626426d71077fc7087748"
     },
     {
       "path": "skills/software-development/plan/SKILL.md",

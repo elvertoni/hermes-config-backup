@@ -22,7 +22,7 @@ to create the venv and install the package in editable mode with the
 pyboy extra. If uv is not available, fall back to python3 -m venv + pip.
 
 If the repo is already cloned, use its actual local path and source `.venv/bin/activate`.
-Do not assume a `/home/teknium` path on this machine.
+Do not assume a preexisting machine-specific path.
 
 You also need a ROM file. Ask the user for theirs. On this machine
 one exists at roms/pokemon_red.gb inside that directory.

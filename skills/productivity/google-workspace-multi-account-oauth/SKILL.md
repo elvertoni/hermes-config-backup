@@ -49,10 +49,10 @@ Quando precisar manter outra conta em paralelo, use um helper com token/callback
 
 #### 1. Salvar o client secret da nova conta
 
-Exemplo:
+Use um arquivo de client secret que o usuario ja tenha salvo localmente. Nao cole o JSON secreto no chat e nao crie arquivos de secret via heredoc/cat em sessoes do agente.
 
 ```bash
-cat > /root/google-client-secret-escola.json
+ls -l /root/google-client-secret-escola.json
 ```
 
 #### 2. Criar helper OAuth separado

@@ -33,8 +33,10 @@ People use Hermes for software development, research, system administration, dat
 ## Quick Start
 
 ```bash
-# Install
-curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash
+# Install: download the installer, inspect it, then run it.
+curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh -o /tmp/hermes-install.sh
+less /tmp/hermes-install.sh
+bash /tmp/hermes-install.sh
 
 # Interactive chat (default)
 hermes
