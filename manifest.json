@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-04-30T06:15:01.423118+00:00",
+  "generated_at_utc": "2026-04-30T06:20:02.717001+00:00",
   "source": "/root/.hermes",
   "target": "/root/hermes-config-backup",
   "included_dirs": [
@@ -33,7 +33,7 @@
     {
       "path": "manifest.json",
       "bytes": 117759,
-      "sha256": "a5bcbf2f63b5d5be48bea03fcee4aaeab91a350d31ad13138ca327324f5a445c"
+      "sha256": "3bb0d2d0d39f6521ab667364ccf52e1ce49b9ec6273a8062edcddb75cfe3e252"
     },
     {
       "path": "scripts/audit-hermes-skills.py",
